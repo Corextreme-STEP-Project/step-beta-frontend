@@ -1,33 +1,22 @@
 import React from "react";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layout/layout";
-import TenderSubmission from "./layout/tender";
-
-// Create a theme instance
-const theme = createTheme({
-  // You can customize your theme here
-});
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />
-  },
-  {
-    path: "/tender",
-    element: <TenderSubmission />
-  }
-]);
+import TenderManagement from "./layout/tender/TenderManagement";
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline /> {/* Provides consistent baseline styles */}
-      <RouterProvider router={router} />
-    </ThemeProvider>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />
+    }, 
+    {
+      path: "/tender",
+      element: <TenderManagement />
+    }
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

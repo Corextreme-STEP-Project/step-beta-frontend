@@ -1,4 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Paper
+} from '@mui/material';
 import {
   Timeline,
   TimelineItem,
@@ -6,23 +13,16 @@ import {
   TimelineConnector,
   TimelineContent,
   TimelineDot,
-  TimelineOppositeContent,
+  TimelineOppositeContent
 } from '@mui/lab';
-import {
-  Paper,
-  Typography,
-  Box,
-  TextField,
-  InputAdornment,
-  IconButton,
-} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import PendingIcon from '@mui/icons-material/Pending';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 const TenderTracking = () => {
-  // Mock data - replace with actual API call
+  const [trackingId, setTrackingId] = useState('');
+  
+  // Mock data - replace with actual API data later
   const tenderStatus = {
     id: "TEN-2024-001",
     projectTitle: "Road Construction Project",
@@ -51,12 +51,6 @@ const TenderTracking = () => {
         date: null,
         completed: false,
         description: "Pending technical evaluation completion"
-      },
-      {
-        status: "Final Decision",
-        date: null,
-        completed: false,
-        description: "Awaiting final approval"
       }
     ]
   };
@@ -64,59 +58,65 @@ const TenderTracking = () => {
   return (
     <Box>
       <Box sx={{ mb: 4 }}>
-        <TextField
-          fullWidth
-          placeholder="Search tender by ID"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <IconButton>
-                  <SearchIcon />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
+        <Typography variant="h6" gutterBottom>
+          Track Tender Status
+        </Typography>
+        
+        <Box sx={{ display: 'flex', gap: 2, maxWidth: 500 }}>
+          <TextField
+            fullWidth
+            placeholder="Enter Tender ID"
+            value={trackingId}
+            onChange={(e) => setTrackingId(e.target.value)}
+            size="small"
+          />
+          <Button
+            variant="contained"
+            startIcon={<SearchIcon />}
+            onClick={() => console.log('Track:', trackingId)}
+          >
+            Track
+          </Button>
+        </Box>
       </Box>
 
-      <Paper elevation={2} sx={{ p: 3, mb: 3 }}>
-        <Typography variant="h6" gutterBottom>
-          Tender Reference: {tenderStatus.id}
-        </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-          Project: {tenderStatus.projectTitle}
-        </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-          Current Status: {tenderStatus.currentStatus}
-        </Typography>
-      </Paper>
+      {tenderStatus && (
+        <Paper sx={{ p: 3 }}>
+          <Typography variant="h6" gutterBottom>
+            {tenderStatus.projectTitle}
+          </Typography>
+          <Typography color="textSecondary" gutterBottom>
+            Tender ID: {tenderStatus.id}
+          </Typography>
+          <Typography variant="subtitle1" gutterBottom>
+            Current Status: {tenderStatus.currentStatus}
+          </Typography>
 
-      <Timeline position="alternate">
-        {tenderStatus.timeline.map((item, index) => (
-          <TimelineItem key={index}>
-            <TimelineOppositeContent>
-              <Typography variant="body2" color="textSecondary">
-                {item.date || 'Pending'}
-              </Typography>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot color={item.completed ? "success" : "grey"}>
-                {item.completed ? <CheckCircleOutlineIcon /> : 
-                 item.date ? <PendingIcon /> : <ErrorOutlineIcon />}
-              </TimelineDot>
-              {index < tenderStatus.timeline.length - 1 && <TimelineConnector />}
-            </TimelineSeparator>
-            <TimelineContent>
-              <Paper elevation={2} sx={{ p: 2 }}>
-                <Typography variant="h6" component="h1">
-                  {item.status}
-                </Typography>
-                <Typography>{item.description}</Typography>
-              </Paper>
-            </TimelineContent>
-          </TimelineItem>
-        ))}
-      </Timeline>
+          <Timeline position="alternate">
+            {tenderStatus.timeline.map((item, index) => (
+              <TimelineItem key={index}>
+                <TimelineOppositeContent color="textSecondary">
+                  {item.date || 'Pending'}
+                </TimelineOppositeContent>
+                <TimelineSeparator>
+                  <TimelineDot color={item.completed ? "success" : "grey"}>
+                    {item.completed ? <CheckCircleOutlineIcon /> : <PendingIcon />}
+                  </TimelineDot>
+                  {index < tenderStatus.timeline.length - 1 && <TimelineConnector />}
+                </TimelineSeparator>
+                <TimelineContent>
+                  <Paper elevation={2} sx={{ p: 2 }}>
+                    <Typography variant="h6" component="h1">
+                      {item.status}
+                    </Typography>
+                    <Typography>{item.description}</Typography>
+                  </Paper>
+                </TimelineContent>
+              </TimelineItem>
+            ))}
+          </Timeline>
+        </Paper>
+      )}
     </Box>
   );
 };

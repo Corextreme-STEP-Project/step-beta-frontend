@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Box, Container, Paper } from '@mui/material';
+import {
+  Container,
+  Paper,
+  Tabs,
+  Tab,
+  Box,
+  Typography
+} from '@mui/material';
 import TenderSubmissionForm from './components/TenderSubmissionForm';
 import TenderReview from './components/TenderReview';
-// import TenderTracking from './components/TenderTracking';
 import TenderTracking from './components/TenderTracking';
 
-const TenderSubmission = () => {
+const TenderManagement = () => {
   const [currentTab, setCurrentTab] = useState(0);
 
   const handleTabChange = (event, newValue) => {
@@ -15,8 +21,10 @@ const TenderSubmission = () => {
   return (
     <Container maxWidth="lg">
       <Paper elevation={3} sx={{ p: 3, mt: 3 }}>
-        <h1>Tender Management</h1>
-        
+        <Typography variant="h5" gutterBottom>
+          Tender Management
+        </Typography>
+
         <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 3 }}>
           <Tabs value={currentTab} onChange={handleTabChange}>
             <Tab label="Submit Tender" />
@@ -33,4 +41,4 @@ const TenderSubmission = () => {
   );
 };
 
-export default TenderSubmission;
+export default TenderManagement;

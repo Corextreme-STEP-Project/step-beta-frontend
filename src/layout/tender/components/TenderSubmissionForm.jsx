@@ -13,7 +13,9 @@ import {
   Box,
   Alert
 } from '@mui/material';
-import FilePreview from './FilePreview';
+import { UploadFile as UploadFileIcon } from '@mui/icons-material';
+import FileUploadPreview from './FileUploadPreview';
+import DocumentPreviewDialog from './DocumentPreviewDialog';
 import { validateFile, MAX_FILE_SIZE, MAX_TOTAL_SIZE, FILE_TYPES } from '../../../utils/fileUtils';
 
 const validationSchema = Yup.object({
@@ -40,6 +42,8 @@ const validationSchema = Yup.object({
 
 const TenderSubmissionForm = () => {
   const [fileLoading, setFileLoading] = useState(false);
+  const [previewFile, setPreviewFile] = useState(null);
+  const [openPreview, setOpenPreview] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -84,46 +88,20 @@ const TenderSubmissionForm = () => {
     },
   });
 
-  const handleFileChange = async (event) => {
-    setFileLoading(true);
-    try {
-      const files = Array.from(event.target.files);
-      
-      // Validate total size
-      const totalSize = files.reduce((acc, file) => acc + file.size, 0);
-      if (totalSize > MAX_TOTAL_SIZE) {
-        formik.setFieldError('documents', `Total file size exceeds ${MAX_TOTAL_SIZE / 1024 / 1024}MB`);
-        return;
-      }
-
-      // Validate each file
-      const validatedFiles = files.map(file => {
-        const errors = validateFile(file);
-        return {
-          ...file,
-          error: errors.length > 0 ? errors[0] : null
-        };
-      });
-
-      // Check if any files have errors
-      const hasErrors = validatedFiles.some(file => file.error);
-      if (hasErrors) {
-        formik.setFieldError('documents', 'Some files have validation errors');
-      }
-
-      formik.setFieldValue('documents', validatedFiles);
-    } catch (error) {
-      console.error('Error processing files:', error);
-      formik.setFieldError('documents', 'Error processing files');
-    } finally {
-      setFileLoading(false);
-    }
+  const handleFileChange = (event) => {
+    const files = Array.from(event.target.files);
+    formik.setFieldValue('documents', [...formik.values.documents, ...files]);
   };
 
   const handleRemoveFile = (index) => {
-    const updatedFiles = [...formik.values.documents];
-    updatedFiles.splice(index, 1);
-    formik.setFieldValue('documents', updatedFiles);
+    const newFiles = [...formik.values.documents];
+    newFiles.splice(index, 1);
+    formik.setFieldValue('documents', newFiles);
+  };
+
+  const handlePreviewFile = (file) => {
+    setPreviewFile(file);
+    setOpenPreview(true);
   };
 
   return (
@@ -233,29 +211,28 @@ const TenderSubmissionForm = () => {
           <Button
             variant="contained"
             component="label"
-            disabled={fileLoading}
-            sx={{ mr: 2 }}
+            startIcon={<UploadFileIcon />}
           >
-            {fileLoading ? 'Processing...' : 'Upload Documents'}
+            Upload Documents
             <input
               type="file"
               multiple
               hidden
               onChange={handleFileChange}
-              accept={Object.values(FILE_TYPES).join(',')}
+              accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
             />
           </Button>
-          
+
           {formik.values.documents.length > 0 && (
-            <FilePreview 
+            <FileUploadPreview
               files={formik.values.documents}
               onRemove={handleRemoveFile}
-              loading={fileLoading}
+              onPreview={handlePreviewFile}
             />
           )}
-          
+
           {formik.touched.documents && formik.errors.documents && (
-            <Typography color="error" variant="caption" display="block">
+            <Typography color="error" variant="caption">
               {formik.errors.documents}
             </Typography>
           )}
@@ -273,6 +250,15 @@ const TenderSubmissionForm = () => {
           </Button>
         </Grid>
       </Grid>
+
+      <DocumentPreviewDialog
+        open={openPreview}
+        onClose={() => {
+          setOpenPreview(false);
+          setPreviewFile(null);
+        }}
+        file={previewFile}
+      />
     </Box>
   );
 };
