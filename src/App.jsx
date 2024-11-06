@@ -12,6 +12,12 @@ import ProjectForm from "./pages/project-owner/projectForm/Form";
 import ProjectList from "./pages/project-owner/projectForm/List";
 import ProjectDetails from "./pages/project-owner/projectForm/details";
 
+import ProjectOwnerDashboard from "./component/project-owner/ProjectOwnerDashboard";
+import ProjectMaturation from "./component/project-owner/ProjectMaturation";
+import ContractAwarding from "./component/project-owner/ContractAwarding";
+import Notifications from "./component/project-owner/Notifications";
+import ProjectOwnerPage from "./pages/project-owner/ProjectOwnerPage";
+
 
 function App() {
   const router = createBrowserRouter ([
@@ -54,7 +60,29 @@ element: <MaturationPhase/>
 
   ],
 },
-
+{
+  path: "/projectowner",
+  element: <ProjectOwnerPage />,
+  children: [
+    {
+      // path: "projects",
+      index: true,
+      element: <ProjectOwnerDashboard />
+    },
+    {
+      path: "projectmaturation",
+      element: <ProjectMaturation />
+    },
+    {
+      path: "contractawarding",
+      element: <ContractAwarding />
+    },
+    {
+      path: "notifications",
+      element: <Notifications />
+    },
+  ]
+},
 
   ]);
 
