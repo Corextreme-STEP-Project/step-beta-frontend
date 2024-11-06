@@ -19,11 +19,11 @@ function App() {
   element: <RegistrationForm/> ,
 },
 {
-  path:"/form",
+  path:"/add-project",
   element: <ProjectForm/> ,
 },
 {
-  path:"/list",
+  path:"/project-list",
   element: <ProjectList/> ,
 },
 {
