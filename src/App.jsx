@@ -1,3 +1,9 @@
+
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./layout/layout";
+import TenderSubmission from "./layout/tender";
 import React, { Children } from "react";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -12,10 +18,21 @@ import ProjectForm from "./pages/project-owner/projectForm/Form";
 import ProjectList from "./pages/project-owner/projectForm/List";
 import ProjectDetails from "./pages/project-owner/projectForm/details";
 
+// Create a theme instance
+const theme = createTheme({
+  // You can customize your theme here
+});
 
-function App() {
+
   const router = createBrowserRouter ([
-
+{
+    path: "/",
+    element: <Layout />
+  },
+  {
+    path: "/tender",
+    element: <TenderSubmission />
+  },
 {
   path:"/login",
   element: <LoginForm/>,
@@ -58,7 +75,14 @@ element: <MaturationPhase/>
 
   ]);
 
-  return <RouterProvider router={router}/>
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline /> {/* Provides consistent baseline styles */}
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 }
 
 export default App;
