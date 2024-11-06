@@ -1,25 +1,80 @@
-import React from "react";
+
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layout/layout";
 import TenderSubmission from "./layout/tender";
+import React, { Children } from "react";
+import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LoginForm from "./pages/logins/LoginForm";
+import RegistrationForm from "./pages/logins/RegistrationForm";
+
+import DashboardLayout from "./layout/minmap/DashboardLayout";
+import MinMapDashboard from "./pages/minmap/dashboard/MinMapDashboard";
+import MaturationPhase from "./component/minmap/MaturationPhase";
+
+import ProjectForm from "./pages/project-owner/projectForm/Form";
+import ProjectList from "./pages/project-owner/projectForm/List";
+import ProjectDetails from "./pages/project-owner/projectForm/details";
 
 // Create a theme instance
 const theme = createTheme({
   // You can customize your theme here
 });
 
-const router = createBrowserRouter([
-  {
+
+  const router = createBrowserRouter ([
+{
     path: "/",
     element: <Layout />
   },
   {
     path: "/tender",
     element: <TenderSubmission />
-  }
-]);
+  },
+{
+  path:"/login",
+  element: <LoginForm/>,
+},
+{
+  path:"/register",
+  element: <RegistrationForm/> ,
+},
+{
+  path:"/add-project",
+  element: <ProjectForm/> ,
+},
+{
+  path:"/project-list",
+  element: <ProjectList/> ,
+},
+{
+  path:"/project/:id",
+  element: <ProjectDetails/> ,
+},
+
+{
+path:"/maturation",
+element: <MaturationPhase/>
+},
+
+{
+  path:"/dashboard",
+  element: <DashboardLayout />,
+  children: [
+    {
+      index: true,
+      element: <MinMapDashboard />,
+    },
+
+
+  ],
+},
+
+
+  ]);
+
 
 function App() {
   return (
