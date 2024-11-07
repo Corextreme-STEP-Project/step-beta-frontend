@@ -17,6 +17,10 @@ import ProjectMaturation from "./component/project-owner/ProjectMaturation";
 import ContractAwarding from "./component/project-owner/ContractAwarding";
 import Notifications from "./component/project-owner/Notifications";
 import ProjectOwnerPage from "./pages/project-owner/ProjectOwnerPage";
+import LiveUI_Dashboard from "./layout/minmap/LiveUI_Dashboard";
+// import FAQ from "./component/minmap/Faq";
+import FAQS from "./component/minmap/FAQItems";
+import LiveChat from "./component/minmap/Livechat";
 
 
 
@@ -27,11 +31,34 @@ const theme = createTheme({
 });
 
 
+
+
+function App() {
   const router = createBrowserRouter ([
+
+
+{
+  path:"/live_ui_dashboard",
+  element: <LiveUI_Dashboard/>,
+
+  children: [
+    {
+    index:true,
+      element: <FAQS/>,
+    },
+    {
+    path: "live-chat",
+      element: <LiveChat/>,
+    },
+
+  ]
+ 
+},
     {
       path: "/tender",
       element: <TenderManagement />
     },
+
 {
   path:"/login",
   element: <LoginForm/>,
