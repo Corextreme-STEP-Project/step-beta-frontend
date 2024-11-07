@@ -1,10 +1,7 @@
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./layout/layout";
 import TenderSubmission from "./layout/tender";
-import React, { Children } from "react";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginForm from "./pages/logins/LoginForm";
@@ -33,10 +30,6 @@ const theme = createTheme({
 
 
   const router = createBrowserRouter ([
-{
-    path: "/",
-    element: <Layout />
-  },
   {
     path: "/tender",
     element: <TenderSubmission />
