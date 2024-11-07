@@ -1,16 +1,14 @@
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import TenderSubmission from "./layout/tender";
 import "./App.css";
+import TenderManagement from "./layout/tender/TenderManagement";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginForm from "./pages/logins/LoginForm";
 import RegistrationForm from "./pages/logins/RegistrationForm";
-
 import DashboardLayout from "./layout/minmap/DashboardLayout";
 import MinMapDashboard from "./pages/minmap/dashboard/MinMapDashboard";
 import MaturationPhase from "./component/minmap/MaturationPhase";
-
 import ProjectForm from "./pages/project-owner/projectForm/Form";
 import ProjectList from "./pages/project-owner/projectForm/List";
 import ProjectDetails from "./pages/project-owner/projectForm/details";
@@ -30,10 +28,10 @@ const theme = createTheme({
 
 
   const router = createBrowserRouter ([
-  {
-    path: "/tender",
-    element: <TenderSubmission />
-  },
+    {
+      path: "/tender",
+      element: <TenderManagement />
+    },
 {
   path:"/login",
   element: <LoginForm/>,
@@ -106,6 +104,7 @@ function App() {
       <RouterProvider router={router} />
     </ThemeProvider>
   );
+
 }
 
 export default App;
