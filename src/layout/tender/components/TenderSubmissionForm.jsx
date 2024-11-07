@@ -1,3 +1,4 @@
+
 // Importing necessary libraries and components
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
@@ -12,12 +13,14 @@ import {
   MenuItem,
   Typography,
   Box,
+
 } from '@mui/material'; // Importing Material UI components
 import { UploadFile as UploadFileIcon } from '@mui/icons-material'; // Importing icon for file upload button
 import FileUploadPreview from './FileUploadPreview'; // Component for previewing uploaded files
 import DocumentPreviewDialog from './DocumentPreviewDialog'; // Component for previewing documents in a dialog
 
 // Defining validation schema using Yup
+
 const validationSchema = Yup.object({
   projectTitle: Yup.string()
     .required('Project title is required')
@@ -40,12 +43,14 @@ const validationSchema = Yup.object({
     .min(1, 'At least one document is required')
 });
 
+
 // Main component for the Tender Submission Form
 const TenderSubmissionForm = () => {
   const [previewFile, setPreviewFile] = useState(null); // State to hold file for preview
   const [openPreview, setOpenPreview] = useState(false); // State to control document preview dialog
 
   // Initializing formik for form handling and validation
+
   const formik = useFormik({
     initialValues: {
       projectTitle: '',
@@ -59,10 +64,13 @@ const TenderSubmissionForm = () => {
     validationSchema: validationSchema,
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
+
         const formData = new FormData(); // Create FormData object for file upload
+
         values.documents.forEach((file, index) => {
           formData.append(`document-${index}`, file);
         });
+
 
         console.log('Form submitted:', values);
         
@@ -100,6 +108,7 @@ const TenderSubmissionForm = () => {
       <Grid container spacing={3}>
         {/* Project Title Field */}
         <Grid item xs={12}>
+
           <TextField
             fullWidth
             id="projectTitle"
@@ -112,15 +121,18 @@ const TenderSubmissionForm = () => {
           />
         </Grid>
 
+
         {/* Tender Type Dropdown */}
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
+
             <InputLabel>Tender Type</InputLabel>
             <Select
               id="tenderType"
               name="tenderType"
               value={formik.values.tenderType}
               onChange={formik.handleChange}
+
               error={formik.touched.tenderType && Boolean(formik.errors.tenderType)}
             >
               <MenuItem value="open">Open Tender</MenuItem>
@@ -131,6 +143,7 @@ const TenderSubmissionForm = () => {
         </Grid>
 
         {/* Budget Field */}
+
         <Grid item xs={12} sm={6}>
           <TextField
             fullWidth
@@ -145,7 +158,9 @@ const TenderSubmissionForm = () => {
           />
         </Grid>
 
+
         {/* Deadline Field */}
+
         <Grid item xs={12} sm={6}>
           <TextField
             fullWidth
@@ -153,15 +168,20 @@ const TenderSubmissionForm = () => {
             name="deadline"
             label="Submission Deadline"
             type="date"
+
+// InputLabelProps={{ shrink: true }}
+
             value={formik.values.deadline}
             onChange={formik.handleChange}
             error={formik.touched.deadline && Boolean(formik.errors.deadline)}
             helperText={formik.touched.deadline && formik.errors.deadline}
+
             InputLabelProps={{ shrink: true }}
           />
         </Grid>
 
         {/* Project Description Field */}
+
         <Grid item xs={12}>
           <TextField
             fullWidth
@@ -177,7 +197,9 @@ const TenderSubmissionForm = () => {
           />
         </Grid>
 
+
         {/* Technical Requirements Field */}
+
         <Grid item xs={12}>
           <TextField
             fullWidth
@@ -193,19 +215,24 @@ const TenderSubmissionForm = () => {
           />
         </Grid>
 
+
         {/* File Upload Button */}
+
         <Grid item xs={12}>
           <Button
             variant="contained"
             component="label"
+
             startIcon={<UploadFileIcon />}
           >
             Upload Documents
+
             <input
               type="file"
               multiple
               hidden
               onChange={handleFileChange}
+
               accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
             />
           </Button>
@@ -222,23 +249,29 @@ const TenderSubmissionForm = () => {
           {/* Document error message */}
           {formik.touched.documents && formik.errors.documents && (
             <Typography color="error" variant="caption">
+
               {formik.errors.documents}
             </Typography>
           )}
         </Grid>
 
+
         {/* Submit Button */}
+
         <Grid item xs={12}>
           <Button
             type="submit"
             variant="contained"
             color="primary"
+
+
             disabled={formik.isSubmitting}
           >
             {formik.isSubmitting ? 'Submitting...' : 'Submit Tender'}
           </Button>
         </Grid>
       </Grid>
+
 
       {/* Document Preview Dialog */}
       <DocumentPreviewDialog
@@ -249,8 +282,11 @@ const TenderSubmissionForm = () => {
         }}
         file={previewFile}
       />
+
     </Box>
   );
 };
 
+
 export default TenderSubmissionForm;
+

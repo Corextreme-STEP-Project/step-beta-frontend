@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 // Importing Material UI components for layout and styling
@@ -10,6 +11,7 @@ import {
 } from '@mui/material';
 
 // Importing Material UI Lab components for timeline structure
+
 import {
   Timeline,
   TimelineItem,
@@ -17,6 +19,7 @@ import {
   TimelineConnector,
   TimelineContent,
   TimelineDot,
+
   TimelineOppositeContent
 } from '@mui/lab';
 
@@ -42,6 +45,7 @@ const TenderTracking = () => {
         date: "2024-03-15", // Date of completion
         completed: true, // Whether this stage is completed
         description: "Tender submitted successfully" // Additional details
+
       },
       {
         status: "Initial Review",
@@ -57,6 +61,7 @@ const TenderTracking = () => {
       },
       {
         status: "Financial Evaluation",
+
         date: null, // Date is null for stages not yet completed
         completed: false,
         description: "Pending technical evaluation completion"
@@ -144,9 +149,12 @@ const TenderTracking = () => {
           </Timeline>
         </Paper>
       )}
+
     </Box>
   );
 };
 
 
+
 export default TenderTracking;
+

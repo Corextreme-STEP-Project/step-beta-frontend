@@ -1,3 +1,4 @@
+
 // Importing React and the useState hook from the React library for state management
 import React, { useState } from 'react';
 
@@ -210,10 +211,12 @@ const TenderReview = () => {
                   <Chip // Displaying tender type with a Chip
                     label={tender.type}
                     variant="outlined"
+
                     size="small"
                   />
                 </TableCell>
                 <TableCell>
+
                   {getStatusChip(tender.status)}  
                 </TableCell>
                 <TableCell>
@@ -226,6 +229,8 @@ const TenderReview = () => {
                   </IconButton>
                 </TableCell>
               </TableRow> // End of tender row
+
+
             ))}
           </TableBody>
         </Table>
@@ -344,6 +349,7 @@ const TenderReview = () => {
                   </Button>
                 </>
               )}
+
             </DialogActions>
           </>
         )}
@@ -354,3 +360,4 @@ const TenderReview = () => {
 
 // Exporting the TenderReview component for use in other files
 export default TenderReview;
+
