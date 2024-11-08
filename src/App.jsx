@@ -34,8 +34,6 @@ const theme = createTheme({
 
 
 
-
-function App() {
   const router = createBrowserRouter ([
 
 
@@ -56,6 +54,7 @@ function App() {
   ]
  
 },
+    
     {
       path: "/tender",
       element: <TenderManagement />
