@@ -4,25 +4,15 @@ import axios from "axios";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 
-export const apiClient = axios.create({
-    baseURL:baseUrl,
-    "Content-Type": "application/json",
-})
-
-console.log('base', baseUrl)
-
-
-apiClient.interceptors.request.use(
-    (config) => {
-
 const token = localStorage.getItem("token")
 
 if (token) {
-    config.headers.Authorization = `Bearer ${token}`
-} 
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+}
 
-return config;
-},
+export const apiClient = axios.create({
+    baseURL:baseUrl,
 
-(error) => Promise.reject(error)
-);
+})
+
+console.log('base', baseUrl)
