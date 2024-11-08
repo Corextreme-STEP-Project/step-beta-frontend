@@ -1,17 +1,14 @@
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-
-import TenderSubmission from "./layout/tender";
 import "./App.css";
+import TenderManagement from "./layout/tender/TenderManagement";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginForm from "./pages/logins/LoginForm";
 import RegistrationForm from "./pages/logins/RegistrationForm";
-
 import DashboardLayout from "./layout/minmap/DashboardLayout";
 import MinMapDashboard from "./pages/minmap/dashboard/MinMapDashboard";
 import MaturationPhase from "./component/minmap/MaturationPhase";
-
 import ProjectForm from "./pages/project-owner/projectForm/Form";
 import ProjectList from "./pages/project-owner/projectForm/List";
 import ProjectDetails from "./pages/project-owner/projectForm/details";
@@ -22,6 +19,10 @@ import Notifications from "./component/project-owner/Notifications";
 import ProjectOwnerPage from "./pages/project-owner/ProjectOwnerPage";
 import EditProject from './pages/project-owner/projectForm/EditProject';
 import UpdateProjectStatus from './pages/project-owner/projectForm/EditProject';
+import LiveUI_Dashboard from "./layout/minmap/LiveUI_Dashboard";
+// import FAQ from "./component/minmap/Faq";
+import FAQS from "./component/minmap/FAQItems";
+import LiveChat from "./component/minmap/Livechat";
 
 
 
@@ -32,11 +33,33 @@ const theme = createTheme({
 });
 
 
+
+
+function App() {
   const router = createBrowserRouter ([
-  {
-    path: "/tender",
-    element: <TenderSubmission />
-  },
+
+
+{
+  path:"/live_ui_dashboard",
+  element: <LiveUI_Dashboard/>,
+
+  children: [
+    {
+    index:true,
+      element: <FAQS/>,
+    },
+    {
+    path: "live-chat",
+      element: <LiveChat/>,
+    },
+
+  ]
+ 
+},
+    {
+      path: "/tender",
+      element: <TenderManagement />
+    },
 {
   path:"/login",
   element: <LoginForm/>,
@@ -113,6 +136,7 @@ function App() {
       <RouterProvider router={router} />
     </ThemeProvider>
   );
+
 }
 
 export default App;

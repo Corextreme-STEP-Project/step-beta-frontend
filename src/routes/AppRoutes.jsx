@@ -1,22 +1,34 @@
-import React from 'react'
-import { useRole } from '../context/RoleContext'
-import ProjectOwnerPage from '../pages/ProjectOwnerPage';
-import MINMAPPage from '../pages/MINMAPPage';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { AuthGuard } from '../component/AuthGuard';
+import LoginForm from '../pages/logins/LoginForm';
+import ProjectOwnerPage from '../pages/project-owner/ProjectOwnerPage';
+import MinMapDashboard from '../pages/minmap/dashboard/MinMapDashboard';
+import { ROLES } from '../constants/roles';
 
-const AppRoutes = () => {
-    const { role } = useRole();
-
-    if (role === 'ProjectOwner')
-        return <ProjectOwnerPage />
-
-    if (role === 'MINMAP')
-        return <MINMAPPage />
-
+export default function AppRoutes() {
     return (
-        <div>
-            Select a role to proceed.
-        </div>
-    )
-}
+        <Routes>
+            <Route path="/login" element={<LoginForm />} />
 
-export default AppRoutes
+            <Route
+                path="/projectowner/*"
+                element={
+                    <AuthGuard allowedRoles={[ROLES.PROJECT_OWNER]}>
+                        <ProjectOwnerPage />
+                    </AuthGuard>
+                }
+            />
+
+            <Route
+                path="/dashboard/*"
+                element={
+                    <AuthGuard allowedRoles={[ROLES.MINMAP]}>
+                        <MinMapDashboard />
+                    </AuthGuard>
+                }
+            />
+
+            <Route path="/" element={<Navigate to="/login" replace />} />
+        </Routes>
+    );
+}
