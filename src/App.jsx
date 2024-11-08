@@ -17,6 +17,8 @@ import ProjectMaturation from "./component/project-owner/ProjectMaturation";
 import ContractAwarding from "./component/project-owner/ContractAwarding";
 import Notifications from "./component/project-owner/Notifications";
 import ProjectOwnerPage from "./pages/project-owner/ProjectOwnerPage";
+import EditProject from './pages/project-owner/projectForm/EditProject';
+import UpdateProjectStatus from './pages/project-owner/projectForm/EditProject';
 import LiveUI_Dashboard from "./layout/minmap/LiveUI_Dashboard";
 // import FAQ from "./component/minmap/Faq";
 import FAQS from "./component/minmap/FAQItems";
@@ -58,7 +60,6 @@ function App() {
       path: "/tender",
       element: <TenderManagement />
     },
-
 {
   path:"/login",
   element: <LoginForm/>,
@@ -78,6 +79,10 @@ function App() {
 {
   path:"/project/:id",
   element: <ProjectDetails/> ,
+},
+{
+  path:"/update-status",
+  element: <UpdateProjectStatus/> ,
 },
 
 {
