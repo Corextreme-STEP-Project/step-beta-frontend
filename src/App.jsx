@@ -23,7 +23,9 @@ import LiveUI_Dashboard from "./layout/minmap/LiveUI_Dashboard";
 // import FAQ from "./component/minmap/Faq";
 import FAQS from "./component/minmap/FAQItems";
 import LiveChat from "./component/minmap/Livechat";
-
+import ProjectOwnerDash from "./component/project-owner/ProjectOwnerDash";
+import MessageHelp from "./component/project-owner/livechat/MessageHelp";
+import NewChat from "./component/project-owner/newchat/NewChat";
 
 
 
@@ -35,7 +37,18 @@ const theme = createTheme({
 
 
   const router = createBrowserRouter ([
-
+    {
+      path:"/projectownerdash",
+      element:<ProjectOwnerDash />
+    },
+    {
+      path:"/messagehelp",
+      element:<MessageHelp />
+    },
+    {
+      path:"/newchat",
+      element:<NewChat />
+    },
 
 {
   path:"/live_ui_dashboard",
