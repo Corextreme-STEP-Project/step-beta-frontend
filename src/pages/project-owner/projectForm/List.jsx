@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { apiGetProjects } from "../../../services/project-owner/product";
 
 const ProjectList = () => {
   const [projects, setProjects] = useState([]);
@@ -11,14 +11,7 @@ const ProjectList = () => {
     setLoading(true);
     setError("");
     try {
-      // const response = await axios.get(`${BASE_URL}/projects`);
-      const response = {
-        data: [
-          { id: 1, projectTitle: "Community Health Center", projectOwner: "Ministry of Health", projectStatus: "In Progress", budget: 50000 },
-          { id: 2, projectTitle: "School Renovation Project", projectOwner: "Ministry of Education", projectStatus: "Completed", budget: 20000 },
-          { id: 3, projectTitle: "Road Development", projectOwner: "Ministry of Roads and Highways", projectStatus: "Planning", budget: 150000 },
-        ]
-      }; // Dummy data to simulate response
+      const response = await apiGetProjects();
       setProjects(response.data);
     } catch (err) {
       setError("Failed to fetch projects.");
@@ -31,9 +24,11 @@ const ProjectList = () => {
     fetchProjects();
   }, []);
 
+
+
   return (
-    <div className="p-8 bg-gray-50 min-h-screen">
-      <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">List of Projects</h1>
+    <div className="p-8 bg-lime-50 min-h-screen">
+      <h1 className="text-3xl font-bold text-center text-green-600 mb-8">List of Projects</h1>
 
       {loading && <p className="text-center text-gray-500">Loading...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}
@@ -43,12 +38,19 @@ const ProjectList = () => {
           <Link to={`/project/${project.id}`} key={project.id}>
             <div className="border p-6 rounded-lg shadow-md hover:shadow-xl bg-white transform hover:scale-105 transition-transform duration-200">
               <h2 className="text-xl font-semibold text-gray-900 mb-2">{project.projectTitle}</h2>
+
               <p className="text-gray-600 mb-1">
-                <span className="font-medium">Project Owner:</span> {project.projectOwner}
+                <span className="font-medium">Description:</span> {project.description}
               </p>
+
+              <p className="text-gray-600 mb-1">
+                <span className="font-medium">Scope:</span> {project.scope}
+              </p>
+
               <p className="text-gray-600 mb-1">
                 <span className="font-medium">Project Status:</span> {project.projectStatus}
               </p>
+
               <p className="text-gray-600 mb-1">
                 <span className="font-medium">Budget:</span> ${project.budget.toLocaleString()}
               </p>

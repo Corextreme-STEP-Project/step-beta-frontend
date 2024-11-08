@@ -1,10 +1,8 @@
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./layout/layout";
+
 import TenderSubmission from "./layout/tender";
-import React, { Children } from "react";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginForm from "./pages/logins/LoginForm";
@@ -22,6 +20,8 @@ import ProjectMaturation from "./component/project-owner/ProjectMaturation";
 import ContractAwarding from "./component/project-owner/ContractAwarding";
 import Notifications from "./component/project-owner/Notifications";
 import ProjectOwnerPage from "./pages/project-owner/ProjectOwnerPage";
+import EditProject from './pages/project-owner/projectForm/EditProject';
+import UpdateProjectStatus from './pages/project-owner/projectForm/EditProject';
 
 
 
@@ -33,10 +33,6 @@ const theme = createTheme({
 
 
   const router = createBrowserRouter ([
-{
-    path: "/",
-    element: <Layout />
-  },
   {
     path: "/tender",
     element: <TenderSubmission />
@@ -60,6 +56,10 @@ const theme = createTheme({
 {
   path:"/project/:id",
   element: <ProjectDetails/> ,
+},
+{
+  path:"/update-status",
+  element: <UpdateProjectStatus/> ,
 },
 
 {
