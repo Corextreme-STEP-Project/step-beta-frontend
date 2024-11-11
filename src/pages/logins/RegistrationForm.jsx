@@ -20,16 +20,16 @@ const RegistrationForm = () => {
       setLoading(true);
       const formData = new FormData(e.target);
 
-      const name = formData.get("name");
-      // const middleName = formData.get(" middleName");
-      // const lastName = formData.get("lastName");
+      const firstName = formData.get("firstName");
+      const middleName = formData.get("middleName");
+      const lastName = formData.get("lastName");
       const email = formData.get("email");
       const password = formData.get("password");
       // const confirmPassword = formData.get("password");
       const phoneNumber = formData.get("phoneNumber");
-      // const role = "Project Owner";
+      const role = "Project Owner";
 
-      const payload = { name, email, password, phoneNumber,  };
+      const payload = { firstName, middleName, lastName, email,  password, phoneNumber, role  };
       const response = await apiRegister(payload);
 
 
@@ -43,9 +43,9 @@ const RegistrationForm = () => {
         return;
       } 
 
-      if (response.ok) {
+      if (response.status === 200) {
         toast.success("Registration successful!");
-        navigate("");
+        navigate("/login");
       }
 
     } catch (error) {
@@ -85,19 +85,19 @@ const RegistrationForm = () => {
                 {/* First Name */}
                 <div className="mb-4">
                   <label htmlFor="firstName" className="block text-gray-700 font-semibold mb-2">
-                    Full Name
+                    First Name
                   </label>
                   <input
                     type="text"
-                    name="name"
-                    placeholder="Full Name"
+                    name="firstName"
+                    placeholder="First Name"
                     required
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#065986]"
                   />
                 </div>
 
                 {/* Middle Name */}
-                {/* <div className="mb-4">
+                <div className="mb-4">
                   <label htmlFor="middleName" className="block text-gray-700 font-semibold mb-2">
                     Middle Name
                   </label>
@@ -107,10 +107,10 @@ const RegistrationForm = () => {
                     placeholder="Middle Name"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#065986]"
                   />
-                </div> */}
+                </div>
 
                 {/* Last Name */}
-                {/* <div className="mb-4">
+                <div className="mb-4">
                   <label htmlFor="lastName" className="block text-gray-700 font-semibold mb-2">
                     Last Name
                   </label>
@@ -121,7 +121,7 @@ const RegistrationForm = () => {
                     required
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#065986]"
                   />
-                </div> */}
+                </div>
 
                 {/* Phone Number */}
                 <div className="mb-4">
@@ -180,7 +180,7 @@ const RegistrationForm = () => {
               </div> */}
 
               {/* Role Selection */}
-              {/* <div className="mb-4">
+              <div className="mb-4">
                 <label htmlFor="role" className="block text-gray-700 font-semibold mb-2">
                   Role
                 </label>
@@ -195,7 +195,7 @@ const RegistrationForm = () => {
                   <option value="projectOwner">Project Owner</option>
                   <option value="projectRegulator">Project Regulator</option>
                 </select>
-              </div> */}
+              </div>
 
               {/* Submit Button */}
               <button

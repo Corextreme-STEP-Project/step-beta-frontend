@@ -15,10 +15,7 @@ const handleSubmit = async (e) => {
 
   const formData = new FormData(e.target);
   const email = formData.get("email");
-  const password = formData.get("password"); 
-
- 
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const password = formData.get("password")
   
 
   // useEffect(() => {
@@ -34,10 +31,13 @@ const handleSubmit = async (e) => {
       // Call apiLogin to authenticate user
       const response = await apiLogin({ email, password });
       if (response.status === 200) {
-        localStorage.setItem("token", response.data.accessToken ); // Store token in localStorage
+
+        localStorage.setItem("token", response.data.token); 
+        console.log("token", response.data.token)
+        // Store token in localStorage
         // alert("Logged in successfully")
       toast.success('Login successful!', { autoClose: 3000});
-        navigate(''); // Redirect to a protected route, e.g., dashboard
+        navigate(''); // Redirect to a protected route
       }
     } catch (error) {   
       toast.error("Login failed. Please try again.", {autoClose: 5000 });                           
