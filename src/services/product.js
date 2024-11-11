@@ -8,7 +8,12 @@ export const apiGetProjects = async () => {
 
 // Add a new project
 export const apiAddProject = async (payload) => {
-  return apiClient.post("/projects/add", payload); 
+  const token = localStorage.getItem("token"); // Adjust to where you store the token
+    const headers = {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+    };
+  return apiClient.post ("/projects/add", payload,  { headers }); 
 };
 
 // Get project by ID
