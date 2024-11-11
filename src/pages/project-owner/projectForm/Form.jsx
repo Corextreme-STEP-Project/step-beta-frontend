@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import pic from "../../../assets/images/image 1.jpeg";
-import { apiAddProject } from "../../../services/project-owner/product"; // Import your API function
+import { apiAddProject } from "../../../services/product";
 
 const ProjectForm = () => {
   const [formData, setFormData] = useState({
@@ -11,65 +11,58 @@ const ProjectForm = () => {
     budget: "",
     scope: "",
     keyRequirements: "",
-    projectStatus: "",
-    projectBegins: "",
-    projectEnds: "",
-    statusDescription: "",
-    statusChangeAt: ""
+    // projectStatus: "",
+    // projectBegins: "",
+    // projectEnds: "",
+    // statusDescription: "",
+    // statusChangeAt: ""
   });
-  
+
+  const token = localStorage.getItem("token");
+
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setSuccessMessage("");
-    setErrorMessage("");
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setSuccessMessage("");
+  setError("");
 
-    const payload = {
-      projectTitle: formData.projectTitle,
-      description: formData.description,
-      budget: Number(formData.budget), // Ensure budget is a number
-      scope: formData.scope,
-      keyRequirements: formData.keyRequirements.split(",").map((item) => item.trim()), 
-      projectStatus: formData.projectStatus,
-      projectBegins: formData.projectBegins,
-      projectEnds: formData.projectEnds,
-      statusDescription: formData.statusDescription,
-      statusChangeAt: formData.statusChangeAt
-    };
-
-    try {
-      const response = await apiAddProject(payload);
-      if (response.status === 201) {
-        setSuccessMessage("Project added successfully!");
-        setFormData({
-          projectTitle: "",
-          description: "",
-          budget: "",
-          scope: "",
-          keyRequirements: "",
-          projectStatus: "",
-          projectBegins: "",
-          projectEnds: "",
-          statusDescription: "",
-          statusChangeAt: ""
-        });
-      }
-    } catch (error) {
-      setErrorMessage("Failed to add project. Please try again.");
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
+  const payload = {
+    projectTitle: formData.projectTitle,
+    description: formData.description,
+    budget: Number(formData.budget),  
+    scope: formData.scope,
+    keyRequirements: formData.keyRequirements.split(",").map((item) => item.trim()), // Convert to an array of strings
   };
+
+  try {
+    const response = await apiAddProject(payload);
+    if (response.status === 201) {
+     
+      setSuccessMessage("Project added successfully!");
+      setError("");
+      setFormData({
+        projectTitle: "",
+        description: "",
+        budget: "",
+        scope: "",
+        keyRequirements: "",
+      });
+    } 
+  } catch (err) {
+    setError("Failed to add project. Please try again.");
+  }
+  
+};
+
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
@@ -112,38 +105,38 @@ const ProjectForm = () => {
               <input type="text" name="keyRequirements" value={formData.keyRequirements} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200" placeholder="Enter key requirements, separated by commas" />
             </div>
 
-            <div>
+            {/* <div>
               <label className="block text-gray-700 font-medium mb-2" htmlFor="projectStatus">Project Status</label>
-              <select name="projectStatus" value={formData.projectStatus} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200">
+              <select name="projectStatus" value={formData.projectStatus} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200">
                 <option value="">Select status</option>
                 <option value="Maturation">Maturation</option>
                 <option value="Procurement">Procurement</option>
                 <option value="Execution">Execution</option>
                 <option value="Monitoring">Monitoring</option>
               </select>
-            </div>
+            </div> */}
 
-            <div>
+            {/* <div>
               <label className="block text-gray-700 font-medium mb-2" htmlFor="projectBegins">Project Start Date</label>
-              <input type="date" name="projectBegins" value={formData.projectBegins} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200" />
+              <input type="date" name="projectBegins" value={formData.projectBegins} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200" />
             </div>
 
             <div>
               <label className="block text-gray-700 font-medium mb-2" htmlFor="projectEnds">Project End Date</label>
-              <input type="date" name="projectEnds" value={formData.projectEnds} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200" />
+              <input type="date" name="projectEnds" value={formData.projectEnds} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200" />
             </div>
 
             <div>
               <label className="block text-gray-700 font-medium mb-2" htmlFor="statusDescription">Status Description</label>
-              <textarea name="statusDescription" value={formData.statusDescription} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200" placeholder="Provide status details" rows="3" />
+              <textarea name="statusDescription" value={formData.statusDescription} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200" placeholder="Provide status details" rows="3" />
             </div>
 
             <div>
               <label className="block text-gray-700 font-medium mb-2" htmlFor="statusChangeAt">Status Change Date</label>
-              <input type="date" name="statusChangeAt" value={formData.statusChangeAt} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200" />
-            </div>
+              <input type="date" name="statusChangeAt" value={formData.statusChangeAt} onChange={handleChange}  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200" />
+            </div> */}
 
-           
+
             <div className="flex items-center justify-between mt-10">
               <button className="flex items-center px-4 py-2 text-gray-600 hover:text-gray-800">
                 <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
