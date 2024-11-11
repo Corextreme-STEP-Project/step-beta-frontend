@@ -26,6 +26,9 @@ import LiveChat from "./component/minmap/Livechat";
 import ProjectOwnerDash from "./component/project-owner/ProjectOwnerDash";
 import MessageHelp from "./component/project-owner/livechat/MessageHelp";
 import NewChat from "./component/project-owner/newchat/NewChat";
+// import DocumentUpload from './pages/management/DocumentUpload';
+// import DocumentUploadUI from './pages/management/DocumentUploadUI';
+import DocumentManagementSystem from './pages/management/DocumentUploadUI';
 
 
 
@@ -48,6 +51,10 @@ const theme = createTheme({
     {
       path:"/newchat",
       element:<NewChat />
+    },
+    {
+      path:"/upload",
+      element:<DocumentManagementSystem/>
     },
 
 {
