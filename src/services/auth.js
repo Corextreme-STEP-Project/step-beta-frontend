@@ -1,14 +1,26 @@
 import { apiClient } from "./config"
 
 
-export const apiRegister  = async (payload)  => {
-   
-    return await apiClient.post("/users/register", payload);
+export const apiRegister = async (payload) => {
+  const response = await fetch('https://step-beta-backend.onrender.com/users/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+  return response;
 };
 
 
-export const apiLogin  = async (payload)  => {
-    
-    return await apiClient.post ("/users/login", payload);
-}
+export const apiLogin = async (payload) => {
+  const response = await fetch('https://step-beta-backend.onrender.com/users/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+  return response;
+};
 

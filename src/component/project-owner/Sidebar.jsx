@@ -8,6 +8,7 @@ import {
     // eslint-disable-next-line no-unused-vars
     FaCog, FaChartBar, FaQuestionCircle
 } from 'react-icons/fa';
+import { IoDocumentText } from "react-icons/io5";
 
 
 const Sidebar = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
@@ -46,10 +47,10 @@ const Sidebar = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
                     <FaFileInvoiceDollar size={24} />
                     {!isSidebarCollapsed && <span>Receptions/Payments</span>}
                 </Link>
-                {/* <Link to="/projectowner/performance" className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2">
-                    <FaChartBar size={24} />
-                    {!isSidebarCollapsed && <span>Performance and Indicators</span>}
-                </Link> */}
+                <Link to="/projectowner/docrepo" className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2">
+                    <IoDocumentText size={24} />
+                    {!isSidebarCollapsed && <span>Document Repository</span>}
+                </Link>
             </nav>
 
             {/* Settings at the bottom */}

@@ -9,9 +9,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const RegistrationForm = () => {
   const [loading, setLoading] = useState(false);
+  const [selectedRole, setSelectedRole] = useState('Project Owner');
 
   const navigate = useNavigate();
-  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,21 +28,23 @@ const RegistrationForm = () => {
       const password = formData.get("password");
       // const confirmPassword = formData.get("password");
       const phoneNumber = formData.get("phoneNumber");
-      const role = "Project Owner";
+      const role = selectedRole === 'Project Owner' ? 'Project Owner' : 'Project Regulator';
 
-      const payload = { firstName, middleName, lastName, email,  password, phoneNumber, role  };
+      const payload = { firstName, middleName, lastName, email, password, phoneNumber, role: role };
       const response = await apiRegister(payload);
 
 
       console.log('Response Status:', response.status);
-    const responseData = await response.json();
-    console.log('Response Data:', responseData);
+      const responseData = response.headers.get('content-type')?.includes('application/json')
+        ? await response.json()
+        : await response.text();
+      console.log('Response Data:', responseData);
 
 
       if (response.status === 409) {
         toast.error("User already exists!");
         return;
-      } 
+      }
 
       if (response.status === 200) {
         toast.success("Registration successful!");
@@ -62,7 +65,7 @@ const RegistrationForm = () => {
 
   return (
     <div>
-      <ToastContainer/>
+      <ToastContainer />
       <div className="flex items-center justify-center min-h-screen ">
         <div className="flex w-full max-w-4xl">
           <div className="flex-1">
@@ -185,15 +188,15 @@ const RegistrationForm = () => {
                   Role
                 </label>
                 <select
-                id="role"
+                  id="role"
                   name="role"
-                  value={FormData.role}
-          
+                  value={selectedRole}
+                  onChange={(e) => setSelectedRole(e.target.value)}
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#065986]"
                 >
-                  <option value="projectOwner">Project Owner</option>
-                  <option value="projectRegulator">Project Regulator</option>
+                  <option value="Project Owner">Project Owner</option>
+                  <option value="Project Regulator">Project Regulator</option>
                 </select>
               </div>
 
@@ -203,7 +206,7 @@ const RegistrationForm = () => {
                 className="w-full bg-[#0ba5ec] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#0086c9] transition duration-200"
                 disabled={loading}
               >
-                {loading ? "Registering..." : "Register" }
+                {loading ? "Registering..." : "Register"}
               </button>
             </form>
 

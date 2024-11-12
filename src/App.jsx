@@ -1,4 +1,3 @@
-
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import "./App.css";
@@ -29,133 +28,87 @@ import NewChat from "./component/project-owner/newchat/NewChat";
 // import DocumentUpload from './pages/management/DocumentUpload';
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
 import DocumentManagementSystem from './pages/management/DocumentUploadUI';
-
-
+import DocumentRepository from './component/DocumentRepository';
+import { RoleProvider } from './context/RoleContext';
+import { AuthRoute } from './component/AuthRoute';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 // Create a theme instance
 const theme = createTheme({
   // You can customize your theme here
 });
 
-
-
-  const router = createBrowserRouter ([
-    {
-      path:"/projectownerdash",
-      element:<ProjectOwnerDash />
-    },
-    {
-      path:"/messagehelp",
-      element:<MessageHelp />
-    },
-    {
-      path:"/newchat",
-      element:<NewChat />
-    },
-    {
-      path:"/upload",
-      element:<DocumentManagementSystem/>
-    },
-
-{
-  path:"/live_ui_dashboard",
-  element: <LiveUI_Dashboard/>,
-
-  children: [
-    {
-    index:true,
-      element: <FAQS/>,
-    },
-    {
-    path: "live-chat",
-      element: <LiveChat/>,
-    },
-
-  ]
- 
-},
-    
-    {
-      path: "/tender",
-      element: <TenderManagement />
-    },
-{
-  path:"/login",
-  element: <LoginForm/>,
-},
-{
-  path:"/register",
-  element: <RegistrationForm/> ,
-},
-{
-  path:"/add-project",
-  element: <ProjectForm/> ,
-},
-{
-  path:"/project-list",
-  element: <ProjectList/> ,
-},
-{
-  path:"/project/:id",
-  element: <ProjectDetails/> ,
-},
-{
-  path:"/update-status",
-  element: <UpdateProjectStatus/> ,
-},
-
-{
-path:"/maturation",
-element: <MaturationPhase/>
-},
-
-{
-  path:"/dashboard",
-  element: <DashboardLayout />,
-  children: [
-    {
-      index: true,
-      element: <MinMapDashboard />,
-    },
-
-
-  ],
-},
-{
-  path: "/projectowner",
-  element: <ProjectOwnerPage />,
-  children: [
-    {
-      // path: "projects",
-      index: true,
-      element: <ProjectOwnerDashboard />
-    },
-    {
-      path: "projectmaturation",
-      element: <ProjectMaturation />
-    },
-    {
-      path: "contractawarding",
-      element: <ContractAwarding />
-    },
-    {
-      path: "notifications",
-      element: <Notifications />
-    },
-  ]
-},
-
-  ]);
-
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline /> {/* Provides consistent baseline styles */}
-      <RouterProvider router={router} />
+      <RoleProvider>
+        <BrowserRouter>
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/register" element={<RegistrationForm />} />
+            <Route path="/projectownerdash" element={<ProjectOwnerDash />} />
+            <Route path="/messagehelp" element={<MessageHelp />} />
+            <Route path="/newchat" element={<NewChat />} />
+            <Route path="/tender" element={<TenderManagement />} />
+            <Route path="/add-project" element={<ProjectForm />} />
+            <Route path="/project-list" element={<ProjectList />} />
+            <Route path="/project/:id" element={<ProjectDetails />} />
+            <Route path="/update-status" element={<UpdateProjectStatus />} />
+            <Route path="/maturation" element={<MaturationPhase />} />
+            <Route path="/upload" element={<DocumentManagementSystem />} />
+            <Route
+              path="/live_ui_dashboard/*"
+              element={<LiveUI_Dashboard />}
+            >
+              <Route
+                index
+                element={<FAQS />} />
+              <Route
+                path="livechat"
+                element={<LiveChat />}
+              />
+            </Route>
+
+            {/* Role-Based Routes */}
+            <Route
+              path="/projectowner/*"
+              element={
+                <AuthRoute requiredRole="Project Owner">
+                  <Routes>
+                    <Route path="/" element={<ProjectOwnerPage />} />
+                    <Route path="dashboard" element={<ProjectOwnerDashboard />} />
+                    <Route path="projectmaturation" element={<ProjectMaturation />} />
+                    <Route path="contractawarding" element={<ContractAwarding />} />
+                    <Route path="notifications" element={<Notifications />} />
+                    <Route path="docrepo" element={<DocumentRepository />} />
+                  </Routes>
+                </AuthRoute>
+              }
+            />
+            <Route
+              path="/dashboard/*"
+              element={
+                <AuthRoute requiredRole="Project Regulator">
+                  <DashboardLayout>
+                    <Routes>
+                      <Route index element={<MinMapDashboard />} />
+                    </Routes>
+                  </DashboardLayout>
+                </AuthRoute>
+              }
+            />
+            <Route path="/unauthorized" element={<div>Unauthorized Access</div>} />
+
+            {/* Add a default redirect */}
+            <Route path="/" element={<Navigate to="/login" />} />
+          </Routes>
+        </BrowserRouter>
+      </RoleProvider>
     </ThemeProvider>
   );
-
 }
 
 export default App;
