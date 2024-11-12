@@ -59,17 +59,9 @@ function App() {
             <Route path="/update-status" element={<UpdateProjectStatus />} />
             <Route path="/maturation" element={<MaturationPhase />} />
             <Route path="/upload" element={<DocumentManagementSystem />} />
-            <Route
-              path="/live_ui_dashboard/*"
-              element={<LiveUI_Dashboard />}
-            >
-              <Route
-                index
-                element={<FAQS />} />
-              <Route
-                path="livechat"
-                element={<LiveChat />}
-              />
+            <Route path="/live_ui_dashboard/*" element={<LiveUI_Dashboard />}>
+              <Route index element={<FAQS />} />
+              <Route path="livechat" element={<LiveChat />} />
             </Route>
 
             {/* Role-Based Routes */}
@@ -102,7 +94,7 @@ function App() {
             />
             <Route path="/unauthorized" element={<div>Unauthorized Access</div>} />
 
-            {/* Add a default redirect */}
+            {/* default redirect */}
             <Route path="/" element={<Navigate to="/login" />} />
           </Routes>
         </BrowserRouter>
