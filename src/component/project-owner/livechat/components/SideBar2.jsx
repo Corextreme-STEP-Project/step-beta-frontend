@@ -10,7 +10,7 @@ const SideBar2 = () => {
           <p>SA</p>
         </button>
         <p className="font-semibold text-center">Support Assistant</p>
-        <p className="text-lg text-black mt-1 text-center">( +233 ) 0245258015</p>
+        <p className="text-lg text-black mt-1 text-center">( +233 ) 0245258715</p>
       </div>
 
       {/* Contact Info Section */}

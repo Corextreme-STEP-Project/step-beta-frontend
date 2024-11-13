@@ -8,7 +8,7 @@ const Body2 = () => {
   const messages = [
     {
       id: 1,
-      text: "Hello Bernice, welcome. How can we help you?",
+      text: "Hello Efuwa, welcome. How can we help you?",
       sender: "agent",
     },
     {
@@ -54,7 +54,9 @@ const Body2 = () => {
         {messages.map((message) => (
           <div
             key={message.id}
-            className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"} items-end gap-2 mb-4`}
+            className={`flex ${
+              message.sender === "user" ? "justify-end" : "justify-start"
+            } items-end gap-2 mb-4`}
           >
             {message.sender === "agent" && (
               <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
