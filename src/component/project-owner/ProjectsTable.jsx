@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
-import { FaFile } from 'react-icons/fa';
+// import { FaFile } from 'react-icons/fa';
+// import { FaFile } from "react-icons/fa";
+
 
 const ProjectsTable = () => {
     const [currentPage, setCurrentPage] = useState(1);

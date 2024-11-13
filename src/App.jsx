@@ -26,6 +26,8 @@ import LiveChat from "./component/minmap/Livechat";
 import ProjectOwnerDash from "./component/project-owner/ProjectOwnerDash";
 import MessageHelp from "./component/project-owner/livechat/MessageHelp";
 import NewChat from "./component/project-owner/newchat/NewChat";
+import PerformanceTracker  from './layout/performance/PerformanceTracker';
+// import ProjectDetails from '../src/layout/performance/ProjectDetails';
 
 
 
@@ -72,6 +74,11 @@ const theme = createTheme({
       path: "/tender",
       element: <TenderManagement />
     },
+    {
+      path: "/performance-tracker",
+      element: <PerformanceTracker />
+    },
+    
 {
   path:"/login",
   element: <LoginForm/>,
