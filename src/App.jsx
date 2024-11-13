@@ -16,7 +16,6 @@ import ProjectMaturation from "./component/project-owner/ProjectMaturation";
 import ContractAwarding from "./component/project-owner/ContractAwarding";
 import Notifications from "./component/project-owner/Notifications";
 import ProjectOwnerPage from "./pages/project-owner/ProjectOwnerPage";
-import EditProject from "./pages/project-owner/projectForm/EditProject";
 import UpdateProjectStatus from "./pages/project-owner/projectForm/EditProject";
 import LiveUI_Dashboard from "./layout/minmap/LiveUI_Dashboard";
 // import FAQ from "./component/minmap/Faq";
@@ -29,6 +28,8 @@ import NewChat from "./component/project-owner/newchat/NewChat";
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
+import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
+import LandingPage from "./pages/logins/LandingPage";
 
 // Create a theme instance
 const theme = createTheme({
@@ -36,6 +37,18 @@ const theme = createTheme({
 });
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <LandingPage />,
+  },
+  {
+    path: "/register",
+    element: <RegistrationForm />,
+  },
+  {
+    path: "/login",
+    element: <LoginForm />,
+  },
   {
     path: "/projectownerdash",
     element: <ProjectOwnerDash />,
@@ -112,7 +125,7 @@ const router = createBrowserRouter([
         element: <MinMapDashboard />,
       },
       {
-        path: "performance-compliance",
+        index: true,
         element: <PerformanceAndIndicators />,
       },
     ],
