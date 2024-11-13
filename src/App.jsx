@@ -30,7 +30,7 @@ import NewChat from "./component/project-owner/newchat/NewChat";
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
 import DocumentManagementSystem from './pages/management/DocumentUploadUI';
 import EditProjectStatus from './pages/project-owner/projectForm/Update';
-import MilestonePerformanceCard from './pages/minmap/dashboard/Performance/MilestonePerformance';
+
 
 
 
@@ -88,10 +88,6 @@ const theme = createTheme({
 {
   path:"/register",
   element: <RegistrationForm/> ,
-},
-{
-  path:"/card",
-  element: <MilestonePerformanceCard/> ,
 },
 {
   path:"/add-project",
