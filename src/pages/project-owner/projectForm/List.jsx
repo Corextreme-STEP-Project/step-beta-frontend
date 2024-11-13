@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { apiGetProjects } from "../../../services/project-owner/product";
+import { apiGetProjects } from "../../../services/product";
 
 const ProjectList = () => {
   const [projects, setProjects] = useState([]);

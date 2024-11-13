@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { apiUpdateProjectStatus } from "../../../services/project-owner/product";
+import { apiUpdateProjectStatus } from "../../../services/product";
 
 const UpdateProjectStatus = () => {
   const { id } = useParams();
