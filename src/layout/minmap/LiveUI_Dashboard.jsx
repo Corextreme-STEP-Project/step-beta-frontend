@@ -3,6 +3,7 @@ import Header from "../../component/minmap/Header";
 import SidebarLiveUI from "../../component/minmap/LiveUI_Sidebar";
 import FAQ from "../../component/minmap/Faq";
 import { Outlet } from "react-router-dom";
+import ChatsAndHistory from "../../component/minmap/chatshistory";
 
 
 const LiveUI_Dashboard = () => {

@@ -26,6 +26,7 @@ import LiveChat from "./component/minmap/Livechat";
 import ProjectOwnerDash from "./component/project-owner/ProjectOwnerDash";
 import MessageHelp from "./component/project-owner/livechat/MessageHelp";
 import NewChat from "./component/project-owner/newchat/NewChat";
+import Response from './component/minmap/Response';
 
 
 
@@ -62,6 +63,10 @@ const theme = createTheme({
     {
     path: "live-chat",
       element: <LiveChat/>,
+    },
+    {
+    path: "respond",
+      element: <Response/>,
     },
 
   ]
