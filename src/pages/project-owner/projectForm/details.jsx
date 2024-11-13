@@ -6,7 +6,7 @@ import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { IoScanCircleSharp } from "react-icons/io5";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { apiGetSingleProject } from "../../../services/project-owner/product";
+import { apiGetSingleProject } from "../../../services/product";
 
 const ProjectDetails = () => {
   const { id } = useParams();
