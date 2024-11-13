@@ -29,8 +29,6 @@ import PerformanceTracker  from './layout/performance/PerformanceTracker';
 import Response from './component/minmap/Response';
 // import DocumentUpload from './pages/management/DocumentUpload';
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
-
-import DocumentManagementSystem from './pages/management/DocumentUploadUI';
 import DocumentRepo from './component/minmap/DocumentRepo';
 import Projects from './pages/minmap/Projects';
 import Tenders from './pages/minmap/Tenders';
