@@ -28,7 +28,6 @@ import NewChat from "./component/project-owner/newchat/NewChat";
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
-import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import LandingPage from "./pages/logins/LandingPage";
 
 // Create a theme instance
