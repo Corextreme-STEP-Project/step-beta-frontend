@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
-// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 
 // Circular progress component
 const CircularProgress = ({ name, value, max }) => {

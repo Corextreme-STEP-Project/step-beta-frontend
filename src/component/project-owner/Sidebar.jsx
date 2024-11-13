@@ -1,13 +1,7 @@
-/* eslint-disable react/prop-types */
-// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-
-import {
-    FaBars, FaTasks, FaClipboardList, FaBell, FaHandshake, FaFolderOpen, FaGavel, FaFileInvoiceDollar,
-    // eslint-disable-next-line no-unused-vars
-    FaCog, FaChartBar, FaQuestionCircle
-} from 'react-icons/fa';
+import { FaBars, FaTasks, FaClipboardList, FaBell, FaHandshake, FaFolderOpen, FaGavel, FaFileInvoiceDollar, FaCog, FaQuestionCircle } from 'react-icons/fa';
+    
 
 
 const Sidebar = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
@@ -15,7 +9,7 @@ const Sidebar = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
         <aside className={`bg-emerald-600 text-white transition-all duration-300 ${isSidebarCollapsed ? 'w-20' : 'w-64'} flex flex-col p-4 h-screen fixed top-0 left-0`}>
             <button onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)} className="text-white p-2 mb-4 flex gap-3 bg-green-800 rounded-md mx-auto border-b border-white">
                 <FaBars size={24} />{!isSidebarCollapsed && <span>MENU</span>}
-            </button>
+            </button>   
             <nav className={`flex flex-col space-y-4 ${isSidebarCollapsed ? 'items-center' : ''}`}>
                 {/* Sidebar links */}
                 <Link to="/projectowner/" title="Projects" className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2">
