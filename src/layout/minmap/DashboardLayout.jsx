@@ -6,7 +6,10 @@ const DashboardLayout = () => {
   return (
     <div className='flex flex-row items-start'>
         <Sidebar/>
-        <Outlet/>
+        <div className="w-full h-screen">
+          <Outlet/>
+        </div>
+        
     </div>
   );
 };
