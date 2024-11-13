@@ -29,6 +29,13 @@ import NewChat from "./component/project-owner/newchat/NewChat";
 // import DocumentUpload from './pages/management/DocumentUpload';
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
 import DocumentManagementSystem from './pages/management/DocumentUploadUI';
+import DocumentRepo from './component/minmap/DocumentRepo';
+import Projects from './pages/minmap/Projects';
+import Tenders from './pages/minmap/Tenders';
+import Reports from './pages/minmap/Reports';
+import Documents from './pages/minmap/Documents';
+import Performance from './pages/minmap/Performance';
+import Archives from './pages/minmap/Archives';
 
 
 
@@ -107,6 +114,41 @@ const theme = createTheme({
 {
 path:"/maturation",
 element: <MaturationPhase/>
+},
+
+{
+  path:"/docs",
+element:<DocumentRepo/>,
+},
+
+{
+  path:"/projects",
+  element:<Projects/>,
+},
+
+{
+  path:"/tenders",
+  element:<Tenders/>,
+},
+
+{
+  path:"/reports",
+  element:<Reports/>,
+},
+
+{
+  path:"/documents",
+  element:<Documents/>,
+},
+
+{
+  path:"/performance",
+  element:<Performance/>,
+},
+
+{
+  path:"/archives",
+  element:<Archives/>,
 },
 
 {
