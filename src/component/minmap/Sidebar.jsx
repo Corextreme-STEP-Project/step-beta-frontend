@@ -101,7 +101,7 @@ const Sidebar = () => {
       </nav>
 
       {/* Settings and Messaging & Help section at the bottom */}
-      <div className="mt-44 flex flex-col space-y-4">
+      <div className="mt-48 flex flex-col space-y-4">
         <Link
           to="/settings"
           title="Settings"
