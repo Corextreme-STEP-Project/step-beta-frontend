@@ -153,7 +153,7 @@ element:<DocumentRepo/>,
       element: <PerformanceTracker />
     },
     {
-        path: "performance-compliance"
+        path: "performance-compliance",
         element: <PerformanceAndIndicators />,
       },
     
