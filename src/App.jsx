@@ -139,16 +139,25 @@ element:<DocumentRepo/>,
   path:"/dashboard",
   element: <DashboardLayout />,
   children: [
-
+{
+        index: true,
+        element: <MinMapDashboard />,
+      },
   {
-    path: "/tender",
+    path: "tender",
     element: <TenderManagement />,
   },
 
     {
-      path: "/performance-tracker",
+      path: "performance-tracker",
       element: <PerformanceTracker />
     },
+    {
+        path: "performance-compliance"
+        element: <PerformanceAndIndicators />,
+      },
+    
+  ]},
   {
     path: "/login",
     element: <LoginForm />,
@@ -177,21 +186,6 @@ element:<DocumentRepo/>,
   {
     path: "/maturation",
     element: <MaturationPhase />,
-  },
-
-  {
-    path: "/dashboard",
-    element: <DashboardLayout />,
-    children: [
-      {
-        index: true,
-        element: <MinMapDashboard />,
-      },
-      {
-        index: true,
-        element: <PerformanceAndIndicators />,
-      },
-    ],
   },
   {
     path: "/projectowner",
