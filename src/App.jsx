@@ -24,11 +24,13 @@ import LiveChat from "./component/minmap/Livechat";
 import ProjectOwnerDash from "./component/project-owner/ProjectOwnerDash";
 import MessageHelp from "./component/project-owner/livechat/MessageHelp";
 import NewChat from "./component/project-owner/newchat/NewChat";
+import Response from './component/minmap/Response';
 // import DocumentUpload from './pages/management/DocumentUpload';
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
+
 
 // Create a theme instance
 const theme = createTheme({
@@ -78,6 +80,10 @@ const router = createBrowserRouter([
         path: "live-chat",
         element: <LiveChat />,
       },
+  {
+    path: "respond",
+      element: <Response/>,
+    },
     ],
   },
 
@@ -153,6 +159,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 
 function App() {
   return (
