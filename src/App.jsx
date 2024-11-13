@@ -29,6 +29,7 @@ import NewChat from "./component/project-owner/newchat/NewChat";
 // import DocumentUpload from './pages/management/DocumentUpload';
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
 import DocumentManagementSystem from './pages/management/DocumentUploadUI';
+import LandingPage from './pages/logins/LandingPage';
 
 
 
@@ -40,6 +41,19 @@ const theme = createTheme({
 
 
   const router = createBrowserRouter ([
+   
+    {
+      path:"/",
+      element: <LandingPage/> ,
+    },
+    {
+      path:"/register",
+      element: <RegistrationForm/> ,
+    },
+    {
+      path:"/login",
+      element: <LoginForm/>,
+    },
     {
       path:"/projectownerdash",
       element:<ProjectOwnerDash />
@@ -79,14 +93,7 @@ const theme = createTheme({
       path: "/tender",
       element: <TenderManagement />
     },
-{
-  path:"/login",
-  element: <LoginForm/>,
-},
-{
-  path:"/register",
-  element: <RegistrationForm/> ,
-},
+
 {
   path:"/add-project",
   element: <ProjectForm/> ,
