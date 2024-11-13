@@ -29,6 +29,8 @@ import NewChat from "./component/project-owner/newchat/NewChat";
 // import DocumentUpload from './pages/management/DocumentUpload';
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
 import DocumentManagementSystem from './pages/management/DocumentUploadUI';
+import EditProjectStatus from './pages/project-owner/projectForm/Update';
+import MilestonePerformanceCard from './pages/minmap/dashboard/Performance/MilestonePerformance';
 
 
 
@@ -88,6 +90,10 @@ const theme = createTheme({
   element: <RegistrationForm/> ,
 },
 {
+  path:"/card",
+  element: <MilestonePerformanceCard/> ,
+},
+{
   path:"/add-project",
   element: <ProjectForm/> ,
 },
@@ -96,13 +102,17 @@ const theme = createTheme({
   element: <ProjectList/> ,
 },
 {
-  path:"/project/:id",
+  path:"/projects/:id",
   element: <ProjectDetails/> ,
 },
 {
-  path:"/update-status",
-  element: <UpdateProjectStatus/> ,
+  path:"/projects/:id/edit",
+  element: <EditProjectStatus/> ,
 },
+// {
+//   path:"/projects/:id/edit",
+//   element: <UpdateProjectStatus/> ,
+// },
 
 {
 path:"/maturation",
