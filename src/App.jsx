@@ -1,6 +1,5 @@
-
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import "./App.css";
 import TenderManagement from "./layout/tender/TenderManagement";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -17,8 +16,8 @@ import ProjectMaturation from "./component/project-owner/ProjectMaturation";
 import ContractAwarding from "./component/project-owner/ContractAwarding";
 import Notifications from "./component/project-owner/Notifications";
 import ProjectOwnerPage from "./pages/project-owner/ProjectOwnerPage";
-import EditProject from './pages/project-owner/projectForm/EditProject';
-import UpdateProjectStatus from './pages/project-owner/projectForm/EditProject';
+import EditProject from "./pages/project-owner/projectForm/EditProject";
+import UpdateProjectStatus from "./pages/project-owner/projectForm/EditProject";
 import LiveUI_Dashboard from "./layout/minmap/LiveUI_Dashboard";
 // import FAQ from "./component/minmap/Faq";
 import FAQS from "./component/minmap/FAQItems";
@@ -28,125 +27,120 @@ import MessageHelp from "./component/project-owner/livechat/MessageHelp";
 import NewChat from "./component/project-owner/newchat/NewChat";
 // import DocumentUpload from './pages/management/DocumentUpload';
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
-import DocumentManagementSystem from './pages/management/DocumentUploadUI';
-
-
+import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
+import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 
 // Create a theme instance
 const theme = createTheme({
   // You can customize your theme here
 });
 
+const router = createBrowserRouter([
+  {
+    path: "/projectownerdash",
+    element: <ProjectOwnerDash />,
+  },
+  {
+    path: "/messagehelp",
+    element: <MessageHelp />,
+  },
+  {
+    path: "/newchat",
+    element: <NewChat />,
+  },
+  {
+    path: "/upload",
+    element: <DocumentManagementSystem />,
+  },
 
+  {
+    path: "/live_ui_dashboard",
+    element: <LiveUI_Dashboard />,
 
-  const router = createBrowserRouter ([
-    {
-      path:"/projectownerdash",
-      element:<ProjectOwnerDash />
-    },
-    {
-      path:"/messagehelp",
-      element:<MessageHelp />
-    },
-    {
-      path:"/newchat",
-      element:<NewChat />
-    },
-    {
-      path:"/upload",
-      element:<DocumentManagementSystem/>
-    },
+    children: [
+      {
+        index: true,
+        element: <FAQS />,
+      },
+      {
+        path: "live-chat",
+        element: <LiveChat />,
+      },
+    ],
+  },
 
-{
-  path:"/live_ui_dashboard",
-  element: <LiveUI_Dashboard/>,
+  {
+    path: "/tender",
+    element: <TenderManagement />,
+  },
+  {
+    path: "/login",
+    element: <LoginForm />,
+  },
+  {
+    path: "/register",
+    element: <RegistrationForm />,
+  },
+  {
+    path: "/add-project",
+    element: <ProjectForm />,
+  },
+  {
+    path: "/project-list",
+    element: <ProjectList />,
+  },
+  {
+    path: "/project/:id",
+    element: <ProjectDetails />,
+  },
+  {
+    path: "/update-status",
+    element: <UpdateProjectStatus />,
+  },
 
-  children: [
-    {
-    index:true,
-      element: <FAQS/>,
-    },
-    {
-    path: "live-chat",
-      element: <LiveChat/>,
-    },
+  {
+    path: "/maturation",
+    element: <MaturationPhase />,
+  },
 
-  ]
- 
-},
-    
-    {
-      path: "/tender",
-      element: <TenderManagement />
-    },
-{
-  path:"/login",
-  element: <LoginForm/>,
-},
-{
-  path:"/register",
-  element: <RegistrationForm/> ,
-},
-{
-  path:"/add-project",
-  element: <ProjectForm/> ,
-},
-{
-  path:"/project-list",
-  element: <ProjectList/> ,
-},
-{
-  path:"/project/:id",
-  element: <ProjectDetails/> ,
-},
-{
-  path:"/update-status",
-  element: <UpdateProjectStatus/> ,
-},
-
-{
-path:"/maturation",
-element: <MaturationPhase/>
-},
-
-{
-  path:"/dashboard",
-  element: <DashboardLayout />,
-  children: [
-    {
-      index: true,
-      element: <MinMapDashboard />,
-    },
-
-
-  ],
-},
-{
-  path: "/projectowner",
-  element: <ProjectOwnerPage />,
-  children: [
-    {
-      // path: "projects",
-      index: true,
-      element: <ProjectOwnerDashboard />
-    },
-    {
-      path: "projectmaturation",
-      element: <ProjectMaturation />
-    },
-    {
-      path: "contractawarding",
-      element: <ContractAwarding />
-    },
-    {
-      path: "notifications",
-      element: <Notifications />
-    },
-  ]
-},
-
-  ]);
-
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <MinMapDashboard />,
+      },
+      {
+        path: "performance-compliance",
+        element: <PerformanceAndIndicators />,
+      },
+    ],
+  },
+  {
+    path: "/projectowner",
+    element: <ProjectOwnerPage />,
+    children: [
+      {
+        // path: "projects",
+        index: true,
+        element: <ProjectOwnerDashboard />,
+      },
+      {
+        path: "projectmaturation",
+        element: <ProjectMaturation />,
+      },
+      {
+        path: "contractawarding",
+        element: <ContractAwarding />,
+      },
+      {
+        path: "notifications",
+        element: <Notifications />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
@@ -155,7 +149,6 @@ function App() {
       <RouterProvider router={router} />
     </ThemeProvider>
   );
-
 }
 
 export default App;
