@@ -31,15 +31,17 @@ import Response from './component/minmap/Response';
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
 import EditProjectStatus from './pages/project-owner/projectForm/Update';
 import DocumentRepo from './component/minmap/DocumentRepo';
-import Projects from './pages/minmap/Projects';
-import Tenders from './pages/minmap/Tenders';
-import Reports from './pages/minmap/Reports';
-import Documents from './pages/minmap/Documents';
-import Performance from './pages/minmap/Performance';
-import Archives from './pages/minmap/Archives';
+import Projects from './pages/minmap/dashboard/Projects';
+import Tenders from './pages/minmap/dashboard/Tenders';
+import Reports from './pages/minmap/dashboard/Reports';
+import Documents from './pages/minmap/dashboard/Documents';
+import Performance from './pages/minmap/dashboard/Performance';
+import Archives from './pages/minmap/dashboard/Archives';
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
+import Settings from "./pages/minmap/dashboard/Settings";
+import MessagingHelp from "./pages/minmap/dashboard/MessagingHelp";
 
 
 
@@ -107,41 +109,14 @@ const router = createBrowserRouter([
 element:<DocumentRepo/>,
 },
 
-{
-  path:"/projects",
-  element:<Projects/>,
-},
 
-{
-  path:"/tenders",
-  element:<Tenders/>,
-},
-
-{
-  path:"/reports",
-  element:<Reports/>,
-},
-
-{
-  path:"/documents",
-  element:<Documents/>,
-},
 
 {
 
   path:"/projects/:id/edit",
   element: <EditProjectStatus/> ,
 },
-{                                   
-  path:"/performance",
-  element:<Performance/>,
 
-},
-
-{
-  path:"/archives",
-  element:<Archives/>,
-},
 
 {
   path:"/dashboard",
@@ -151,6 +126,48 @@ element:<DocumentRepo/>,
         index: true,
         element: <MinMapDashboard />,
       },
+
+      {
+        path:"projects",
+        element:<Projects/>,
+      },
+      
+      {
+        path:"tenders",
+        element:<Tenders/>,
+      },
+      
+      {
+        path:"reports",
+        element:<Reports/>,
+      },
+      
+      {
+        path:"documents",
+        element:<Documents/>,
+      },
+
+      {                                   
+        path:"performance",
+        element:<Performance/>,
+      
+      },
+      
+      {
+        path:"archives",
+        element:<Archives/>,
+      },
+
+      {
+        path:"settings",
+        element:<Settings/>,
+      },
+
+      {
+        path:"help",
+        element:<MessagingHelp/>,
+      },
+
   {
     path: "tender",
     element: <TenderManagement />,
