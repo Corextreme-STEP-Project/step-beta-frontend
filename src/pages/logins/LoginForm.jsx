@@ -16,14 +16,16 @@ const handleSubmit = async (e) => {
   const formData = new FormData(e.target);
   const email = formData.get("email");
   const password = formData.get("password")
+  const role = formData.get("role")
+
+
+
   
-
-
   
     try {
       // Call apiLogin to authenticate user
-      const response = await apiLogin({ email, password });
-      if (response.status === 200) {
+      const response = await apiLogin({ email, password, role});
+      if (response.status == 200) {
 
         localStorage.setItem("token", response.data.token); 
         console.log("token", response.data.token)
@@ -32,17 +34,27 @@ const handleSubmit = async (e) => {
           icon: "Success",
           title: "Login Successful",
           text: "You have successfully logged in to your account",
-          confirmationButtonText: " OK"
+          confirmButtonText: " OK"
         });
         navigate(''); // Redirect to a protected route
       }
-    } catch (error) {   
+    } catch (error) {  
+      console.log(error);
+      if (error.response && error.response.status === 401) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Failed',
+          text: 'Unauthorized: Invalid credentials or session expired.',
+          confirmButtonText: 'OK',
+        });
+      } else {
       Swal.fire({
-        icon: "Failed",
-        title: "Login failed.",
-        text: "Please try again.",
-        confirmationButtonText: " OK"
-      });                           
+        icon: "error",
+        title: "Error.",
+        text: "An unexpected error occurred. Please try again later.",
+        confirmButtonText: " OK"
+      }); 
+    }                          
     }
   };
 
@@ -84,6 +96,22 @@ const handleSubmit = async (e) => {
         ) : ( */}
          <h2 className="text-2xl font-bold mb-6 text-[#568bf5] text-center">Login</h2>
           <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+              <label htmlFor="role" className="block text-gray-700 font-semibold mb-2">
+                Role
+              </label>
+              <select
+                id="role"
+                name="role"
+                value={FormData.role}
+
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#065986]"
+              >
+                <option value="projectOwner">Project Owner</option>
+                <option value="projectRegulator">Project Regulator</option>
+              </select>
+            </div>
             <div className="mb-4">
               <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
                 Email
