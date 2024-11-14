@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaFileAlt, FaTrash } from 'react-icons/fa';
 
 // ProgressBar Component
 const ProgressBar = ({ value }) => {
@@ -113,11 +113,9 @@ const MaturationPhase = () => {
                             </td>
                             <td className="border border-gray-300 px-2 py-2 text-center">
                                 <button className="text-blue-400 px-2 py-1 rounded hover:bg-gray-100 mx-2">
-                                    <FaEdit className="inline mr-2" />
+                                    <FaFileAlt className="inline mr-2" />
                                 </button>
-                                <button className="text-red-500 px-2 py-1 rounded hover:bg-gray-100">
-                                    <FaTrash className="inline mr-2" />
-                                </button>
+                               
                             </td>
                         </tr>
                     ))}

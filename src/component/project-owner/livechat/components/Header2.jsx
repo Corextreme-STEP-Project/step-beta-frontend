@@ -18,7 +18,7 @@ const Header2 = () => {
           <button className="border-2 border-white h-12 w-12 rounded-full flex items-center justify-center">
             <img src={Avatar} alt="Avatar" className="h-10 w-10 object-cover rounded-full" />
           </button>
-          <p className="text-xl font-medium flex items-center">BE</p>
+          <p className="text-xl font-medium flex items-center">SA</p>
         </div>
 
         <span className="flex gap-4">
