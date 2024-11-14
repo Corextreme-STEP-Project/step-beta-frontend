@@ -95,7 +95,7 @@ const Sidebar = () => {
           {!isSidebarCollapsed && <span>Reports</span>}
         </Link>
         <Link
-          to="/dashboard/performance"
+          to=""
           className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
         >
           <FaChartLine size={24} />
