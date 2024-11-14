@@ -24,26 +24,27 @@ import LiveChat from "./component/minmap/Livechat";
 import ProjectOwnerDash from "./component/project-owner/ProjectOwnerDash";
 import MessageHelp from "./component/project-owner/livechat/MessageHelp";
 import NewChat from "./component/project-owner/newchat/NewChat";
-import PerformanceTracker  from './layout/performance/PerformanceTracker';
+import PerformanceTracker from "./layout/performance/PerformanceTracker";
 // import ProjectDetails from '../src/layout/performance/ProjectDetails';
-import Response from './component/minmap/Response';
+import Response from "./component/minmap/Response";
 // import DocumentUpload from './pages/management/DocumentUpload';
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
-import EditProjectStatus from './pages/project-owner/projectForm/Update';
-import DocumentRepo from './component/minmap/DocumentRepo';
-import Projects from './pages/minmap/Projects';
-import Tenders from './pages/minmap/Tenders';
-import Reports from './pages/minmap/Reports';
-import Documents from './pages/minmap/Documents';
-import Performance from './pages/minmap/Performance';
-import Archives from './pages/minmap/Archives';
+import EditProjectStatus from "./pages/project-owner/projectForm/Update";
+import DocumentRepo from "./component/minmap/DocumentRepo";
+import Projects from "./pages/minmap/Projects";
+import Tenders from "./pages/minmap/Tenders";
+import Reports from "./pages/minmap/Reports";
+import Documents from "./pages/minmap/Documents";
+import Performance from "./pages/minmap/Performance";
+import Archives from "./pages/minmap/Archives";
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
-
-
-
-
+import DetailedComplianceReport from "./pages/minmap/performance-and-indicators/DetailedComplianceReport ";
+import KPIAnalysis from "./pages/minmap/performance-and-indicators/KPIAnalysis";
+import ComplianceComparison from "./pages/minmap/performance-and-indicators/ComplianceComparison";
+import ComplianceRiskAssessment from "./pages/minmap/performance-and-indicators/ComplianceRiskAssessment";
+import ComplianceAuditInsights from "./pages/minmap/performance-and-indicators/ComplianceAuditInsights";
 
 // Create a theme instance
 const theme = createTheme({
@@ -93,79 +94,96 @@ const router = createBrowserRouter([
         path: "live-chat",
         element: <LiveChat />,
       },
-  {
-    path: "respond",
-      element: <Response/>,
-    },
-
+      {
+        path: "respond",
+        element: <Response />,
+      },
     ],
   },
 
+  {
+    path: "/docs",
+    element: <DocumentRepo />,
+  },
 
-{
-  path:"/docs",
-element:<DocumentRepo/>,
-},
+  {
+    path: "/projects",
+    element: <Projects />,
+  },
 
-{
-  path:"/projects",
-  element:<Projects/>,
-},
+  {
+    path: "/tenders",
+    element: <Tenders />,
+  },
 
-{
-  path:"/tenders",
-  element:<Tenders/>,
-},
+  {
+    path: "/reports",
+    element: <Reports />,
+  },
 
-{
-  path:"/reports",
-  element:<Reports/>,
-},
+  {
+    path: "/documents",
+    element: <Documents />,
+  },
 
-{
-  path:"/documents",
-  element:<Documents/>,
-},
+  {
+    path: "/projects/:id/edit",
+    element: <EditProjectStatus />,
+  },
+  {
+    path: "/performance",
+    element: <Performance />,
+  },
 
-{
+  {
+    path: "/archives",
+    element: <Archives />,
+  },
 
-  path:"/projects/:id/edit",
-  element: <EditProjectStatus/> ,
-},
-{                                   
-  path:"/performance",
-  element:<Performance/>,
-
-},
-
-{
-  path:"/archives",
-  element:<Archives/>,
-},
-
-{
-  path:"/dashboard",
-  element: <DashboardLayout />,
-  children: [
-{
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
         index: true,
         element: <MinMapDashboard />,
       },
-  {
-    path: "tender",
-    element: <TenderManagement />,
-  },
+      {
+        path: "tender",
+        element: <TenderManagement />,
+      },
 
-    {
-      path: "performance-tracker",
-      element: <PerformanceTracker />
-    },
-    {
+      {
+        path: "performance-tracker",
+        element: <PerformanceTracker />,
+      },
+      {
         path: "performance-compliance",
         element: <PerformanceAndIndicators />,
       },
-    
-  ]},
+      {
+        path: "detailed-compliance-report",
+        element: <DetailedComplianceReport />,
+      },
+      {
+        path: "kpi-analysis",
+        element: <KPIAnalysis />,
+      },
+      {
+        path: "compliance-comparison",
+        element: <ComplianceComparison />,
+      },
+      {
+        path: "compliance-risk-assessment",
+        element: <ComplianceRiskAssessment />,
+      },
+      {
+        path: "compliance-audit-insights",
+        element: <ComplianceAuditInsights />,
+      },
+    ],
+  },
+
   {
     path: "/login",
     element: <LoginForm />,
@@ -215,8 +233,6 @@ element:<DocumentRepo/>,
     ],
   },
 ]);
-
-
 
 function App() {
   return (
