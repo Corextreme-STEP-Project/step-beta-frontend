@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaSearch, FaEdit, FaTrash, FaFileAlt } from "react-icons/fa";
+import { FaSearch, FaFileAlt, FaBell } from "react-icons/fa";
 
 // Progress Bar Component
 const ProgressBar = ({ value }) => {
@@ -64,6 +64,14 @@ const CircularProgress = ({ name, value, max }) => {
 const MinMapDashboard = () => {
   const [selectedPhase, setSelectedPhase] = useState("All Projects");
   const [selectedProjects, setSelectedProjects] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [notifications, setNotifications] = useState([
+    "New project added: School Renovation Program",
+    "Highway Expansion Project status updated to 'In Progress'",
+    "Water Supply Enhancement project completed"
+  ]);
+  const [showNotifications, setShowNotifications] = useState(false);
+
 
   // Example projects data
   const projects = [
@@ -148,13 +156,66 @@ const MinMapDashboard = () => {
     }
   };
 
+  const toggleNotifications = () => {
+    setShowNotifications((prevState) => !prevState);
+  };
+
   return (
     <main className="flex-1 p-6 bg-white relative">
-      <h1 className="text-4xl font-bold mb-2">Welcome, Ama</h1>
-      <p className="mb-2">
-        Track your progress and explore resources designed to keep you informed
-        and effective.
-      </p>
+    {/* Header with Search and Notification Icons */}
+    <header className="flex items-center justify-between mb-4 space-x-4">
+      <div className="flex items-center space-x-4">
+        {/* Welcome Message and Description */}
+        <div>
+          <h1 className="text-4xl font-bold">Welcome, Ama</h1>
+          <p className="text-sm">
+            Track your progress and explore resources designed to keep you informed and effective.
+          </p>
+        </div>
+      </div>
+
+      <div className="flex items-center space-x-4">
+        {/* Search Bar */}
+        <div className="relative flex items-center">
+          <FaSearch className="absolute left-3 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="border border-gray-300 rounded-lg py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+
+       {/* Notification Icon */}
+       <button
+            className="relative text-gray-600 hover:text-emerald-700 focus:outline-none"
+            onClick={toggleNotifications}
+          >
+            <FaBell size={24} />
+            <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 text-xs font-semibold text-white bg-red-500 rounded-full">
+              {notifications.length}
+            </span>
+          </button>
+      </div>
+    </header>
+
+    {/* Notifications Dropdown */}
+    {showNotifications && (
+        <div className="absolute right-0 top-16 mt-2 bg-white border border-gray-300 shadow-lg rounded-lg w-64">
+          <ul className="max-h-64 overflow-auto">
+            {notifications.map((notification, index) => (
+              <li
+                key={index}
+                className="px-4 py-2 text-gray-700 border-b hover:bg-gray-100"
+              >
+                {notification}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
 
       {/* Performance Indicators Section */}
       <section className="mt-8">
@@ -174,8 +235,10 @@ const MinMapDashboard = () => {
         </div>
       </section>
 
+      
+
       {/* Phase Selection Table */}
-      <section className="mt-4 flex items-center">
+      <section className="mt-4 flex items-center justify-between">
         <div className="flex overflow-hidden rounded-lg border border-gray-300">
           <table className="w-[700px] border-collapse border border-gray-300">
             <tbody>
@@ -201,6 +264,19 @@ const MinMapDashboard = () => {
             </tbody>
           </table>
         </div>
+
+ {/* Search Bar */}
+ <div className="relative flex items-center">
+          <FaSearch className="absolute left-3 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search Projects..."
+            className="border border-gray-300 rounded-lg py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+
       </section>
 
       {/* Project Table Section */}
@@ -282,7 +358,7 @@ const MinMapDashboard = () => {
                     {project.status}
                   </td>
                   <td className="border border-gray-300 px-2 py-2 text-center">
-                    <button className="text-blue-500 cursor-pointer flex justify-center items-center w-full h-full">
+                    <button className="text-gray-500 cursor-pointer flex justify-center items-center w-full h-full">
                       <FaFileAlt />
                     </button>
                   </td>

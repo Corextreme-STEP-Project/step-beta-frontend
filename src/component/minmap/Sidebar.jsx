@@ -10,6 +10,7 @@ import {
   FaChartLine,
   FaQuestionCircle,
   FaSearch,
+  FaTachometerAlt,
 } from "react-icons/fa";
 
 const Sidebar = () => {
@@ -44,14 +45,25 @@ const Sidebar = () => {
         </div>
       )}
 
+      {/* Dashboard link */}
+      {!isSidebarCollapsed && (
+        <Link
+          to="/dashboard"
+          title="Dashboard"
+          className="bg-gray-100 hover:bg-emerald-700 text-emerald-700 hover:text-white p-3 rounded flex items-center justify-center w-full mb-4"
+        >
+          <span>Dashboard</span>
+        </Link>
+      )}
+
       {/* Navigation links */}
       <nav
         className={`flex flex-col space-y-4 ${
           isSidebarCollapsed ? "items-center" : ""
-        } mt-10`} // Add margin-top to avoid overlap with "Step" button and ensure proper spacing
+        } mt-8`} // Add margin-top to avoid overlap with "Step" button and ensure proper spacing
       >
         <Link
-          to="/projects"
+          to="/dashboard/projects"
           title="Projects"
           className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
         >
@@ -59,7 +71,7 @@ const Sidebar = () => {
           {!isSidebarCollapsed && <span>Projects</span>}
         </Link>
         <Link
-          to="/tenders"
+          to="/dashboard/tenders"
           title="Tenders"
           className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
         >
@@ -67,7 +79,7 @@ const Sidebar = () => {
           {!isSidebarCollapsed && <span>Calls for tenders</span>}
         </Link>
         <Link
-          to="/documents"
+          to="/dashboard/documents"
           title="Documents"
           className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
         >
@@ -75,7 +87,7 @@ const Sidebar = () => {
           {!isSidebarCollapsed && <span>Documents and Circulars</span>}
         </Link>
         <Link
-          to="/reports"
+          to="/dashboard/reports"
           title="Reports"
           className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
         >
@@ -83,7 +95,7 @@ const Sidebar = () => {
           {!isSidebarCollapsed && <span>Reports</span>}
         </Link>
         <Link
-          to="/performance"
+          to=""
           className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
         >
           <FaChartLine size={24} />
@@ -91,7 +103,7 @@ const Sidebar = () => {
         </Link>
 
         <Link
-          to="/archives"
+          to="/dashboard/archives"
           title="Archives"
           className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
         >
@@ -103,7 +115,7 @@ const Sidebar = () => {
       {/* Settings and Messaging & Help section at the bottom */}
       <div className="mt-48 flex flex-col space-y-4">
         <Link
-          to="/settings"
+          to="/dashboard/settings"
           title="Settings"
           className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
         >
@@ -111,7 +123,7 @@ const Sidebar = () => {
           {!isSidebarCollapsed && <span>Settings</span>}
         </Link>
         <Link
-          to="/help"
+          to="/dashboard/help"
           title="Messaging & Help"
           className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
         >
