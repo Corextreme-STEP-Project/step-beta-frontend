@@ -29,6 +29,7 @@ import NewChat from "./component/project-owner/newchat/NewChat";
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
+import MergedNotificationDashboard from "./layout/minmap/NotificationDashboard";
 
 // Create a theme instance
 const theme = createTheme({
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
   {
     path: "/tender",
     element: <TenderManagement />,
+  },
+  {
+    path: "/notification",
+    element: <MergedNotificationDashboard />,
   },
   {
     path: "/login",
