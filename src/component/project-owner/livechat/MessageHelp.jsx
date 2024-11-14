@@ -13,7 +13,7 @@ const MessageHelp = () => {
         <div className="flex-1 overflow-y-scroll p-4"> {/* Main body container */}
           <Body2 />
         </div>
-        <SideBar2  className="w-1/12" /> {/* Right sidebar with a fixed width */}
+        {/* <SideBar2  className="w-1/12" /> Right sidebar with a fixed width */}
       </div>
     </div>
   );
