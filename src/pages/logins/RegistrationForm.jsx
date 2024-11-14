@@ -8,6 +8,7 @@ import img from '../../assets/images/bg2.jpg'
 
 const RegistrationForm = () => {
   const [loading, setLoading] = useState(false);
+  const [selectedRole, setSelectedRole] = useState('Project Owner');
 
   const navigate = useNavigate();
 
@@ -25,18 +26,18 @@ const RegistrationForm = () => {
       const email = formData.get("email");
       const password = formData.get("password");
       const phoneNumber = formData.get("phoneNumber");
-      const role = "Project Owner";
+      const role = selectedRole === 'Project Owner' ? 'Project Owner' : 'Project Regulator';
 
-      const payload = { firstName, middleName, lastName, email, password, phoneNumber, role };
+      const payload = { firstName, middleName, lastName, email, password, phoneNumber, role: role };
       const response = await apiRegister(payload);
 
 
-      
-    
+
+
       console.log('response', response);
 
 
-      
+
 
       if (response.status == 201) {
         Swal.fire({
@@ -83,17 +84,17 @@ const RegistrationForm = () => {
       <div className="flex items-center  min-h-screen bg-cover bg-center justify-end"
         style={{ backgroundImage: `url(${img})` }}
       >
-       <div className="w-1/2 p-10 text-white flex flex-col justify-center bg-gradient-to-r rounded-lg shadow-lg">
-  <h1 className="text-5xl font-extrabold mb-6 text-center text-yellow-300">Welcome to the Government Contract Portal</h1>
-  <p className="text-xl mb-6 text-center font-semibold text-white">
-    Easily access and apply for government contracts. Register now to begin your path to success.
-  </p>
-  <ul className="space-y-2 mb-8">
-    <li className="text-lg text-yellow-100">- Explore exclusive government opportunities.</li>
-    <li className="text-lg text-yellow-100">- Simplify the tender submission process.</li>
-    <li className="text-lg text-yellow-100">- Enjoy secure and transparent contract management.</li>
-  </ul>
-</div>
+        <div className="w-1/2 p-10 text-white flex flex-col justify-center bg-gradient-to-r rounded-lg shadow-lg">
+          <h1 className="text-5xl font-extrabold mb-6 text-center text-yellow-300">Welcome to the Government Contract Portal</h1>
+          <p className="text-xl mb-6 text-center font-semibold text-white">
+            Easily access and apply for government contracts. Register now to begin your path to success.
+          </p>
+          <ul className="space-y-2 mb-8">
+            <li className="text-lg text-yellow-100">- Explore exclusive government opportunities.</li>
+            <li className="text-lg text-yellow-100">- Simplify the tender submission process.</li>
+            <li className="text-lg text-yellow-100">- Enjoy secure and transparent contract management.</li>
+          </ul>
+        </div>
 
 
         <div className="w-full max-w-md  p-8 shadow-md bg-slate-50  ">
@@ -209,13 +210,13 @@ const RegistrationForm = () => {
               <select
                 id="role"
                 name="role"
-                value={FormData.role}
-
+                value={selectedRole}
+                onChange={(e) => setSelectedRole(e.target.value)}
                 required
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#065986]"
               >
-                <option value="projectOwner">Project Owner</option>
-                <option value="projectRegulator">Project Regulator</option>
+                <option value="Project Owner">Project Owner</option>
+                <option value="Project Regulator">Project Regulator</option>
               </select>
             </div>
 

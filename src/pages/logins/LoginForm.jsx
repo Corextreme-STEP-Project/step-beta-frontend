@@ -3,20 +3,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import { apiLogin } from '../../services/auth';
 import Swal from 'sweetalert2';
 import img from '../../assets/images/bg2.jpg'
+import { useState } from 'react';
+import { useRole } from '../../context/RoleContext';
 
 
 const LoginForm = () => {
   const navigate = useNavigate(); 
+  const { login } = useRole();
+  const [loading, setLoading] = useState(false);
+  const [selectedRole, setSelectedRole] = useState('Project Owner');
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  
+  setLoading(true);
 
 
   const formData = new FormData(e.target);
   const email = formData.get("email");
   const password = formData.get("password")
-  const role = formData.get("role")
+  const role = selectedRole === 'Project Owner' ? 'Project Owner' : 'Project Regulator';
 
 
 
@@ -25,18 +30,33 @@ const handleSubmit = async (e) => {
     try {
       // Call apiLogin to authenticate user
       const response = await apiLogin({ email, password, role});
+      console.log('Full Login Response:', response);
       if (response.status == 200) {
+        const data = await response.data;;
 
-        localStorage.setItem("token", response.data.token); 
-        console.log("token", response.data.token)
-        
-        Swal.fire({
-          icon: "Success",
-          title: "Login Successful",
-          text: "You have successfully logged in to your account",
-          confirmButtonText: " OK"
-        });
-        navigate(''); // Redirect to a protected route
+        if (data && data.token) {
+          
+          login(role, data.token);
+
+          if (role === 'Project Owner') {
+            Swal.fire({
+              icon: "Success",
+              title: "Login Successful",
+              text: "You have successfully logged in to your account",
+              confirmButtonText: " OK"
+            });
+            navigate('/projectowner');
+          } else if (role === 'Project Regulator') {
+            navigate('/dashboard');
+          }
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Unauthorized',
+            text: 'Invalid response format from server.',
+            confirmButtonText: 'OK',
+          });
+        }
       }
     } catch (error) {  
       console.log(error);
@@ -55,6 +75,8 @@ const handleSubmit = async (e) => {
         confirmButtonText: " OK"
       }); 
     }                          
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -103,13 +125,13 @@ const handleSubmit = async (e) => {
               <select
                 id="role"
                 name="role"
-                value={FormData.role}
-
+                value={selectedRole}
+                onChange={(e) => setSelectedRole(e.target.value)}
                 required
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#065986]"
               >
-                <option value="projectOwner">Project Owner</option>
-                <option value="projectRegulator">Project Regulator</option>
+                <option value="Project Owner">Project Owner</option>
+                <option value="Project Regulator">Project Regulator</option>
               </select>
             </div>
             <div className="mb-4">
@@ -142,16 +164,16 @@ const handleSubmit = async (e) => {
             
             <button
               type="submit"
-              className="w-full bg-[#0ba5ec] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#0086c9] transition duration-200"
+              className="w-full bg-[#0ba5ec] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#0086c9] transition duration-200" disabled={loading}
             >
-              Login
+              {loading ? "Loading..." : "Login"}
             </button>
           </form>
         {/* ) */}
         {/* } */}
         {/* {!isAuthenticated && ( */}
           <p className="text-center text-gray-600 mt-4">
-            Don’t have an account?{' '}
+            Don&apos;t have an account?{' '}
             <Link to="/register" className="text-[#0086c9] hover:underline">
               Register here
             </Link>
