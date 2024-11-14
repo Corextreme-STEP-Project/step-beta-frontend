@@ -179,7 +179,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "upload",
+        path: "document",
         element: <DocumentManagementSystem />,
       },
     ],
@@ -233,7 +233,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "upload",
+        path: "document",
         element: <DocumentManagementSystem />,
       },
     ],
