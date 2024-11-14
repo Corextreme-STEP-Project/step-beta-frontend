@@ -33,12 +33,11 @@ import Settings from "./pages/minmap/dashboard/Settings";
 import MessagingHelp from "./pages/minmap/dashboard/MessagingHelp";
 import EditProjectStatus from "./pages/project-owner/projectForm/Update";
 import DocumentRepo from "./component/minmap/DocumentRepo";
-import Projects from "./pages/minmap/Projects";
-import Tenders from "./pages/minmap/Tenders";
-import Reports from "./pages/minmap/Reports";
-import Documents from "./pages/minmap/Documents";
-import Performance from "./pages/minmap/Performance";
-import Archives from "./pages/minmap/Archives";
+import Tenders from "./pages/minmap/dashboard/Tenders";
+import Reports from "./pages/minmap/dashboard/Reports";
+import Documents from "./pages/minmap/dashboard/Documents";
+import Performance from "./pages/minmap/dashboard/Performance";
+import Archives from "./pages/minmap/dashboard/Archives";
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
@@ -48,8 +47,6 @@ import KPIAnalysis from "./pages/minmap/performance-and-indicators/KPIAnalysis";
 import ComplianceComparison from "./pages/minmap/performance-and-indicators/ComplianceComparison";
 import ComplianceRiskAssessment from "./pages/minmap/performance-and-indicators/ComplianceRiskAssessment";
 import ComplianceAuditInsights from "./pages/minmap/performance-and-indicators/ComplianceAuditInsights";
-
-
 
 // Create a theme instance
 const theme = createTheme({
@@ -111,15 +108,9 @@ const router = createBrowserRouter([
     element: <DocumentRepo />,
   },
 
-
   {
     path: "/notification",
     element: <MergedNotificationDashboard />,
-  },
- 
-  {
-    path: "/projects",
-    element: <Projects />,
   },
 
   {
@@ -160,15 +151,14 @@ const router = createBrowserRouter([
         element: <MinMapDashboard />,
       },
 
-
       {
-        path:"settings",
-        element:<Settings/>,
+        path: "settings",
+        element: <Settings />,
       },
 
       {
-        path:"help",
-        element:<MessagingHelp/>,
+        path: "help",
+        element: <MessagingHelp />,
       },
       {
         path: "tender",
