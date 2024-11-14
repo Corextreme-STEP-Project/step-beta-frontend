@@ -78,10 +78,6 @@ const router = createBrowserRouter([
     path: "/newchat",
     element: <NewChat />,
   },
-  {
-    path: "/upload",
-    element: <DocumentManagementSystem />,
-  },
 
   {
     path: "/live_ui_dashboard",
@@ -193,6 +189,11 @@ const router = createBrowserRouter([
         path: "compliance-audit-insights",
         element: <ComplianceAuditInsights />,
       },
+
+      {
+        path: "document",
+        element: <DocumentManagementSystem />,
+      },
     ],
   },
 
@@ -241,6 +242,11 @@ const router = createBrowserRouter([
       {
         path: "notifications",
         element: <Notifications />,
+      },
+
+      {
+        path: "document",
+        element: <DocumentManagementSystem />,
       },
     ],
   },

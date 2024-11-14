@@ -31,24 +31,14 @@ const RegistrationForm = () => {
       const response = await apiRegister(payload);
 
 
-      console.log('Response Status:', response.status);
-      const responseData = await response.json();
-      console.log('Response Data:', responseData);
+      
+    
+      console.log('response', response);
 
 
-      if (response && response.status === 409) {
-        Swal.fire({
-          icon: "warning",
-          title: "Registration failed",
-          text: "User already exists!",
-          confirmButtonText: " OK"
-        }
+      
 
-        );
-        return;
-      }
-
-      if (response && response.status === 201 || response.status === 200) {
+      if (response.status == 201) {
         Swal.fire({
           icon: "success",
           title: "Registered Successfully",
@@ -60,6 +50,18 @@ const RegistrationForm = () => {
 
     } catch (error) {
       console.log(error);
+
+      if (error.status == 409) {
+        Swal.fire({
+          icon: "warning",
+          title: "Registration failed",
+          text: "User already exists!",
+          confirmButtonText: " OK"
+        }
+
+        );
+        return;
+      }
 
       Swal.fire({
         icon: "error",
