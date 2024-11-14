@@ -42,11 +42,13 @@ import Archives from "./pages/minmap/Archives";
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
+import MergedNotificationDashboard from "./layout/minmap/NotificationDashboard";
 import DetailedComplianceReport from "./pages/minmap/performance-and-indicators/DetailedComplianceReport ";
 import KPIAnalysis from "./pages/minmap/performance-and-indicators/KPIAnalysis";
 import ComplianceComparison from "./pages/minmap/performance-and-indicators/ComplianceComparison";
 import ComplianceRiskAssessment from "./pages/minmap/performance-and-indicators/ComplianceRiskAssessment";
 import ComplianceAuditInsights from "./pages/minmap/performance-and-indicators/ComplianceAuditInsights";
+
 
 
 // Create a theme instance
@@ -110,6 +112,11 @@ const router = createBrowserRouter([
   },
 
 
+  {
+    path: "/notification",
+    element: <MergedNotificationDashboard />,
+  },
+ 
   {
     path: "/projects",
     element: <Projects />,
