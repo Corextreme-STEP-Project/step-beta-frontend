@@ -167,7 +167,7 @@ const MinMapDashboard = () => {
       <div className="flex items-center space-x-4">
         {/* Welcome Message and Description */}
         <div>
-          <h1 className="text-4xl font-bold">Welcome, Ama</h1>
+          <h1 className="text-4xl font-bold">Welcome, Mireille</h1>
           <p className="text-sm">
             Track your progress and explore resources designed to keep you informed and effective.
           </p>
