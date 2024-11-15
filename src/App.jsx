@@ -42,11 +42,10 @@ import ComplianceComparison from "./pages/minmap/performance-and-indicators/Comp
 import ComplianceRiskAssessment from "./pages/minmap/performance-and-indicators/ComplianceRiskAssessment";
 import ComplianceAuditInsights from "./pages/minmap/performance-and-indicators/ComplianceAuditInsights";
 import Projects from "./pages/minmap/dashboard/Projects";
-import Tenders from "./pages/minmap/dashboard/Tenders";
-import DocumentRepo from "./pages/minmap/dashboard/DocumentRepo";
-import Archives from "./pages/minmap/dashboard/Archives";
-import Reports from "./pages/minmap/dashboard/Reports";
-import Performance from "./pages/minmap/dashboard/Performance";
+import ReceptionsPayments from "./component/project-owner/ReceptionsPayments";
+import SettingsMain from "./component/project-owner/SettingsMain";
+import MessagingHelpMain from "./component/project-owner/MessagingHelp";
+
 
 // Create a theme instance
 const theme = createTheme({
@@ -247,6 +246,22 @@ const router = createBrowserRouter([
         element: <ProjectMaturation />,
       },
       {
+        path: "receptions",
+        element: <ReceptionsPayments />,
+      },
+      {
+        path: "docs",
+        element: <DocumentRepo />,
+      },
+      {
+        path: "settings",
+        element: <SettingsMain />,
+      },
+      {
+        path: "help",
+        element: <MessagingHelpMain />,
+      },
+      {
         path: "contractawarding",
         element: <ContractAwarding />,
       },
@@ -254,7 +269,6 @@ const router = createBrowserRouter([
         path: "notifications",
         element: <Notifications />,
       },
-
       {
         path: "document",
         element: <DocumentManagementSystem />,
