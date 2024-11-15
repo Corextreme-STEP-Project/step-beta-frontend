@@ -31,6 +31,9 @@ import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/
 import LandingPage from "./pages/logins/LandingPage";
 import MergedNotificationDashboard from "./layout/minmap/NotificationDashboard";
 
+import NotificationCreator from "./component/minmap/NotificationCreator";
+import NotificationList from "./component/project-owner/NotificationList";
+
 // Create a theme instance
 const theme = createTheme({
   // You can customize your theme here
@@ -86,10 +89,18 @@ const router = createBrowserRouter([
     path: "/tender",
     element: <TenderManagement />,
   },
-  {
-    path: "/notification",
-    element: <MergedNotificationDashboard />,
-  },
+  // {
+  //   path: "/notification",
+  //   element: <MergedNotificationDashboard />,
+  // },
+  // {
+  //   path: "/notification",
+  //   element: <MnmapNotifications />,
+  // },
+  // {
+  //   path: "/note-form",
+  //   element: <CreateNotificationForm />,
+  // },
   {
     path: "/login",
     element: <LoginForm />,
@@ -129,9 +140,14 @@ const router = createBrowserRouter([
         element: <MinMapDashboard />,
       },
       {
-        index: true,
+        path: "performance-compliance",
         element: <PerformanceAndIndicators />,
       },
+      {
+        path: "create-notification",
+        element: <NotificationCreator />,
+      },
+     
     ],
   },
   {
@@ -154,6 +170,10 @@ const router = createBrowserRouter([
       {
         path: "notifications",
         element: <Notifications />,
+      },
+      {
+        path: "notification-list",
+        element: <NotificationList />,
       },
     ],
   },

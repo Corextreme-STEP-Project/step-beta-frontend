@@ -39,7 +39,7 @@ const Sidebar = () => {
                     <FaArchive size={24} />
                     {!isSidebarCollapsed && <span>Archives</span>}
                 </Link>
-                <Link to="/performance" className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2">
+                <Link to="/dashboard/performance-compliance" className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2">
                     <FaChartLine size={24} />
                     {!isSidebarCollapsed && <span>Performance and Indicators</span>}
                 </Link>
