@@ -47,6 +47,9 @@ import KPIAnalysis from "./pages/minmap/performance-and-indicators/KPIAnalysis";
 import ComplianceComparison from "./pages/minmap/performance-and-indicators/ComplianceComparison";
 import ComplianceRiskAssessment from "./pages/minmap/performance-and-indicators/ComplianceRiskAssessment";
 import ComplianceAuditInsights from "./pages/minmap/performance-and-indicators/ComplianceAuditInsights";
+import ReceptionsPayments from "./component/project-owner/ReceptionsPayments";
+import SettingsMain from "./component/project-owner/SettingsMain";
+import MessagingHelpMain from "./component/project-owner/MessagingHelp";
 
 // Create a theme instance
 const theme = createTheme({
@@ -236,6 +239,22 @@ const router = createBrowserRouter([
         element: <ProjectMaturation />,
       },
       {
+        path: "receptions",
+        element: <ReceptionsPayments />,
+      },
+      {
+        path: "docs",
+        element: <DocumentRepo />,
+      },
+      {
+        path: "settings",
+        element: <SettingsMain />,
+      },
+      {
+        path: "help",
+        element: <MessagingHelpMain />,
+      },
+      {
         path: "contractawarding",
         element: <ContractAwarding />,
       },
@@ -243,7 +262,6 @@ const router = createBrowserRouter([
         path: "notifications",
         element: <Notifications />,
       },
-
       {
         path: "document",
         element: <DocumentManagementSystem />,
