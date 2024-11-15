@@ -3,6 +3,10 @@ import { apiClient } from "../config";
 
 // Get notifications by user ID
 export const apiGetNotifications = async (userId) => {
+
+    if (!userId) {
+      throw new Error("User ID is required to fetch notifications.");
+    }
   return apiClient.get(`/notifications/${userId}`);
 };
 

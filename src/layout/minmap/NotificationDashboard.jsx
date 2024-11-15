@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { apiGetNotifications } from "../../services/minmap/notificationalert"; // Adjust the import based on your file structure
-import img from '../../assets/images/bg2.jpg'
+
+//  const userId = "6728b0ed79b10b1ae8914ea1"
 
 const MergedNotificationDashboard = ({ userId, projects = [] }) => {
   const [notifications, setNotifications] = useState([]);
@@ -10,8 +11,11 @@ const MergedNotificationDashboard = ({ userId, projects = [] }) => {
   const [endDate, setEndDate] = useState("");
   const [approachingDeadlines, setApproachingDeadlines] = useState([]);
 
+ 
+
   useEffect(() => {
-    const fetchNotifications = async () => {
+    const fetchNotifications = async () => { 
+        console.log("Fetching notifications for userId:", userId);
       try {
         const response = await apiGetNotifications(userId);
         setNotifications(response.data);
