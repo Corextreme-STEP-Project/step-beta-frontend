@@ -32,12 +32,6 @@ import Response from "./component/minmap/Response";
 import Settings from "./pages/minmap/dashboard/Settings";
 import MessagingHelp from "./pages/minmap/dashboard/MessagingHelp";
 import EditProjectStatus from "./pages/project-owner/projectForm/Update";
-import DocumentRepo from "./component/minmap/DocumentRepo";
-import Tenders from "./pages/minmap/dashboard/Tenders";
-import Reports from "./pages/minmap/dashboard/Reports";
-import Documents from "./pages/minmap/dashboard/Documents";
-import Performance from "./pages/minmap/dashboard/Performance";
-import Archives from "./pages/minmap/dashboard/Archives";
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
@@ -47,9 +41,11 @@ import KPIAnalysis from "./pages/minmap/performance-and-indicators/KPIAnalysis";
 import ComplianceComparison from "./pages/minmap/performance-and-indicators/ComplianceComparison";
 import ComplianceRiskAssessment from "./pages/minmap/performance-and-indicators/ComplianceRiskAssessment";
 import ComplianceAuditInsights from "./pages/minmap/performance-and-indicators/ComplianceAuditInsights";
+import Projects from "./pages/minmap/dashboard/Projects";
 import ReceptionsPayments from "./component/project-owner/ReceptionsPayments";
 import SettingsMain from "./component/project-owner/SettingsMain";
 import MessagingHelpMain from "./component/project-owner/MessagingHelp";
+
 
 // Create a theme instance
 const theme = createTheme({
@@ -102,45 +98,25 @@ const router = createBrowserRouter([
     ],
   },
 
-  {
-    path: "/docs",
-    element: <DocumentRepo />,
-  },
-
+ 
   {
     path: "/notification",
     element: <MergedNotificationDashboard />,
   },
 
-  {
-    path: "/tenders",
-    element: <Tenders />,
-  },
+ 
 
-  {
-    path: "/reports",
-    element: <Reports />,
-  },
+  
 
-  {
-    path: "/documents",
-    element: <Documents />,
-  },
+  
 
   {
     path: "/projects/:id/edit",
     element: <EditProjectStatus />,
   },
-  {
-    path: "/performance",
-    element: <Performance />,
-  },
+  
 
-  {
-    path: "/archives",
-    element: <Archives />,
-  },
-
+  
   {
     path: "/dashboard",
     element: <DashboardLayout />,
@@ -151,8 +127,39 @@ const router = createBrowserRouter([
       },
 
       {
+        path:"projects",
+        element:<Projects/>,
+      },
+
+      {
+        path: "tenders",
+        element: <Tenders/>
+      },
+
+      {
+        path: "docs",
+        element: <DocumentRepo />,
+      },
+    
+      {
+        path: "reports",
+        element: <Reports/>,
+      },
+
+      {
+        path: "performance",
+        element:<Performance/>
+      },
+
+      {
+        path: "archives",
+        element: <Archives />,
+      },
+    
+
+      {
         path: "settings",
-        element: <Settings />,
+        element: <Settings />, 
       },
 
       {

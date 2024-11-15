@@ -10,7 +10,6 @@ import {
   FaChartLine,
   FaQuestionCircle,
   FaSearch,
-  FaTachometerAlt,
 } from "react-icons/fa";
 
 const Sidebar = () => {
@@ -21,7 +20,7 @@ const Sidebar = () => {
     <aside
       className={`bg-emerald-600 text-white transition-all duration-300 ${
         isSidebarCollapsed ? "w-20" : "w-64"
-      } flex flex-col p-4 h-full relative`} // Sidebar container
+      } flex flex-col p-4 h-full fixed`} // Sidebar container
     >
       {/* Step button fixed at the top */}
       <button
@@ -79,7 +78,7 @@ const Sidebar = () => {
           {!isSidebarCollapsed && <span>Calls for tenders</span>}
         </Link>
         <Link
-          to="/dashboard/documents"
+          to="/dashboard/docs"
           title="Documents"
           className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
         >
