@@ -144,7 +144,7 @@ export default function LiveChat() {
       )}
 
       {/* Toast Container */}
-      <ToastContainer />
+      <ToastContainer autoClose={300} />
     </div>
   );
 }
