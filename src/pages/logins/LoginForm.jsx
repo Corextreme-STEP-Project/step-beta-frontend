@@ -3,46 +3,80 @@ import { Link, useNavigate } from 'react-router-dom';
 import { apiLogin } from '../../services/auth';
 import Swal from 'sweetalert2';
 import img from '../../assets/images/bg2.jpg'
+import { useState } from 'react';
+import { useRole } from '../../context/RoleContext';
 
 
 const LoginForm = () => {
   const navigate = useNavigate(); 
+  const { login } = useRole();
+  const [loading, setLoading] = useState(false);
+  const [selectedRole, setSelectedRole] = useState('Project Owner');
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  
+  setLoading(true);
 
 
   const formData = new FormData(e.target);
   const email = formData.get("email");
   const password = formData.get("password")
+  const role = selectedRole === 'Project Owner' ? 'Project Owner' : 'Project Regulator';
+
+
+
   
-
-
   
     try {
       // Call apiLogin to authenticate user
-      const response = await apiLogin({ email, password });
-      if (response.status === 200) {
+      const response = await apiLogin({ email, password, role});
+      console.log('Full Login Response:', response);
+      if (response.status == 200) {
+        const data = await response.data;;
 
-        localStorage.setItem("token", response.data.token); 
-        console.log("token", response.data.token)
-        
-        Swal.fire({
-          icon: "Success",
-          title: "Login Successful",
-          text: "You have successfully logged in to your account",
-          confirmationButtonText: " OK"
-        });
-        navigate(''); // Redirect to a protected route
+        if (data && data.token) {
+          
+          login(role, data.token);
+
+          if (role === 'Project Owner') {
+            Swal.fire({
+              icon: "Success",
+              title: "Login Successful",
+              text: "You have successfully logged in to your account",
+              confirmButtonText: " OK"
+            });
+            navigate('/projectowner');
+          } else if (role === 'Project Regulator') {
+            navigate('/dashboard');
+          }
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Unauthorized',
+            text: 'Invalid response format from server.',
+            confirmButtonText: 'OK',
+          });
+        }
       }
-    } catch (error) {   
+    } catch (error) {  
+      console.log(error);
+      if (error.response && error.response.status === 401) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Failed',
+          text: 'Unauthorized: Invalid credentials or session expired.',
+          confirmButtonText: 'OK',
+        });
+      } else {
       Swal.fire({
-        icon: "Failed",
-        title: "Login failed.",
-        text: "Please try again.",
-        confirmationButtonText: " OK"
-      });                           
+        icon: "error",
+        title: "Error.",
+        text: "An unexpected error occurred. Please try again later.",
+        confirmButtonText: " OK"
+      }); 
+    }                          
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -84,6 +118,22 @@ const handleSubmit = async (e) => {
         ) : ( */}
          <h2 className="text-2xl font-bold mb-6 text-[#568bf5] text-center">Login</h2>
           <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+              <label htmlFor="role" className="block text-gray-700 font-semibold mb-2">
+                Role
+              </label>
+              <select
+                id="role"
+                name="role"
+                value={selectedRole}
+                onChange={(e) => setSelectedRole(e.target.value)}
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#065986]"
+              >
+                <option value="Project Owner">Project Owner</option>
+                <option value="Project Regulator">Project Regulator</option>
+              </select>
+            </div>
             <div className="mb-4">
               <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
                 Email
@@ -114,16 +164,16 @@ const handleSubmit = async (e) => {
             
             <button
               type="submit"
-              className="w-full bg-[#0ba5ec] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#0086c9] transition duration-200"
+              className="w-full bg-[#0ba5ec] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#0086c9] transition duration-200" disabled={loading}
             >
-              Login
+              {loading ? "Loading..." : "Login"}
             </button>
           </form>
         {/* ) */}
         {/* } */}
         {/* {!isAuthenticated && ( */}
           <p className="text-center text-gray-600 mt-4">
-            Don’t have an account?{' '}
+            Don&apos;t have an account?{' '}
             <Link to="/register" className="text-[#0086c9] hover:underline">
               Register here
             </Link>
