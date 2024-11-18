@@ -16,7 +16,6 @@ import ProjectMaturation from "./component/project-owner/ProjectMaturation";
 import ContractAwarding from "./component/project-owner/ContractAwarding";
 import Notifications from "./component/project-owner/Notifications";
 import ProjectOwnerPage from "./pages/project-owner/ProjectOwnerPage";
-import UpdateProjectStatus from "./pages/project-owner/projectForm/EditProject";
 import LiveUI_Dashboard from "./layout/minmap/LiveUI_Dashboard";
 // import FAQ from "./component/minmap/Faq";
 import FAQS from "./component/minmap/FAQItems";
@@ -40,6 +39,12 @@ import Archives from './pages/minmap/Archives';
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
+import AddMilestoneForm from "./pages/Perf-Indic/AddMilestone";
+import AddPerformanceIndicatorForm from "./pages/Perf-Indic/AddIndicator";
+import PerformanceIndicatorList from "./pages/Perf-Indic/IndicatorList";
+import MilestoneList from "./pages/Perf-Indic/MilestoneList";
+import PerformanceIndicatorDetail from "./pages/Perf-Indic/IndicatorId";
+import MilestoneDetails from "./pages/Perf-Indic/MilestoneId";
 
 
 
@@ -164,6 +169,30 @@ element:<DocumentRepo/>,
         path: "performance-compliance",
         element: <PerformanceAndIndicators />,
       },
+    {
+        path: "indicator-list",
+        element: <PerformanceIndicatorList/>,
+      },
+    {
+        path: "indicator-form",
+        element: <AddPerformanceIndicatorForm/>,
+      },
+    {
+        path: "milestone-form",
+        element: <AddMilestoneForm/>,
+      },
+    {
+        path: "milestone-list",
+        element: <MilestoneList/>,
+      },
+    {
+        path: "milestone/:id",
+        element: <MilestoneDetails/>,
+      },
+    {
+        path: "indicator/:id",
+        element: <PerformanceIndicatorDetail/>,
+      },
     
   ]},
   {
@@ -183,7 +212,7 @@ element:<DocumentRepo/>,
     element: <ProjectList />,
   },
   {
-    path: "/project/:id",
+    path: "/projects/:id",
     element: <ProjectDetails />,
   },
 
