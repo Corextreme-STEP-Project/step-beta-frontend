@@ -106,6 +106,8 @@ const router = createBrowserRouter([
     element: <MergedNotificationDashboard />,
   },
 
+
+
  
 
   
@@ -213,6 +215,7 @@ const router = createBrowserRouter([
     ],
   },
 
+
   // {
   //   path: "/notification",
   //   element: <MergedNotificationDashboard />,
@@ -225,8 +228,6 @@ const router = createBrowserRouter([
   //   path: "/note-form",
   //   element: <CreateNotificationForm />,
   // },
-
-
 
   {
     path: "/login",
@@ -252,6 +253,27 @@ const router = createBrowserRouter([
   {
     path: "/maturation",
     element: <MaturationPhase />,
+  },
+
+
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <MinMapDashboard />,
+      },
+      {
+        path: "performance-compliance",
+        element: <PerformanceAndIndicators />,
+      },
+      {
+        path: "create-notification",
+        element: <NotificationCreator />,
+      },
+     
+    ],
   },
 
 
@@ -293,7 +315,6 @@ const router = createBrowserRouter([
         element: <Notifications />,
       },
       {
-
         path: "notification-list",
         element: <NotificationList />,
        },

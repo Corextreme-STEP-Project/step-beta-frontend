@@ -14,6 +14,7 @@ import {
 
 const Sidebar = () => {
 
+
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -133,6 +134,7 @@ const Sidebar = () => {
       </div>
     </aside>
   );
+
 };
 
 export default Sidebar;
