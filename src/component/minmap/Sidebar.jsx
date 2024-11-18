@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 
 const Sidebar = () => {
+
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 

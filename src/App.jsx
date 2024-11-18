@@ -36,6 +36,8 @@ import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
 import MergedNotificationDashboard from "./layout/minmap/NotificationDashboard";
+import NotificationCreator from "./component/minmap/NotificationCreator";
+import NotificationList from "./component/project-owner/NotificationList";
 import DetailedComplianceReport from "./pages/minmap/performance-and-indicators/DetailedComplianceReport ";
 import KPIAnalysis from "./pages/minmap/performance-and-indicators/KPIAnalysis";
 import ComplianceComparison from "./pages/minmap/performance-and-indicators/ComplianceComparison";
@@ -199,6 +201,10 @@ const router = createBrowserRouter([
         path: "compliance-audit-insights",
         element: <ComplianceAuditInsights />,
       },
+      {
+        path: "create-notification",
+        element: <NotificationCreator />,
+      },
 
       {
         path: "document",
@@ -206,6 +212,21 @@ const router = createBrowserRouter([
       },
     ],
   },
+
+  // {
+  //   path: "/notification",
+  //   element: <MergedNotificationDashboard />,
+  // },
+  // {
+  //   path: "/notification",
+  //   element: <MnmapNotifications />,
+  // },
+  // {
+  //   path: "/note-form",
+  //   element: <CreateNotificationForm />,
+  // },
+
+
 
   {
     path: "/login",
@@ -232,6 +253,8 @@ const router = createBrowserRouter([
     path: "/maturation",
     element: <MaturationPhase />,
   },
+
+
   {
     path: "/projectowner",
     element: <ProjectOwnerPage />,
@@ -269,6 +292,11 @@ const router = createBrowserRouter([
         path: "notifications",
         element: <Notifications />,
       },
+      {
+
+        path: "notification-list",
+        element: <NotificationList />,
+       },
       {
         path: "document",
         element: <DocumentManagementSystem />,

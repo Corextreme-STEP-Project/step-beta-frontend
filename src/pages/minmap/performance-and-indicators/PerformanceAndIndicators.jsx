@@ -3,6 +3,7 @@ import MetricItem from "./components/MetricItem";
 import { FaArrowUp, FaBell } from "react-icons/fa";
 import ProjectTab from "./components/ProjectTab";
 import ProjectTable from "./components/ProjectTable";
+import { Link } from "react-router-dom";
 
 const PerformanceAndIndicators = () => {
   return (
@@ -26,7 +27,10 @@ const PerformanceAndIndicators = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <FaBell />
+          <Link to={"/dashboard/create-notification"}>
+          <FaBell className="text-2xl"/>
+          </Link>
+         
           profile
         </div>
       </header>
