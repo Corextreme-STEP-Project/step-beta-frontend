@@ -65,7 +65,15 @@ const TenderTracking = () => {
         date: null, // Date is null for stages not yet completed
         completed: false,
         description: "Pending technical evaluation completion"
-      }
+      },
+      {
+        status: "Final Review",
+        date: null,
+        completed: false,
+        description: "Pending final review completion"
+      },  {}
+      
+      
     ]
   };
 

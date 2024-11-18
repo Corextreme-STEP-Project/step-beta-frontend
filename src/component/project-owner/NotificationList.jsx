@@ -1,3 +1,4 @@
+
 // import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 
@@ -58,11 +59,13 @@
 // export default NotificationList;
 
 
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const NotificationList = () => {
   const [notifications, setNotifications] = useState([]);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState('all');
   const [startDate, setStartDate] = useState('');
@@ -72,6 +75,7 @@ const NotificationList = () => {
   useEffect(() => {
     const fetchNotifications = async () => {
       setLoading(true); // Show the loading spinner
+
       try {
         const response = await axios.get('/notifications/:userId'); // Replace `userId` dynamically
         console.log('API Response:', response.data);
@@ -80,6 +84,7 @@ const NotificationList = () => {
         console.error('Error fetching notifications:', error);
       } finally {
         setLoading(false); // Hide the loading spinner
+
       }
     };
 
@@ -216,6 +221,7 @@ const NotificationList = () => {
           )}
         </>
       )}
+
     </div>
   );
 };

@@ -1,12 +1,49 @@
 // ProjectTable.jsx
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ProjectTable = () => {
   const projects = [
-    { id: "0768", name: "Construction school Y", phase: "Execution", officer: "Paul Janvier", date: "29/10/25", progress: 40, performance: "Moderate concern", compliance: "Needs attention" },
-    { id: "0767", name: "Road construction", phase: "Monitoring", officer: "Iaculis enim", date: "29/10/25", progress: 20, performance: "At risk", compliance: "Non Compliant" },
-    { id: "0768", name: "Construction school Y", phase: "Execution", officer: "Paul Janvier", date: "29/10/25", progress: 40, performance: "Moderate concern", compliance: "Needs attention" },
-    { id: "0767", name: "Road construction", phase: "Monitoring", officer: "Iaculis enim", date: "29/10/25", progress: 20, performance: "At risk", compliance: "Non Compliant" },
+    {
+      id: "0768",
+      name: "Construction school Y",
+      phase: "Execution",
+      officer: "Paul Janvier",
+      date: "29/10/25",
+      progress: 40,
+      performance: "Moderate concern",
+      compliance: "Needs attention",
+    },
+    {
+      id: "0767",
+      name: "Road construction",
+      phase: "Monitoring",
+      officer: "Iaculis enim",
+      date: "29/10/25",
+      progress: 20,
+      performance: "At risk",
+      compliance: "Non Compliant",
+    },
+    {
+      id: "0768",
+      name: "Construction school Y",
+      phase: "Execution",
+      officer: "Paul Janvier",
+      date: "29/10/25",
+      progress: 40,
+      performance: "Moderate concern",
+      compliance: "Needs attention",
+    },
+    {
+      id: "0767",
+      name: "Road construction",
+      phase: "Monitoring",
+      officer: "Iaculis enim",
+      date: "29/10/25",
+      progress: 20,
+      performance: "At risk",
+      compliance: "Non Compliant",
+    },
     // Add more projects as needed
   ];
 
@@ -25,6 +62,7 @@ const ProjectTable = () => {
             <th className="p-4">Compliance Status</th>
           </tr>
         </thead>
+
         <tbody>
           {projects.map((project) => (
             <tr key={project.id} className="hover:bg-gray-50">
@@ -32,17 +70,25 @@ const ProjectTable = () => {
               <td className="p-4">{project.name}</td>
               <td className="p-4">{project.phase}</td>
               <td className="p-4">{project.officer}</td>
-              <td className="p-4">{project.date}</td>
+              <td className="p-4"> <Link to={"/dashboard/compliance-audit-insights"}>
+               {project.date}</Link></td>
               <td className="p-4">
                 <div className="w-full bg-gray-200 rounded-full">
                   <div
                     style={{ width: `${project.progress}%` }}
-                    className={`h-2 rounded-full ${project.progress > 50 ? "bg-green-500" : "bg-orange-500"}`}
+                    className={`h-2 rounded-full ${
+                      project.progress > 50 ? "bg-green-500" : "bg-orange-500"
+                    }`}
                   />
                 </div>
               </td>
+
               <td className="p-4">{project.performance}</td>
-              <td className="p-4">{project.compliance}</td>
+              <td className="p-4">
+                <Link to={"/dashboard/detailed-compliance-report"}>
+                  {project.compliance}
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

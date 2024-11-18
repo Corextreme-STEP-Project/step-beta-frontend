@@ -37,14 +37,14 @@ const ProjectDetails = () => {
   if (!project) return <p className="text-center text-gray-500">Project not found.</p>;
 
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center py-10 px-4">
+    <div className="min-h-screen bg-lime-50 flex justify-center py-10 px-4">
       <div className="w-full max-w-3xl bg-white shadow-xl rounded-lg p-8 relative">
         <Link className="absolute left-4 top-4 text-gray-600 hover:text-green-500 transition" to={`/project-list`}>
           <FontAwesomeIcon icon={faCircleArrowLeft} size="lg" />
         </Link>
 
         <button
-          onClick={() => navigate(`/update-status`)}
+          onClick={() => navigate(`/projects/${project.id}/edit`)}
           className="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700 transition"
         >Edit
         </button>
