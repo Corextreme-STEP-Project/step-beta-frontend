@@ -135,30 +135,30 @@ const router = createBrowserRouter([
         element:<Projects/>,
       },
 
-      {
-        path: "tenders",
-        element: <Tenders/>
-      },
+      // {
+      //   path: "tenders",
+      //   element: <Tenders/>
+      // },
 
-      {
-        path: "docs",
-        element: <DocumentRepo />,
-      },
+      // {
+      //   path: "docs",
+      //   element: <DocumentRepo />,
+      // },
     
-      {
-        path: "reports",
-        element: <Reports/>,
-      },
+      // {
+      //   path: "reports",
+      //   element: <Reports/>,
+      // },
 
       {
         path: "performance",
         element:<Performance/>
       },
 
-      {
-        path: "archives",
-        element: <Archives />,
-      },
+      // {
+      //   path: "archives",
+      //   element: <Archives />,
+      // },
     
 
       {
@@ -256,25 +256,25 @@ const router = createBrowserRouter([
   },
 
 
-  {
-    path: "/dashboard",
-    element: <DashboardLayout />,
-    children: [
-      {
-        index: true,
-        element: <MinMapDashboard />,
-      },
-      {
-        path: "performance-compliance",
-        element: <PerformanceAndIndicators />,
-      },
-      {
-        path: "create-notification",
-        element: <NotificationCreator />,
-      },
+  // {
+  //   path: "/dashboard",
+  //   element: <DashboardLayout />,
+  //   children: [
+  //     {
+  //       index: true,
+  //       element: <MinMapDashboard />,
+  //     },
+  //     {
+  //       path: "performance-compliance",
+  //       element: <PerformanceAndIndicators />,
+  //     },
+  //     {
+  //       path: "create-notification",
+  //       element: <NotificationCreator />,
+  //     },
      
-    ],
-  },
+  //   ],
+  // },
 
 
   {
@@ -294,10 +294,10 @@ const router = createBrowserRouter([
         path: "receptions",
         element: <ReceptionsPayments />,
       },
-      {
-        path: "docs",
-        element: <DocumentRepo />,
-      },
+      // {
+      //   path: "docs",
+      //   element: <DocumentRepo />,
+      // },
       {
         path: "settings",
         element: <SettingsMain />,

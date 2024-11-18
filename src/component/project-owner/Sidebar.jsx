@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { FaBars, FaCog, FaQuestionCircle, FaCheckCircle, FaRegFileAlt, FaRegClock, FaPlus, FaSearch } from 'react-icons/fa';
+import { FaChartBar } from 'react-icons/fa6';
 
 
 
@@ -65,10 +66,10 @@ const Sidebar = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
                     {!isSidebarCollapsed && <span>Documents and Circulars</span>}
                 </Link>
 
-                {/* <Link to="/projectowner/performance" className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2">
+                <Link to="/projectowner/notification-list" className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2">
                     <FaChartBar size={24} />
-                    {!isSidebarCollapsed && <span>Performance and Indicators</span>}
-                </Link> */}
+                    {!isSidebarCollapsed && <span>Notifications</span>}
+                </Link>
             </nav>
 
             {/* Settings at the bottom */}

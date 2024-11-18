@@ -22,7 +22,7 @@ const Sidebar = () => {
     <aside
       className={`bg-emerald-600 text-white transition-all duration-300 ${
         isSidebarCollapsed ? "w-20" : "w-64"
-      } flex flex-col p-4 h-full fixed`} // Sidebar container
+      } flex flex-col p-4 h-full `} // Sidebar container
     >
       {/* Step button fixed at the top */}
       <button
