@@ -1,5 +1,10 @@
+import { Link } from "react-router-dom";
+
 const MetricItem = (props) => {
   return (
+
+    <>
+    <Link to={"/dashboard/kpi-analysis"}>
     <div className="p-3 flex item flex-col gap-4 bg-[#c5e0b5] rounded-md">
       <p>{props.text}</p>
       <h1>{props.fig}</h1>
@@ -12,6 +17,10 @@ const MetricItem = (props) => {
         </div>
       </div>
     </div>
+    </Link>
+    
+    </>
+    
   );
 };
 

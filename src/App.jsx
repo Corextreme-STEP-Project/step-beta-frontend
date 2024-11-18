@@ -24,15 +24,30 @@ import LiveChat from "./component/minmap/Livechat";
 import ProjectOwnerDash from "./component/project-owner/ProjectOwnerDash";
 import MessageHelp from "./component/project-owner/livechat/MessageHelp";
 import NewChat from "./component/project-owner/newchat/NewChat";
+import PerformanceTracker from "./layout/performance/PerformanceTracker";
+// import ProjectDetails from '../src/layout/performance/ProjectDetails';
+import Response from "./component/minmap/Response";
 // import DocumentUpload from './pages/management/DocumentUpload';
 // import DocumentUploadUI from './pages/management/DocumentUploadUI';
+import Settings from "./pages/minmap/dashboard/Settings";
+import MessagingHelp from "./pages/minmap/dashboard/MessagingHelp";
+import EditProjectStatus from "./pages/project-owner/projectForm/Update";
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
 import MergedNotificationDashboard from "./layout/minmap/NotificationDashboard";
-
 import NotificationCreator from "./component/minmap/NotificationCreator";
 import NotificationList from "./component/project-owner/NotificationList";
+import DetailedComplianceReport from "./pages/minmap/performance-and-indicators/DetailedComplianceReport ";
+import KPIAnalysis from "./pages/minmap/performance-and-indicators/KPIAnalysis";
+import ComplianceComparison from "./pages/minmap/performance-and-indicators/ComplianceComparison";
+import ComplianceRiskAssessment from "./pages/minmap/performance-and-indicators/ComplianceRiskAssessment";
+import ComplianceAuditInsights from "./pages/minmap/performance-and-indicators/ComplianceAuditInsights";
+import Projects from "./pages/minmap/dashboard/Projects";
+import ReceptionsPayments from "./component/project-owner/ReceptionsPayments";
+import SettingsMain from "./component/project-owner/SettingsMain";
+import MessagingHelpMain from "./component/project-owner/MessagingHelp";
+
 
 // Create a theme instance
 const theme = createTheme({
@@ -64,10 +79,6 @@ const router = createBrowserRouter([
     path: "/newchat",
     element: <NewChat />,
   },
-  {
-    path: "/upload",
-    element: <DocumentManagementSystem />,
-  },
 
   {
     path: "/live_ui_dashboard",
@@ -82,13 +93,126 @@ const router = createBrowserRouter([
         path: "live-chat",
         element: <LiveChat />,
       },
+      {
+        path: "respond",
+        element: <Response />,
+      },
     ],
   },
 
+ 
   {
-    path: "/tender",
-    element: <TenderManagement />,
+    path: "/notification",
+    element: <MergedNotificationDashboard />,
   },
+
+ 
+
+  
+
+  
+
+  {
+    path: "/projects/:id/edit",
+    element: <EditProjectStatus />,
+  },
+  
+
+  
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <MinMapDashboard />,
+      },
+
+      {
+        path:"projects",
+        element:<Projects/>,
+      },
+
+      {
+        path: "tenders",
+        element: <Tenders/>
+      },
+
+      {
+        path: "docs",
+        element: <DocumentRepo />,
+      },
+    
+      {
+        path: "reports",
+        element: <Reports/>,
+      },
+
+      {
+        path: "performance",
+        element:<Performance/>
+      },
+
+      {
+        path: "archives",
+        element: <Archives />,
+      },
+    
+
+      {
+        path: "settings",
+        element: <Settings />, 
+      },
+
+      {
+        path: "help",
+        element: <MessagingHelp />,
+      },
+      {
+        path: "tender",
+        element: <TenderManagement />,
+      },
+
+      {
+        path: "performance-tracker",
+        element: <PerformanceTracker />,
+      },
+      {
+        path: "performance-compliance",
+        element: <PerformanceAndIndicators />,
+      },
+      {
+        path: "detailed-compliance-report",
+        element: <DetailedComplianceReport />,
+      },
+      {
+        path: "kpi-analysis",
+        element: <KPIAnalysis />,
+      },
+      {
+        path: "compliance-comparison",
+        element: <ComplianceComparison />,
+      },
+      {
+        path: "compliance-risk-assessment",
+        element: <ComplianceRiskAssessment />,
+      },
+      {
+        path: "compliance-audit-insights",
+        element: <ComplianceAuditInsights />,
+      },
+      {
+        path: "create-notification",
+        element: <NotificationCreator />,
+      },
+
+      {
+        path: "document",
+        element: <DocumentManagementSystem />,
+      },
+    ],
+  },
+
   // {
   //   path: "/notification",
   //   element: <MergedNotificationDashboard />,
@@ -101,6 +225,9 @@ const router = createBrowserRouter([
   //   path: "/note-form",
   //   element: <CreateNotificationForm />,
   // },
+
+
+
   {
     path: "/login",
     element: <LoginForm />,
@@ -121,35 +248,13 @@ const router = createBrowserRouter([
     path: "/project/:id",
     element: <ProjectDetails />,
   },
-  {
-    path: "/update-status",
-    element: <UpdateProjectStatus />,
-  },
 
   {
     path: "/maturation",
     element: <MaturationPhase />,
   },
 
-  {
-    path: "/dashboard",
-    element: <DashboardLayout />,
-    children: [
-      {
-        index: true,
-        element: <MinMapDashboard />,
-      },
-      {
-        path: "performance-compliance",
-        element: <PerformanceAndIndicators />,
-      },
-      {
-        path: "create-notification",
-        element: <NotificationCreator />,
-      },
-     
-    ],
-  },
+
   {
     path: "/projectowner",
     element: <ProjectOwnerPage />,
@@ -164,6 +269,22 @@ const router = createBrowserRouter([
         element: <ProjectMaturation />,
       },
       {
+        path: "receptions",
+        element: <ReceptionsPayments />,
+      },
+      {
+        path: "docs",
+        element: <DocumentRepo />,
+      },
+      {
+        path: "settings",
+        element: <SettingsMain />,
+      },
+      {
+        path: "help",
+        element: <MessagingHelpMain />,
+      },
+      {
         path: "contractawarding",
         element: <ContractAwarding />,
       },
@@ -172,8 +293,13 @@ const router = createBrowserRouter([
         element: <Notifications />,
       },
       {
+
         path: "notification-list",
         element: <NotificationList />,
+       },
+      {
+        path: "document",
+        element: <DocumentManagementSystem />,
       },
     ],
   },

@@ -21,7 +21,26 @@ export const apiGetSingleProject = async (id) => {
   return apiClient.get(`/projects/${id}`); 
 };
 
-// Update a project
+// Update project
 export const apiUpdateProjectStatus = async (id, statusData) => {
-  return apiClient.patch(`/projects/${id}/status`, statusData);
+  try {
+    const response = await apiClient.patch(
+      `/projects/${id}/status`,
+      statusData,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+         
+        },
+      }
+    );
+    
+    return response;
+    
+  } catch (error) {
+    console.error("Error in apiUpdateProjectStatus:", error);
+    throw error; 
+  }
 };
+
+

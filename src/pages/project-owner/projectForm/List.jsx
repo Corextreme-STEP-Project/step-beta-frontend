@@ -35,7 +35,7 @@ const ProjectList = () => {
 
       <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
-          <Link to={`/project/${project.id}`} key={project.id}>
+          <Link to={`/projects/${project.id}`} key={project.id}>
             <div className="border p-6 rounded-lg shadow-md hover:shadow-xl bg-white transform hover:scale-105 transition-transform duration-200">
               <h2 className="text-xl font-semibold text-gray-900 mb-2">{project.projectTitle}</h2>
 

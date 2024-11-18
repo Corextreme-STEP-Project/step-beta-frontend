@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FaFile } from 'react-icons/fa';
 
+
 const ProjectsTable = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const projectsPerPage = 3;
