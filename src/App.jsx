@@ -53,10 +53,14 @@ import KPIAnalysis from "./pages/minmap/performance-and-indicators/KPIAnalysis";
 import ComplianceComparison from "./pages/minmap/performance-and-indicators/ComplianceComparison";
 import ComplianceRiskAssessment from "./pages/minmap/performance-and-indicators/ComplianceRiskAssessment";
 import ComplianceAuditInsights from "./pages/minmap/performance-and-indicators/ComplianceAuditInsights";
+
+import ChatDashboardLayout from "./layout/project-owner/ChatDashboardLayout";
+
 import Projects from "./pages/minmap/dashboard/Projects";
 import ReceptionsPayments from "./component/project-owner/ReceptionsPayments";
 import SettingsMain from "./component/project-owner/SettingsMain";
 import MessagingHelpMain from "./component/project-owner/MessagingHelp";
+
 
 
 
@@ -267,14 +271,6 @@ const router = createBrowserRouter([
   // },
 
   {
-    path: "/login",
-    element: <LoginForm />,
-  },
-  {
-    path: "/register",
-    element: <RegistrationForm />,
-  },
-  {
     path: "/add-project",
     element: <ProjectForm />,
   },
@@ -352,15 +348,29 @@ const router = createBrowserRouter([
         element: <Notifications />,
       },
       {
+
+        path: "/stakeholders-messaging",
+        element: <ChatDashboardLayout />,
+        children: [
+          // {
+          //   index: true,
+          //   element: 
+          // }
+        ]
+       },
+  {
         path: "notification-list",
         element: <NotificationList />,
        },
       {
         path: "document",
         element: <DocumentManagementSystem />,
+
       },
-    ],
+
   },
+
+  
 ]);
 
 function App() {
