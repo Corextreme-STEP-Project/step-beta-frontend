@@ -50,7 +50,7 @@ const SidebarLiveUI = () => {
           </Link>
         </h1>
         <h1 className="">
-          <Link to={"/"}>
+          <Link to={"/projectowner/notifications"}>
             <button
               className="w-full hover:bg-white  p-2   text-black "
               onClick={() => handleViewChange("")}
@@ -60,7 +60,7 @@ const SidebarLiveUI = () => {
           </Link>
         </h1>
         <h1 className="">
-          <Link to={"/"}>
+          <Link to={"/FAQ"}>
             <button
               className="w-full hover:bg-white  p-2   text-black "
               onClick={() => handleViewChange("")}

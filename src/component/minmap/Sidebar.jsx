@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useRole } from '../../context/RoleContext'; // Import useRole hook
+
 import {
   FaProjectDiagram,
   FaFileAlt,
@@ -10,18 +12,26 @@ import {
   FaChartLine,
   FaQuestionCircle,
   FaSearch,
-  FaTachometerAlt,
+  FaSignOutAlt
 } from "react-icons/fa";
 
 const Sidebar = () => {
+
+
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const { logout } = useRole(); // Destructure the logout function from useRole
+  const navigate = useNavigate(); // Initialize navigate
+
+  const handleLogout = () => {
+    logout(); // Call the logout function
+    navigate('/login'); // Redirect to the login page
+  };
 
   return (
     <aside
-      className={`bg-emerald-600 text-white transition-all duration-300 ${
-        isSidebarCollapsed ? "w-20" : "w-64"
-      } flex flex-col p-4 h-full relative`} // Sidebar container
+      className={`bg-emerald-600 text-white transition-all duration-300 ${isSidebarCollapsed ? "w-20" : "w-64"
+        } flex flex-col p-4 h-full `} // Sidebar container
     >
       {/* Step button fixed at the top */}
       <button
@@ -58,9 +68,8 @@ const Sidebar = () => {
 
       {/* Navigation links */}
       <nav
-        className={`flex flex-col space-y-4 ${
-          isSidebarCollapsed ? "items-center" : ""
-        } mt-8`} // Add margin-top to avoid overlap with "Step" button and ensure proper spacing
+        className={`flex flex-col space-y-4 ${isSidebarCollapsed ? "items-center" : ""
+          } mt-8`} // Add margin-top to avoid overlap with "Step" button and ensure proper spacing
       >
         <Link
           to="/dashboard/projects"
@@ -79,7 +88,7 @@ const Sidebar = () => {
           {!isSidebarCollapsed && <span>Calls for tenders</span>}
         </Link>
         <Link
-          to="/dashboard/documents"
+          to="/dashboard/docs"
           title="Documents"
           className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
         >
@@ -131,8 +140,19 @@ const Sidebar = () => {
           {!isSidebarCollapsed && <span>Messaging & Help</span>}
         </Link>
       </div>
+      {/* Logout button */}
+      <div>
+        <button
+          onClick={handleLogout} // Call handleLogout on button click
+          className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
+        >
+          <FaSignOutAlt size={24} />
+          {!isSidebarCollapsed && <span>Logout</span>}
+        </button>
+      </div>
     </aside>
   );
+
 };
 
 export default Sidebar;

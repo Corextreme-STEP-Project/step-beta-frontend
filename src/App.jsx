@@ -16,7 +16,6 @@ import ProjectMaturation from "./component/project-owner/ProjectMaturation";
 import ContractAwarding from "./component/project-owner/ContractAwarding";
 import Notifications from "./component/project-owner/Notifications";
 import ProjectOwnerPage from "./pages/project-owner/ProjectOwnerPage";
-import UpdateProjectStatus from "./pages/project-owner/projectForm/EditProject";
 import LiveUI_Dashboard from "./layout/minmap/LiveUI_Dashboard";
 // import FAQ from "./component/minmap/Faq";
 import FAQS from "./component/minmap/FAQItems";
@@ -32,22 +31,38 @@ import Response from "./component/minmap/Response";
 import Settings from "./pages/minmap/dashboard/Settings";
 import MessagingHelp from "./pages/minmap/dashboard/MessagingHelp";
 import EditProjectStatus from "./pages/project-owner/projectForm/Update";
-import DocumentRepo from "./component/minmap/DocumentRepo";
-import Tenders from "./pages/minmap/dashboard/Tenders";
-import Reports from "./pages/minmap/dashboard/Reports";
-import Documents from "./pages/minmap/dashboard/Documents";
-import Performance from "./pages/minmap/dashboard/Performance";
-import Archives from "./pages/minmap/dashboard/Archives";
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
+
+import AddMilestoneForm from "./pages/Perf-Indic/AddMilestone";
+import AddPerformanceIndicatorForm from "./pages/Perf-Indic/AddIndicator";
+import PerformanceIndicatorList from "./pages/Perf-Indic/IndicatorList";
+import MilestoneList from "./pages/Perf-Indic/MilestoneList";
+import PerformanceIndicatorDetail from "./pages/Perf-Indic/IndicatorId";
+import MilestoneDetails from "./pages/Perf-Indic/MilestoneId";
+
+
+
+
 import MergedNotificationDashboard from "./layout/minmap/NotificationDashboard";
+import NotificationCreator from "./component/minmap/NotificationCreator";
+import NotificationList from "./component/project-owner/NotificationList";
 import DetailedComplianceReport from "./pages/minmap/performance-and-indicators/DetailedComplianceReport ";
 import KPIAnalysis from "./pages/minmap/performance-and-indicators/KPIAnalysis";
 import ComplianceComparison from "./pages/minmap/performance-and-indicators/ComplianceComparison";
 import ComplianceRiskAssessment from "./pages/minmap/performance-and-indicators/ComplianceRiskAssessment";
 import ComplianceAuditInsights from "./pages/minmap/performance-and-indicators/ComplianceAuditInsights";
+
 import ChatDashboardLayout from "./layout/project-owner/ChatDashboardLayout";
+
+import Projects from "./pages/minmap/dashboard/Projects";
+import ReceptionsPayments from "./component/project-owner/ReceptionsPayments";
+import SettingsMain from "./component/project-owner/SettingsMain";
+import MessagingHelpMain from "./component/project-owner/MessagingHelp";
+
+
+
 
 // Create a theme instance
 const theme = createTheme({
@@ -79,10 +94,6 @@ const router = createBrowserRouter([
     path: "/newchat",
     element: <NewChat />,
   },
-  {
-    path: "/upload",
-    element: <DocumentManagementSystem />,
-  },
 
   {
     path: "/live_ui_dashboard",
@@ -104,45 +115,27 @@ const router = createBrowserRouter([
     ],
   },
 
-  {
-    path: "/docs",
-    element: <DocumentRepo />,
-  },
-
+ 
   {
     path: "/notification",
     element: <MergedNotificationDashboard />,
   },
 
-  {
-    path: "/tenders",
-    element: <Tenders />,
-  },
 
-  {
-    path: "/reports",
-    element: <Reports />,
-  },
 
-  {
-    path: "/documents",
-    element: <Documents />,
-  },
+ 
+
+  
+
+  
 
   {
     path: "/projects/:id/edit",
     element: <EditProjectStatus />,
   },
-  {
-    path: "/performance",
-    element: <Performance />,
-  },
+  
 
-  {
-    path: "/archives",
-    element: <Archives />,
-  },
-
+  
   {
     path: "/dashboard",
     element: <DashboardLayout />,
@@ -153,8 +146,39 @@ const router = createBrowserRouter([
       },
 
       {
+        path:"projects",
+        element:<Projects/>,
+      },
+
+      // {
+      //   path: "tenders",
+      //   element: <Tenders/>
+      // },
+
+      // {
+      //   path: "docs",
+      //   element: <DocumentRepo />,
+      // },
+    
+      // {
+      //   path: "reports",
+      //   element: <Reports/>,
+      // },
+
+      {
+        path: "performance",
+        element:<Performance/>
+      },
+
+      // {
+      //   path: "archives",
+      //   element: <Archives />,
+      // },
+    
+
+      {
         path: "settings",
-        element: <Settings />,
+        element: <Settings />, 
       },
 
       {
@@ -174,6 +198,32 @@ const router = createBrowserRouter([
         path: "performance-compliance",
         element: <PerformanceAndIndicators />,
       },
+
+    {
+        path: "indicator-list",
+        element: <PerformanceIndicatorList/>,
+      },
+    {
+        path: "indicator-form",
+        element: <AddPerformanceIndicatorForm/>,
+      },
+    {
+        path: "milestone-form",
+        element: <AddMilestoneForm/>,
+      },
+    {
+        path: "milestone-list",
+        element: <MilestoneList/>,
+      },
+    {
+        path: "milestone/:id",
+        element: <MilestoneDetails/>,
+      },
+    {
+        path: "indicator/:id",
+        element: <PerformanceIndicatorDetail/>,
+      },
+    
       {
         path: "detailed-compliance-report",
         element: <DetailedComplianceReport />,
@@ -194,8 +244,31 @@ const router = createBrowserRouter([
         path: "compliance-audit-insights",
         element: <ComplianceAuditInsights />,
       },
+      {
+        path: "create-notification",
+        element: <NotificationCreator />,
+      },
+
+      {
+        path: "document",
+        element: <DocumentManagementSystem />,
+      },
     ],
   },
+
+
+  // {
+  //   path: "/notification",
+  //   element: <MergedNotificationDashboard />,
+  // },
+  // {
+  //   path: "/notification",
+  //   element: <MnmapNotifications />,
+  // },
+  // {
+  //   path: "/note-form",
+  //   element: <CreateNotificationForm />,
+  // },
 
   {
     path: "/add-project",
@@ -206,7 +279,7 @@ const router = createBrowserRouter([
     element: <ProjectList />,
   },
   {
-    path: "/project/:id",
+    path: "/projects/:id",
     element: <ProjectDetails />,
   },
 
@@ -214,6 +287,29 @@ const router = createBrowserRouter([
     path: "/maturation",
     element: <MaturationPhase />,
   },
+
+
+  // {
+  //   path: "/dashboard",
+  //   element: <DashboardLayout />,
+  //   children: [
+  //     {
+  //       index: true,
+  //       element: <MinMapDashboard />,
+  //     },
+  //     {
+  //       path: "performance-compliance",
+  //       element: <PerformanceAndIndicators />,
+  //     },
+  //     {
+  //       path: "create-notification",
+  //       element: <NotificationCreator />,
+  //     },
+     
+  //   ],
+  // },
+
+
   {
     path: "/projectowner",
     element: <ProjectOwnerPage />,
@@ -228,6 +324,22 @@ const router = createBrowserRouter([
         element: <ProjectMaturation />,
       },
       {
+        path: "receptions",
+        element: <ReceptionsPayments />,
+      },
+      // {
+      //   path: "docs",
+      //   element: <DocumentRepo />,
+      // },
+      {
+        path: "settings",
+        element: <SettingsMain />,
+      },
+      {
+        path: "help",
+        element: <MessagingHelpMain />,
+      },
+      {
         path: "contractawarding",
         element: <ContractAwarding />,
       },
@@ -236,6 +348,7 @@ const router = createBrowserRouter([
         element: <Notifications />,
       },
       {
+
         path: "/stakeholders-messaging",
         element: <ChatDashboardLayout />,
         children: [
@@ -244,20 +357,20 @@ const router = createBrowserRouter([
           //   element: 
           // }
         ]
+       },
+  {
+        path: "notification-list",
+        element: <NotificationList />,
+       },
+      {
+        path: "document",
+        element: <DocumentManagementSystem />,
+
       },
-    ],
+
   },
 
-  {
-    path: "/stakeholders-messaging",
-    element: <ChatDashboardLayout />,
-    children: [
-      // {
-      //   index: true,
-      //   element: 
-      // }
-    ]
-  },
+  
 ]);
 
 function App() {

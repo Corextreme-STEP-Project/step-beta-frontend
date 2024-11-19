@@ -105,7 +105,7 @@ const Body2 = () => {
 
   return (
     <div className="h-screen flex overflow-hidden">
-      <ToastContainer position="bottom-right" autoClose={3000} />
+      <ToastContainer position="bottom-right" autoClose={300} />
 
       {/* Chat Section */}
       <div className="flex-1 overflow-y-scroll bg-white">
