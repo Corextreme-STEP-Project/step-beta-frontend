@@ -327,7 +327,7 @@ const router = createBrowserRouter([
         element: <Notifications />,
       },
       {
-        path: "/stakeholders-messaging",
+        path: "stakeholders-messaging",
         element: <ChatDashboardLayout />,
         children: [
           // {
