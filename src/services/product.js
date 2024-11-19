@@ -44,3 +44,31 @@ export const apiUpdateProjectStatus = async (id, statusData) => {
 };
 
 
+// add milestone
+export const apiAddMilestone = async (payload) => {
+  const token = localStorage.getItem ("token");
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json"
+};
+return apiClient.post ("/milestone", payload,  { headers }); 
+};
+
+// for performance indicators compononents
+// fetch milestones
+export const apiGetMilestones = async () => {
+return apiClient.get ("/milestone"); 
+};
+
+export const apiAddPerformanceIndicator = async (payload) => {
+  // const token = localStorage.getItem ("token");
+  const headers = {
+    // Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json"
+};
+return apiClient.post ("/performanceindicator", payload,  { headers }); 
+};
+
+export const apiGetPerformanceIndicators = async () => {
+  return apiClient.get ("/performanceindicator"); 
+  };

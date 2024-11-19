@@ -16,7 +16,6 @@ import ProjectMaturation from "./component/project-owner/ProjectMaturation";
 import ContractAwarding from "./component/project-owner/ContractAwarding";
 import Notifications from "./component/project-owner/Notifications";
 import ProjectOwnerPage from "./pages/project-owner/ProjectOwnerPage";
-import UpdateProjectStatus from "./pages/project-owner/projectForm/EditProject";
 import LiveUI_Dashboard from "./layout/minmap/LiveUI_Dashboard";
 // import FAQ from "./component/minmap/Faq";
 import FAQS from "./component/minmap/FAQItems";
@@ -35,6 +34,17 @@ import EditProjectStatus from "./pages/project-owner/projectForm/Update";
 import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
+
+import AddMilestoneForm from "./pages/Perf-Indic/AddMilestone";
+import AddPerformanceIndicatorForm from "./pages/Perf-Indic/AddIndicator";
+import PerformanceIndicatorList from "./pages/Perf-Indic/IndicatorList";
+import MilestoneList from "./pages/Perf-Indic/MilestoneList";
+import PerformanceIndicatorDetail from "./pages/Perf-Indic/IndicatorId";
+import MilestoneDetails from "./pages/Perf-Indic/MilestoneId";
+
+
+
+
 import MergedNotificationDashboard from "./layout/minmap/NotificationDashboard";
 import NotificationCreator from "./component/minmap/NotificationCreator";
 import NotificationList from "./component/project-owner/NotificationList";
@@ -47,6 +57,7 @@ import Projects from "./pages/minmap/dashboard/Projects";
 import ReceptionsPayments from "./component/project-owner/ReceptionsPayments";
 import SettingsMain from "./component/project-owner/SettingsMain";
 import MessagingHelpMain from "./component/project-owner/MessagingHelp";
+
 
 
 // Create a theme instance
@@ -183,6 +194,32 @@ const router = createBrowserRouter([
         path: "performance-compliance",
         element: <PerformanceAndIndicators />,
       },
+
+    {
+        path: "indicator-list",
+        element: <PerformanceIndicatorList/>,
+      },
+    {
+        path: "indicator-form",
+        element: <AddPerformanceIndicatorForm/>,
+      },
+    {
+        path: "milestone-form",
+        element: <AddMilestoneForm/>,
+      },
+    {
+        path: "milestone-list",
+        element: <MilestoneList/>,
+      },
+    {
+        path: "milestone/:id",
+        element: <MilestoneDetails/>,
+      },
+    {
+        path: "indicator/:id",
+        element: <PerformanceIndicatorDetail/>,
+      },
+    
       {
         path: "detailed-compliance-report",
         element: <DetailedComplianceReport />,
@@ -246,7 +283,7 @@ const router = createBrowserRouter([
     element: <ProjectList />,
   },
   {
-    path: "/project/:id",
+    path: "/projects/:id",
     element: <ProjectDetails />,
   },
 
