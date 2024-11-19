@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import { FaBars, FaCog, FaQuestionCircle, FaCheckCircle, FaRegFileAlt, FaRegClock, FaPlus, FaSearch, FaSignOutAlt } from 'react-icons/fa';
 import { FaChartBar } from 'react-icons/fa6';
 import { useRole } from '../../context/RoleContext'; // Import useRole hook
-
-
-
 
 const Sidebar = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -18,7 +15,11 @@ const Sidebar = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
     };
 
     return (
-        <aside className={`bg-emerald-600 text-white transition-all duration-300 ${isSidebarCollapsed ? 'w-20' : 'w-64'} flex flex-col p-4 h-screen fixed top-0 left-0`}>
+        <aside
+            className={`bg-emerald-600 text-white transition-all duration-300 ${isSidebarCollapsed ? 'w-20' : 'w-64'} flex flex-col p-4 h-screen fixed top-0 left-0`}
+            onMouseEnter={() => setIsSidebarCollapsed(false)} // Expand sidebar when mouse enters
+            onMouseLeave={() => setIsSidebarCollapsed(true)} // Collapse sidebar when mouse leaves
+        >
             <button onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)} className="text-white text-2xl p-2 mb-4 flex gap-3 bg-green-700 rounded-md mx-auto border-b border-white">
                 <FaBars size={24} />{!isSidebarCollapsed && <span>STEP</span>}
             </button>
@@ -48,7 +49,6 @@ const Sidebar = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
                 </Link>
             )}
 
-
             <nav className={`flex flex-col space-y-4 ${isSidebarCollapsed ? 'items-center' : ''}`}>
                 {/* Sidebar links */}
                 <Link to="/projectowner/" title="Projects" className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2">
@@ -60,7 +60,7 @@ const Sidebar = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
                         <FaRegClock size={24} />
                         <FaPlus
                             size={12}
-                            className="absolute top-[-4px] right-[-4px] text-white  "
+                            className="absolute top-[-4px] right-[-4px] text-white"
                         />
                     </div>
                     {!isSidebarCollapsed && <span>Project Steps</span>}
@@ -107,7 +107,7 @@ const Sidebar = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
                 </button>
             </div>
         </aside>
-    )
-}
+    );
+};
 
 export default Sidebar;

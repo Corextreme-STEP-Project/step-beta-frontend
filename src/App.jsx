@@ -52,11 +52,15 @@ import ComplianceRiskAssessment from "./pages/minmap/performance-and-indicators/
 import ComplianceAuditInsights from "./pages/minmap/performance-and-indicators/ComplianceAuditInsights";
 
 import ChatDashboardLayout from "./layout/project-owner/ChatDashboardLayout";
-
-import Projects from "./pages/minmap/dashboard/Projects";
 import ReceptionsPayments from "./component/project-owner/ReceptionsPayments";
 import SettingsMain from "./component/project-owner/SettingsMain";
 import MessagingHelpMain from "./component/project-owner/MessagingHelp";
+import Tenders from "./pages/minmap/dashboard/Tenders";
+import DocumentRepo from "./pages/minmap/dashboard/DocumentRepo";
+import Reports from "./pages/minmap/dashboard/Reports";
+import Projects from "./pages/minmap/dashboard/Projects";
+import Performance from "./pages/minmap/dashboard/Performance";
+import Archives from "./pages/minmap/dashboard/Archives";
 
 // Create a theme instance
 const theme = createTheme({
@@ -133,30 +137,30 @@ const router = createBrowserRouter([
         element: <Projects />,
       },
 
-      // {
-      //   path: "tenders",
-      //   element: <Tenders/>
-      // },
+       {
+         path: "tenders",
+         element:<Tenders/>
+       },
 
-      // {
-      //   path: "docs",
-      //   element: <DocumentRepo />,
-      // },
+       {
+         path: "docs",
+        element: <DocumentRepo />,
+       },
 
-      // {
-      //   path: "reports",
-      //   element: <Reports/>,
-      // },
+       {
+         path: "reports",
+         element: <Reports/>,
+       },
 
       {
         path: "performance",
-        element: <Performance />,
+        element: <Performance/>,
       },
 
-      // {
-      //   path: "archives",
-      //   element: <Archives />,
-      // },
+       {
+         path: "archives",
+         element: <Archives/>,
+       },
 
       {
         path: "settings",

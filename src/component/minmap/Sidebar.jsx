@@ -16,9 +16,7 @@ import {
 } from "react-icons/fa";
 
 const Sidebar = () => {
-
-
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true); // To toggle sidebar collapsed state
   const [searchQuery, setSearchQuery] = useState("");
   const { logout } = useRole(); // Destructure the logout function from useRole
   const navigate = useNavigate(); // Initialize navigate
@@ -30,20 +28,20 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`bg-emerald-600 text-white transition-all duration-300 ${isSidebarCollapsed ? "w-20" : "w-64"
-        } flex flex-col p-4 h-full `} // Sidebar container
+      className={`bg-emerald-600 text-white transition-all duration-300 flex flex-col p-4 h-full ${isSidebarCollapsed ? "w-20" : "w-64"}`}
+      onMouseEnter={() => setIsSidebarCollapsed(false)} // Expand sidebar when mouse enters
+      onMouseLeave={() => setIsSidebarCollapsed(true)} // Collapse sidebar when mouse leaves
     >
       {/* Step button fixed at the top */}
       <button
-        onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-        className="text-white mb-4 font-bold text-xl absolute top-4 left-4 z-10 "
+        className="text-white mb-4 font-bold text-xl absolute top-4 left-4 z-10"
       >
         STEP
       </button>
 
-      {/* Search bar */}
+      {/* Search bar - only show when expanded */}
       {!isSidebarCollapsed && (
-        <div className="mb-4 flex items-center bg-gray-100 rounded px-2 py-1 mt-10"> {/* Adjust margin-top to account for the Step button */}
+        <div className="mb-4 flex items-center bg-gray-100 rounded px-2 py-1 mt-10">
           <FaSearch className="text-gray-300 mr-2" />
           <input
             type="text"
@@ -56,21 +54,19 @@ const Sidebar = () => {
       )}
 
       {/* Dashboard link */}
-      {!isSidebarCollapsed && (
+      <div className={`mb-4 ${isSidebarCollapsed ? "hidden" : ""}`}>
         <Link
           to="/dashboard"
           title="Dashboard"
-          className="bg-gray-100 hover:bg-emerald-700 text-emerald-700 hover:text-white p-3 rounded flex items-center justify-center w-full mb-4"
+          className="bg-gray-100 hover:bg-emerald-700 text-emerald-700 hover:text-white p-3 rounded flex items-center justify-center w-full"
         >
-          <span>Dashboard</span>
+          <FaProjectDiagram className="mr-2" />
+          {!isSidebarCollapsed && <span>Dashboard</span>}
         </Link>
-      )}
+      </div>
 
       {/* Navigation links */}
-      <nav
-        className={`flex flex-col space-y-4 ${isSidebarCollapsed ? "items-center" : ""
-          } mt-8`} // Add margin-top to avoid overlap with "Step" button and ensure proper spacing
-      >
+      <nav className={`flex flex-col space-y-4 mt-8 ${isSidebarCollapsed ? "items-center" : ""}`}>
         <Link
           to="/dashboard/projects"
           title="Projects"
@@ -140,6 +136,7 @@ const Sidebar = () => {
           {!isSidebarCollapsed && <span>Messaging & Help</span>}
         </Link>
       </div>
+
       {/* Logout button */}
       <div>
         <button
@@ -152,7 +149,6 @@ const Sidebar = () => {
       </div>
     </aside>
   );
-
 };
 
 export default Sidebar;
