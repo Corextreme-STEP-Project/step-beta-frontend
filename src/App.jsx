@@ -42,9 +42,6 @@ import MilestoneList from "./pages/Perf-Indic/MilestoneList";
 import PerformanceIndicatorDetail from "./pages/Perf-Indic/IndicatorId";
 import MilestoneDetails from "./pages/Perf-Indic/MilestoneId";
 
-
-
-
 import MergedNotificationDashboard from "./layout/minmap/NotificationDashboard";
 import NotificationCreator from "./component/minmap/NotificationCreator";
 import NotificationList from "./component/project-owner/NotificationList";
@@ -60,9 +57,6 @@ import Projects from "./pages/minmap/dashboard/Projects";
 import ReceptionsPayments from "./component/project-owner/ReceptionsPayments";
 import SettingsMain from "./component/project-owner/SettingsMain";
 import MessagingHelpMain from "./component/project-owner/MessagingHelp";
-
-
-
 
 // Create a theme instance
 const theme = createTheme({
@@ -115,27 +109,16 @@ const router = createBrowserRouter([
     ],
   },
 
- 
   {
     path: "/notification",
     element: <MergedNotificationDashboard />,
   },
 
-
-
- 
-
-  
-
-  
-
   {
     path: "/projects/:id/edit",
     element: <EditProjectStatus />,
   },
-  
 
-  
   {
     path: "/dashboard",
     element: <DashboardLayout />,
@@ -146,8 +129,8 @@ const router = createBrowserRouter([
       },
 
       {
-        path:"projects",
-        element:<Projects/>,
+        path: "projects",
+        element: <Projects />,
       },
 
       // {
@@ -159,7 +142,7 @@ const router = createBrowserRouter([
       //   path: "docs",
       //   element: <DocumentRepo />,
       // },
-    
+
       // {
       //   path: "reports",
       //   element: <Reports/>,
@@ -167,18 +150,17 @@ const router = createBrowserRouter([
 
       {
         path: "performance",
-        element:<Performance/>
+        element: <Performance />,
       },
 
       // {
       //   path: "archives",
       //   element: <Archives />,
       // },
-    
 
       {
         path: "settings",
-        element: <Settings />, 
+        element: <Settings />,
       },
 
       {
@@ -199,31 +181,31 @@ const router = createBrowserRouter([
         element: <PerformanceAndIndicators />,
       },
 
-    {
+      {
         path: "indicator-list",
-        element: <PerformanceIndicatorList/>,
+        element: <PerformanceIndicatorList />,
       },
-    {
+      {
         path: "indicator-form",
-        element: <AddPerformanceIndicatorForm/>,
+        element: <AddPerformanceIndicatorForm />,
       },
-    {
+      {
         path: "milestone-form",
-        element: <AddMilestoneForm/>,
+        element: <AddMilestoneForm />,
       },
-    {
+      {
         path: "milestone-list",
-        element: <MilestoneList/>,
+        element: <MilestoneList />,
       },
-    {
+      {
         path: "milestone/:id",
-        element: <MilestoneDetails/>,
+        element: <MilestoneDetails />,
       },
-    {
+      {
         path: "indicator/:id",
-        element: <PerformanceIndicatorDetail/>,
+        element: <PerformanceIndicatorDetail />,
       },
-    
+
       {
         path: "detailed-compliance-report",
         element: <DetailedComplianceReport />,
@@ -256,7 +238,6 @@ const router = createBrowserRouter([
     ],
   },
 
-
   // {
   //   path: "/notification",
   //   element: <MergedNotificationDashboard />,
@@ -288,7 +269,6 @@ const router = createBrowserRouter([
     element: <MaturationPhase />,
   },
 
-
   // {
   //   path: "/dashboard",
   //   element: <DashboardLayout />,
@@ -305,10 +285,9 @@ const router = createBrowserRouter([
   //       path: "create-notification",
   //       element: <NotificationCreator />,
   //     },
-     
+
   //   ],
   // },
-
 
   {
     path: "/projectowner",
@@ -348,29 +327,25 @@ const router = createBrowserRouter([
         element: <Notifications />,
       },
       {
-
         path: "/stakeholders-messaging",
         element: <ChatDashboardLayout />,
         children: [
           // {
           //   index: true,
-          //   element: 
+          //   element:
           // }
-        ]
-       },
-  {
+        ],
+      },
+      {
         path: "notification-list",
         element: <NotificationList />,
-       },
+      },
       {
         path: "document",
         element: <DocumentManagementSystem />,
-
       },
-
+    ],
   },
-
-  
 ]);
 
 function App() {
