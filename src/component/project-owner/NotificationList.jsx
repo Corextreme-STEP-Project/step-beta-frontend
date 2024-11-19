@@ -157,7 +157,7 @@ const NotificationList = () => {
           >
             <option value="all">All Types</option>
             <option value="alert">Alert</option>
-            <option value="reminder">Notification</option>
+            <option value="reminder">Information</option>
             <option value="update">Warning</option>
             {/* Add more types based on your notification types */}
           </select>
