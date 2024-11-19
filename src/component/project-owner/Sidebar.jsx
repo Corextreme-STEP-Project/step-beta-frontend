@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import { FaBars, FaCog, FaQuestionCircle, FaCheckCircle, FaRegFileAlt, FaRegClock, FaPlus, FaSearch } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { FaBars, FaCog, FaQuestionCircle, FaCheckCircle, FaRegFileAlt, FaRegClock, FaPlus, FaSearch, FaSignOutAlt } from 'react-icons/fa';
 import { FaChartBar } from 'react-icons/fa6';
+import { useRole } from '../../context/RoleContext'; // Import useRole hook
+
 
 
 
 const Sidebar = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
     const [searchQuery, setSearchQuery] = useState("");
+    const { logout } = useRole(); // Destructure the logout function from useRole
+    const navigate = useNavigate(); // Initialize navigate
+
+    const handleLogout = () => {
+        logout(); // Call the logout function
+        navigate('/login'); // Redirect to the login page
+    };
+
     return (
         <aside className={`bg-emerald-600 text-white transition-all duration-300 ${isSidebarCollapsed ? 'w-20' : 'w-64'} flex flex-col p-4 h-screen fixed top-0 left-0`}>
             <button onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)} className="text-white text-2xl p-2 mb-4 flex gap-3 bg-green-700 rounded-md mx-auto border-b border-white">
@@ -85,6 +95,16 @@ const Sidebar = ({ isSidebarCollapsed, setIsSidebarCollapsed }) => {
                     <FaQuestionCircle size={24} />
                     {!isSidebarCollapsed && <span>Messaging & Help</span>}
                 </Link>
+            </div>
+            {/* Logout button */}
+            <div>
+                <button
+                    onClick={handleLogout} // Call handleLogout on button click
+                    className="hover:bg-emerald-500 p-2 rounded flex items-center space-x-2"
+                >
+                    <FaSignOutAlt size={24} />
+                    {!isSidebarCollapsed && <span>Logout</span>}
+                </button>
             </div>
         </aside>
     )
