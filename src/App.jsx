@@ -47,6 +47,7 @@ import KPIAnalysis from "./pages/minmap/performance-and-indicators/KPIAnalysis";
 import ComplianceComparison from "./pages/minmap/performance-and-indicators/ComplianceComparison";
 import ComplianceRiskAssessment from "./pages/minmap/performance-and-indicators/ComplianceRiskAssessment";
 import ComplianceAuditInsights from "./pages/minmap/performance-and-indicators/ComplianceAuditInsights";
+import ChatDashboardLayout from "./layout/project-owner/ChatDashboardLayout";
 
 // Create a theme instance
 const theme = createTheme({
@@ -197,14 +198,6 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/login",
-    element: <LoginForm />,
-  },
-  {
-    path: "/register",
-    element: <RegistrationForm />,
-  },
-  {
     path: "/add-project",
     element: <ProjectForm />,
   },
@@ -243,6 +236,17 @@ const router = createBrowserRouter([
         element: <Notifications />,
       },
     ],
+  },
+
+  {
+    path: "/stakeholders-messaging",
+    element: <ChatDashboardLayout />,
+    children: [
+      // {
+      //   index: true,
+      //   element: 
+      // }
+    ]
   },
 ]);
 
