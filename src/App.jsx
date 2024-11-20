@@ -310,10 +310,10 @@ const router = createBrowserRouter([
         path: "receptions",
         element: <ReceptionsPayments />,
       },
-      // {
-      //   path: "docs",
-      //   element: <DocumentRepo />,
-      // },
+      {
+        path: "docs",
+        element: <DocumentRepo />,
+      },
       {
         path: "settings",
         element: <SettingsMain />,
