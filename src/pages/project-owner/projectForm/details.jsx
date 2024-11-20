@@ -39,17 +39,17 @@ const ProjectDetails = () => {
   return (
     <div className="min-h-screen bg-lime-50 flex justify-center py-10 px-4">
       <div className="w-full max-w-3xl bg-white shadow-xl rounded-lg p-8 relative">
-        <Link className="absolute left-4 top-4 text-gray-600 hover:text-green-500 transition" to={`/project-list`}>
+        <Link className="absolute left-4 top-4 text-gray-600 hover:text-green-500 transition" to={`/projectowner`}>
           <FontAwesomeIcon icon={faCircleArrowLeft} size="lg" />
         </Link>
 
         <button
-          onClick={() => navigate(`/projects/${project.id}/edit`)}
+          onClick={() => navigate(`edit`)}
           className="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700 transition"
         >Edit
         </button>
 
-  
+
         <div className="text-center mb-6">
           <h1 className="text-3xl font-bold text-gray-800 mb-4">Project Details</h1>
           <p className="text-md text-gray-500">
@@ -57,7 +57,7 @@ const ProjectDetails = () => {
           </p>
         </div>
 
-        
+
         <div className="mb-8">
           <h2 className="text-xl font-semibold text-gray-700 mb-4">General Information</h2>
           <div className="grid grid-cols-2 gap-8 text-gray-700">
@@ -113,7 +113,7 @@ const ProjectDetails = () => {
           </div>
         </div>
 
-        
+
         <div className="mb-8">
           <h2 className="text-md text-gray-500 mb-2">Ongoing</h2>
           <div className="w-full bg-gray-200 rounded-full h-3 mb-4">

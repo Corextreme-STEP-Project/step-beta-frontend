@@ -137,30 +137,30 @@ const router = createBrowserRouter([
         element: <Projects />,
       },
 
-       {
-         path: "tenders",
-         element:<Tenders/>
-       },
+      {
+        path: "tenders",
+        element: <Tenders />
+      },
 
-       {
-         path: "docs",
+      {
+        path: "docs",
         element: <DocumentRepo />,
-       },
+      },
 
-       {
-         path: "reports",
-         element: <Reports/>,
-       },
+      {
+        path: "reports",
+        element: <Reports />,
+      },
 
       {
         path: "performance",
-        element: <Performance/>,
+        element: <Performance />,
       },
 
-       {
-         path: "archives",
-         element: <Archives/>,
-       },
+      {
+        path: "archives",
+        element: <Archives />,
+      },
 
       {
         path: "settings",
@@ -313,6 +313,14 @@ const router = createBrowserRouter([
       {
         path: "docs",
         element: <DocumentRepo />,
+      },
+      {
+        path: ":id",
+        element: <ProjectDetails />,
+      },
+      {
+        path: ":id/edit",
+        element: <EditProjectStatus />,
       },
       {
         path: "settings",
