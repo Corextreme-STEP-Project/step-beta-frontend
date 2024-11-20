@@ -66,6 +66,7 @@ const ProjectTable = () => {
 
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
+       <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
         <thead>
           <tr className="bg-gray-100 text-left">
@@ -114,6 +115,7 @@ const ProjectTable = () => {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

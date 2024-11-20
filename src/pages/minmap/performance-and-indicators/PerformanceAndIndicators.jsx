@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const PerformanceAndIndicators = () => {
   return (
-    <section className="w-full h-screen p-10">
+    <section className="w-full h-screen p-10 flex flex-col">
       <header className=" flex justify-between items-center  w-full ">
         {/* this is the header for the page */}
         <div>
@@ -36,7 +36,7 @@ const PerformanceAndIndicators = () => {
       </header>
 
       <section className="my-5">
-        <div className="grid grid-cols-3 gap-5 w-full ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 w-full">
           <MetricItem
             text="Projects that are compliant"
             fig="07"
@@ -49,8 +49,8 @@ const PerformanceAndIndicators = () => {
         </div>
 
         {/* project tabs and search */}
-        <div className="flex justify-between items-center mt-5 ">
-          <div className=" flex rounded-md border">
+        <div className="flex flex-col sm:flex-row justify-between items-center mt-5">
+          <div className=" flex rounded-md border mb-3 sm:mb-0">
             <ProjectTab title="All Projects" />
             <ProjectTab title="Maturation" />
             <ProjectTab title="Handover" />
