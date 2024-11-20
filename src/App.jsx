@@ -61,6 +61,12 @@ import Reports from "./pages/minmap/dashboard/Reports";
 import Projects from "./pages/minmap/dashboard/Projects";
 import Performance from "./pages/minmap/dashboard/Performance";
 import Archives from "./pages/minmap/dashboard/Archives";
+import LiveChatUi from "./component/project-owner/livechatui/LiveChatUi";
+import MessageArea from "./component/project-owner/livechatui/MessageArea";
+import InputArea from "./component/project-owner/livechatui/InputArea";
+import ChatHeader from "./component/project-owner/livechatui/ChatHeader";
+import Sidebar from "./component/project-owner/livechatui/Sidebar";
+import TypingIndicator from "./component/project-owner/livechatui/TypingIndicator";
 
 // Create a theme instance
 const theme = createTheme({
@@ -109,6 +115,33 @@ const router = createBrowserRouter([
       {
         path: "respond",
         element: <Response />,
+      },
+    ],
+  },
+  {
+    path: "/livechatui",
+    element: <LiveChatUi />,
+
+    children: [
+      {
+        index: true,
+        element: <MessageArea />,
+      },
+      {
+        path: "inputarea",
+        element: <InputArea />,
+      },
+      {
+        path: "chatheader",
+        element: <ChatHeader />,
+      },
+      {
+        path: "sidebar",
+        element: <Sidebar />,
+      },
+      {
+        path: "typingindicator",
+        element: <TypingIndicator />,
       },
     ],
   },
