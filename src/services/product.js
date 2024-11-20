@@ -72,3 +72,7 @@ return apiClient.post ("/performanceindicator", payload,  { headers });
 export const apiGetPerformanceIndicators = async () => {
   return apiClient.get ("/performanceindicator"); 
   };
+  
+export const apiPostDocument = async () => {
+  return apiClient.post ("/documents"); 
+  };
