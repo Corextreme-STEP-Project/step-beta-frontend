@@ -244,7 +244,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "detailed-compliance-report",
+        path: "detailed-compliance-report/:projectId",
         element: <DetailedComplianceReport />,
       },
       {

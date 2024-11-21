@@ -84,7 +84,7 @@ const ProjectTable = () => {
         <tbody>
           {compliance.map((project) => (
             <tr key={project.id} className="hover:bg-gray-50">
-              <td className="p-4">{}</td>
+              <td className="p-4">{project.id}</td>
               <td className="p-4">{project.project.projectTitle}</td>
               <td className="p-4">{project.project.projectStatus}</td>
               <td className="p-4">{project.checkedBy[0].firstName}</td>
@@ -107,7 +107,7 @@ const ProjectTable = () => {
 
               <td className="p-4">{}</td>
               <td className="p-4">
-                <Link to={"/dashboard/detailed-compliance-report"}>
+                <Link to={`/dashboard/detailed-compliance-report/${project.id}`}>
                   {project.complianceStatus}
                 </Link>
               </td>
