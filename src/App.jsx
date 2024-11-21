@@ -31,7 +31,7 @@ import Settings from "./pages/minmap/dashboard/Settings";
 import MessagingHelp from "./pages/minmap/dashboard/MessagingHelp";
 import EditProjectStatus from "./pages/project-owner/projectForm/Update";
 
-import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
+import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/PerformanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
 
 import AddMilestoneForm from "./pages/Perf-Indic/AddMilestone";
@@ -391,7 +391,6 @@ const router = createBrowserRouter([
 
        },
      
-      },
       {
         path: "document",
         element: <UploadDocumentForm/>,
