@@ -26,12 +26,11 @@ import NewChat from "./component/project-owner/newchat/NewChat";
 import PerformanceTracker from "./layout/performance/PerformanceTracker";
 // import ProjectDetails from '../src/layout/performance/ProjectDetails';
 import Response from "./component/minmap/Response";
-// import DocumentUpload from './pages/management/DocumentUpload';
-// import DocumentUploadUI from './pages/management/DocumentUploadUI';
+
 import Settings from "./pages/minmap/dashboard/Settings";
 import MessagingHelp from "./pages/minmap/dashboard/MessagingHelp";
 import EditProjectStatus from "./pages/project-owner/projectForm/Update";
-import DocumentManagementSystem from "./pages/management/DocumentUploadUI";
+
 import PerformanceAndIndicators from "./pages/minmap/performance-and-indicators/performanceAndIndicators";
 import LandingPage from "./pages/logins/LandingPage";
 
@@ -55,6 +54,10 @@ import ChatDashboardLayout from "./layout/project-owner/ChatDashboardLayout";
 import ReceptionsPayments from "./component/project-owner/ReceptionsPayments";
 import SettingsMain from "./component/project-owner/SettingsMain";
 import MessagingHelpMain from "./component/project-owner/MessagingHelp";
+
+import UploadDocumentForm from "./pages/management/UploadDocumentForm";
+
+
 import Tenders from "./pages/minmap/dashboard/Tenders";
 import DocumentRepo from "./pages/minmap/dashboard/DocumentRepo";
 import Reports from "./pages/minmap/dashboard/Reports";
@@ -67,6 +70,7 @@ import InputArea from "./component/project-owner/livechatui/InputArea";
 import ChatHeader from "./component/project-owner/livechatui/ChatHeader";
 import Sidebar from "./component/project-owner/livechatui/Sidebar";
 import TypingIndicator from "./component/project-owner/livechatui/TypingIndicator";
+
 
 // Create a theme instance
 const theme = createTheme({
@@ -270,7 +274,7 @@ const router = createBrowserRouter([
 
       {
         path: "document",
-        element: <DocumentManagementSystem />,
+        element: <UploadDocumentForm/>,
       },
     ],
   },
@@ -376,10 +380,13 @@ const router = createBrowserRouter([
       {
         path: "notification-list",
         element: <NotificationList />,
+
+       },
+     
       },
       {
         path: "document",
-        element: <DocumentManagementSystem />,
+        element: <UploadDocumentForm/>,
       },
     ],
   },
