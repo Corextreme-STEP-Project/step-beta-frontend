@@ -127,8 +127,8 @@ const NotificationList = () => {
   };
 
   return (
-    <div className="p-4 bg-[#059669] shadow rounded-lg w-[60%] mt-10 ml-72 ">
-      <h2 className="text-2xl font-semibold mb-4 text-center">Notifications</h2>
+    <div className="p-4 md:p-6 bg-[#059669] shadow rounded-lg md:rounded-xl w-full md:w-[60%] mt-4 md:mt-10 mx-auto md:ml-72 ">
+      <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center">Notifications</h2>
 
       {/* Loading Spinner */}
       {loading && (
@@ -157,25 +157,25 @@ const NotificationList = () => {
           >
             <option value="all">All Types</option>
             <option value="alert">Alert</option>
-            <option value="reminder">Notification</option>
+            <option value="reminder">Information</option>
             <option value="update">Warning</option>
             {/* Add more types based on your notification types */}
           </select>
 
           {/* Filter by Date Range */}
-          <div className="flex gap-4 mb-4">
+          <div className="flex flex-col md:flex-row gap-4 mb-4">
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="w-full p-2 border rounded"
+              className="w-full md:w-auto p-2 border rounded"
               placeholder="Start Date"
             />
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="w-full p-2 border rounded"
+              className="w-full md:w-auto p-2 border rounded"
               placeholder="End Date"
             />
           </div>
@@ -183,13 +183,13 @@ const NotificationList = () => {
           {/* Clear Filters Button */}
           <button
             onClick={clearFilters}
-            className="w-30 p-2 mb-4 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
+            className="w-full md:w-30 p-2 mb-4 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
           >
             Clear Filters
           </button>
 
           {/* Notification Count */}
-          <p className="text-sm text-gray-900 mb-2">
+          <p className="text-xs md:text-sm text-gray-900 mb-2">
             Showing {filteredNotifications.length} notifications.
           </p>
 

@@ -15,7 +15,7 @@ const Header = () => {
         </Link>
         </div>
 
-     <div className="animate-pulse text-lg lg:pr-96" >
+     <div className="a text-lg lg:pr-96">
         <h1 >Live Chat and Support</h1>
         </div>
     </div>

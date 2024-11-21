@@ -21,13 +21,13 @@ const ReceptionsPayments = () => {
     const filteredData = filter === 'All' ? data : data.filter(item => item.type === filter);
 
     return (
-        <div className="p-6 bg-white shadow-md rounded-md">
-            <h2 className="text-xl font-semibold text-gray-800">Receptions/Payments</h2>
+        <div className="p-4 md:p-6 lg:p-8 bg-white shadow-md rounded-md">
+            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-800">Receptions/Payments</h2>
             <p className="mt-2 text-gray-600">View and manage all receptions and payments.</p>
 
             {/* Filter Options */}
-            <div className="mt-4">
-                <label htmlFor="filter" className="mr-2 text-gray-700">Filter by:</label>
+            <div className="mt-4 flex flex-col md:flex-row items-center">
+                <label htmlFor="filter" className="mr-2 mb-2 md:mb-0 text-gray-700">Filter by:</label>
                 <select
                     id="filter"
                     value={filter}
@@ -41,27 +41,27 @@ const ReceptionsPayments = () => {
             </div>
 
             {/* Table to Display Data */}
-            <table className="w-full mt-4 border-collapse">
+            <table className="w-full table-auto">
                 <thead>
                     <tr>
-                        <th className="border p-2 text-left">ID</th>
-                        <th className="border p-2 text-left">Type</th>
-                        <th className="border p-2 text-left">Description</th>
-                        <th className="border p-2 text-left">Date</th>
-                        <th className="border p-2 text-left">Amount</th>
-                        <th className="border p-2 text-left">Actions</th>
+                        <th className="border p-2 text-sm md:text-base lg:text-lg text-left">ID</th>
+                        <th className="border p-2 text-sm md:text-base lg:text-lg text-left">Type</th>
+                        <th className="border p-2 text-sm md:text-base lg:text-lg text-left">Description</th>
+                        <th className="border p-2 text-sm md:text-base lg:text-lg text-left">Date</th>
+                        <th className="border p-2 text-sm md:text-base lg:text-lg text-left">Amount</th>
+                        <th className="border p-2 text-sm md:text-base lg:text-lg text-left">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {filteredData.length > 0 ? (
                         filteredData.map((item) => (
                             <tr key={item.id} className="hover:bg-gray-50">
-                                <td className="border p-2">{item.id}</td>
-                                <td className="border p-2">{item.type}</td>
-                                <td className="border p-2">{item.description}</td>
-                                <td className="border p-2">{item.date}</td>
-                                <td className="border p-2">${item.amount}</td>
-                                <td className="border p-2">
+                                <td className="border p-2 text-sm md:text-base lg:text-lg ">{item.id}</td>
+                                <td className="border p-2 text-sm md:text-base lg:text-lg">{item.type}</td>
+                                <td className="border p-2 text-sm md:text-base lg:text-lg">{item.description}</td>
+                                <td className="border p-2 text-sm md:text-base lg:text-lg">{item.date}</td>
+                                <td className="border p-2 text-sm md:text-base lg:text-lg">${item.amount}</td>
+                                <td className="border p-2 text-sm md:text-base lg:text-lg">
                                     <button className="text-emerald-600 hover:underline mr-2">View</button>
                                     <button className="text-red-600 hover:underline">Delete</button>
                                 </td>

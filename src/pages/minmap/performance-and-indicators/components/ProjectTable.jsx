@@ -1,54 +1,72 @@
 // ProjectTable.jsx
-import React from "react";
+
 import { Link } from "react-router-dom";
+import { apiGetAllCompliance } from "../../../../services/minmap/compliance";
+import { useEffect, useState } from "react";
 
 const ProjectTable = () => {
-  const projects = [
-    {
-      id: "0768",
-      name: "Construction school Y",
-      phase: "Execution",
-      officer: "Paul Janvier",
-      date: "29/10/25",
-      progress: 40,
-      performance: "Moderate concern",
-      compliance: "Needs attention",
-    },
-    {
-      id: "0767",
-      name: "Road construction",
-      phase: "Monitoring",
-      officer: "Iaculis enim",
-      date: "29/10/25",
-      progress: 20,
-      performance: "At risk",
-      compliance: "Non Compliant",
-    },
-    {
-      id: "0768",
-      name: "Construction school Y",
-      phase: "Execution",
-      officer: "Paul Janvier",
-      date: "29/10/25",
-      progress: 40,
-      performance: "Moderate concern",
-      compliance: "Needs attention",
-    },
-    {
-      id: "0767",
-      name: "Road construction",
-      phase: "Monitoring",
-      officer: "Iaculis enim",
-      date: "29/10/25",
-      progress: 20,
-      performance: "At risk",
-      compliance: "Non Compliant",
-    },
-    // Add more projects as needed
-  ];
+  // const projects = [
+  //   {
+  //     id: "0768",
+  //     name: "Construction school Y",
+  //     phase: "Execution",
+  //     officer: "Paul Janvier",
+  //     date: "29/10/25",
+  //     progress: 40,
+  //     performance: "Moderate concern",
+  //     compliance: "Needs attention",
+  //   },
+  //   {
+  //     id: "0767",
+  //     name: "Road construction",
+  //     phase: "Monitoring",
+  //     officer: "Iaculis enim",
+  //     date: "29/10/25",
+  //     progress: 20,
+  //     performance: "At risk",
+  //     compliance: "Non Compliant",
+  //   },
+  //   {
+  //     id: "0768",
+  //     name: "Construction school Y",
+  //     phase: "Execution",
+  //     officer: "Paul Janvier",
+  //     date: "29/10/25",
+  //     progress: 40,
+  //     performance: "Moderate concern",
+  //     compliance: "Needs attention",
+  //   },
+  //   {
+  //     id: "0767",
+  //     name: "Road construction",
+  //     phase: "Monitoring",
+  //     officer: "Iaculis enim",
+  //     date: "29/10/25",
+  //     progress: 20,
+  //     performance: "At risk",
+  //     compliance: "Non Compliant",
+  //   },
+  //   // Add more projects as needed
+  // ];
+  const [compliance, setCompliance] = useState([]);
+
+  const getAllCompliance = async () => {
+    try {
+      const response = await apiGetAllCompliance();
+      console.log("compliance",response.data);
+      setCompliance(response.data);
+    } catch (error) {
+      console.log("comp",error);
+    }
+  };
+
+  useEffect(() => {
+    getAllCompliance();
+  },[]);
 
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
+       <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
         <thead>
           <tr className="bg-gray-100 text-left">
@@ -64,14 +82,18 @@ const ProjectTable = () => {
         </thead>
 
         <tbody>
-          {projects.map((project) => (
+          {compliance.map((project) => (
             <tr key={project.id} className="hover:bg-gray-50">
               <td className="p-4">{project.id}</td>
-              <td className="p-4">{project.name}</td>
-              <td className="p-4">{project.phase}</td>
-              <td className="p-4">{project.officer}</td>
-              <td className="p-4"> <Link to={"/dashboard/compliance-audit-insights"}>
-               {project.date}</Link></td>
+              <td className="p-4">{project.project.projectTitle}</td>
+              <td className="p-4">{project.project.projectStatus}</td>
+              <td className="p-4">{project.checkedBy[0].firstName}</td>
+              <td className="p-4">
+                {" "}
+                <Link to={"/dashboard/compliance-audit-insights"}>
+                  {project.date}
+                </Link>
+              </td>
               <td className="p-4">
                 <div className="w-full bg-gray-200 rounded-full">
                   <div
@@ -83,16 +105,17 @@ const ProjectTable = () => {
                 </div>
               </td>
 
-              <td className="p-4">{project.performance}</td>
+              <td className="p-4">{}</td>
               <td className="p-4">
-                <Link to={"/dashboard/detailed-compliance-report"}>
-                  {project.compliance}
+                <Link to={`/dashboard/detailed-compliance-report/${project.id}`}>
+                  {project.complianceStatus}
                 </Link>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

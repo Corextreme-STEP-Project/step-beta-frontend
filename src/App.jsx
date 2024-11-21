@@ -41,9 +41,6 @@ import MilestoneList from "./pages/Perf-Indic/MilestoneList";
 import PerformanceIndicatorDetail from "./pages/Perf-Indic/IndicatorId";
 import MilestoneDetails from "./pages/Perf-Indic/MilestoneId";
 
-
-
-
 import MergedNotificationDashboard from "./layout/minmap/NotificationDashboard";
 import NotificationCreator from "./component/minmap/NotificationCreator";
 import NotificationList from "./component/project-owner/NotificationList";
@@ -52,12 +49,27 @@ import KPIAnalysis from "./pages/minmap/performance-and-indicators/KPIAnalysis";
 import ComplianceComparison from "./pages/minmap/performance-and-indicators/ComplianceComparison";
 import ComplianceRiskAssessment from "./pages/minmap/performance-and-indicators/ComplianceRiskAssessment";
 import ComplianceAuditInsights from "./pages/minmap/performance-and-indicators/ComplianceAuditInsights";
-import Projects from "./pages/minmap/dashboard/Projects";
+
+import ChatDashboardLayout from "./layout/project-owner/ChatDashboardLayout";
 import ReceptionsPayments from "./component/project-owner/ReceptionsPayments";
 import SettingsMain from "./component/project-owner/SettingsMain";
 import MessagingHelpMain from "./component/project-owner/MessagingHelp";
+
 import UploadDocumentForm from "./pages/management/UploadDocumentForm";
 
+
+import Tenders from "./pages/minmap/dashboard/Tenders";
+import DocumentRepo from "./pages/minmap/dashboard/DocumentRepo";
+import Reports from "./pages/minmap/dashboard/Reports";
+import Projects from "./pages/minmap/dashboard/Projects";
+import Performance from "./pages/minmap/dashboard/Performance";
+import Archives from "./pages/minmap/dashboard/Archives";
+import LiveChatUi from "./component/project-owner/livechatui/LiveChatUi";
+import MessageArea from "./component/project-owner/livechatui/MessageArea";
+import InputArea from "./component/project-owner/livechatui/InputArea";
+import ChatHeader from "./component/project-owner/livechatui/ChatHeader";
+import Sidebar from "./component/project-owner/livechatui/Sidebar";
+import TypingIndicator from "./component/project-owner/livechatui/TypingIndicator";
 
 
 // Create a theme instance
@@ -110,28 +122,44 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/livechatui",
+    element: <LiveChatUi />,
 
- 
+    children: [
+      {
+        index: true,
+        element: <MessageArea />,
+      },
+      {
+        path: "inputarea",
+        element: <InputArea />,
+      },
+      {
+        path: "chatheader",
+        element: <ChatHeader />,
+      },
+      {
+        path: "sidebar",
+        element: <Sidebar />,
+      },
+      {
+        path: "typingindicator",
+        element: <TypingIndicator />,
+      },
+    ],
+  },
+
   {
     path: "/notification",
     element: <MergedNotificationDashboard />,
   },
 
-
-
- 
-
-  
-
-  
-
   {
     path: "/projects/:id/edit",
     element: <EditProjectStatus />,
   },
-  
 
-  
   {
     path: "/dashboard",
     element: <DashboardLayout />,
@@ -142,39 +170,38 @@ const router = createBrowserRouter([
       },
 
       {
-        path:"projects",
-        element:<Projects/>,
+        path: "projects",
+        element: <Projects />,
       },
 
-      // {
-      //   path: "tenders",
-      //   element: <Tenders/>
-      // },
+       {
+         path: "tenders",
+         element:<Tenders/>
+       },
 
-      // {
-      //   path: "docs",
-      //   element: <DocumentRepo />,
-      // },
-    
-      // {
-      //   path: "reports",
-      //   element: <Reports/>,
-      // },
+       {
+         path: "docs",
+        element: <DocumentRepo />,
+       },
+
+       {
+         path: "reports",
+         element: <Reports/>,
+       },
 
       {
         path: "performance",
-        element:<Performance/>
+        element: <Performance/>,
       },
 
-      // {
-      //   path: "archives",
-      //   element: <Archives />,
-      // },
-    
+       {
+         path: "archives",
+         element: <Archives/>,
+       },
 
       {
         path: "settings",
-        element: <Settings />, 
+        element: <Settings />,
       },
 
       {
@@ -195,33 +222,33 @@ const router = createBrowserRouter([
         element: <PerformanceAndIndicators />,
       },
 
-    {
-        path: "indicator-list",
-        element: <PerformanceIndicatorList/>,
-      },
-    {
-        path: "indicator-form",
-        element: <AddPerformanceIndicatorForm/>,
-      },
-    {
-        path: "milestone-form",
-        element: <AddMilestoneForm/>,
-      },
-    {
-        path: "milestone-list",
-        element: <MilestoneList/>,
-      },
-    {
-        path: "milestone/:id",
-        element: <MilestoneDetails/>,
-      },
-    {
-        path: "indicator/:id",
-        element: <PerformanceIndicatorDetail/>,
-      },
-    
       {
-        path: "detailed-compliance-report",
+        path: "indicator-list",
+        element: <PerformanceIndicatorList />,
+      },
+      {
+        path: "indicator-form",
+        element: <AddPerformanceIndicatorForm />,
+      },
+      {
+        path: "milestone-form",
+        element: <AddMilestoneForm />,
+      },
+      {
+        path: "milestone-list",
+        element: <MilestoneList />,
+      },
+      {
+        path: "milestone/:id",
+        element: <MilestoneDetails />,
+      },
+      {
+        path: "indicator/:id",
+        element: <PerformanceIndicatorDetail />,
+      },
+
+      {
+        path: "detailed-compliance-report/:projectId",
         element: <DetailedComplianceReport />,
       },
       {
@@ -252,7 +279,6 @@ const router = createBrowserRouter([
     ],
   },
 
-
   // {
   //   path: "/notification",
   //   element: <MergedNotificationDashboard />,
@@ -266,14 +292,6 @@ const router = createBrowserRouter([
   //   element: <CreateNotificationForm />,
   // },
 
-  {
-    path: "/login",
-    element: <LoginForm />,
-  },
-  {
-    path: "/register",
-    element: <RegistrationForm />,
-  },
   {
     path: "/add-project",
     element: <ProjectForm />,
@@ -292,7 +310,6 @@ const router = createBrowserRouter([
     element: <MaturationPhase />,
   },
 
-
   // {
   //   path: "/dashboard",
   //   element: <DashboardLayout />,
@@ -309,10 +326,9 @@ const router = createBrowserRouter([
   //       path: "create-notification",
   //       element: <NotificationCreator />,
   //     },
-     
+
   //   ],
   // },
-
 
   {
     path: "/projectowner",
@@ -331,10 +347,10 @@ const router = createBrowserRouter([
         path: "receptions",
         element: <ReceptionsPayments />,
       },
-      // {
-      //   path: "docs",
-      //   element: <DocumentRepo />,
-      // },
+      {
+        path: "docs",
+        element: <DocumentRepo />,
+      },
       {
         path: "settings",
         element: <SettingsMain />,
@@ -352,10 +368,23 @@ const router = createBrowserRouter([
         element: <Notifications />,
       },
       {
+        path: "stakeholders-messaging",
+        element: <ChatDashboardLayout />,
+        children: [
+          // {
+          //   index: true,
+          //   element:
+          // }
+        ],
+      },
+      {
         path: "notification-list",
         element: <NotificationList />,
+
        },
-       {
+     
+      },
+      {
         path: "document",
         element: <UploadDocumentForm/>,
       },
