@@ -16,7 +16,7 @@ const ChatSidebar = () => {
           <div
             className={`flex ${
               isExpanded ? "justify-start" : "justify-center"
-            } bg-[#f0d39d] rounded-md p-2`}
+            } bg-[#059669] rounded-md p-2`}
           >
             <span className="font-bold">
               S
@@ -26,7 +26,7 @@ const ChatSidebar = () => {
                 isExpanded ? "block" : "hidden"
               } ml-2 relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 `}
             >
-              STEP
+              Messaging
             </p>
           </div>
         </div>
@@ -39,7 +39,7 @@ const ChatSidebar = () => {
           <div
             className={`flex ${
               isExpanded ? "justify-start" : "justify-center"
-            } bg-[#EEC16D] rounded-md p-2`}
+            } bg-[#059669] rounded-md p-2`}
           >
             <span className="">
               
@@ -49,7 +49,7 @@ const ChatSidebar = () => {
                 isExpanded ? "block" : "hidden"
               } ml-2 relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 `}
             >
-              Home
+              Inbox
             </p>
           </div>
         </div>
@@ -60,7 +60,7 @@ const ChatSidebar = () => {
           <div
             className={`flex ${
               isExpanded ? "justify-start" : "justify-center"
-            } bg-[#EEC16D] rounded-md p-2`}
+            } bg-[#059669] rounded-md p-2`}
           >
             <span className="">
               
@@ -70,7 +70,7 @@ const ChatSidebar = () => {
                 isExpanded ? "block" : "hidden"
               } ml-2 relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100`}
             >
-              My Products
+              Important
             </p>
           </div>
         </div>
@@ -81,7 +81,7 @@ const ChatSidebar = () => {
           <div
             className={`flex ${
               isExpanded ? "justify-start" : "justify-center"
-            } bg-[#EEC16D] rounded-md p-2`}
+            } bg-[#059669] rounded-md p-2`}
           >
             <span className="">
               
@@ -91,7 +91,7 @@ const ChatSidebar = () => {
                 isExpanded ? "block" : "hidden"
               } ml-2 relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100`}
             >
-              Orders
+              Sent
             </p>
           </div>
         </div>
@@ -102,7 +102,7 @@ const ChatSidebar = () => {
           <div
             className={`flex ${
               isExpanded ? "justify-start" : "justify-center"
-            } bg-[#EEC16D] rounded-md p-2`}
+            } bg-[#059669] rounded-md p-2`}
           >
             <span className="">
               
@@ -112,7 +112,7 @@ const ChatSidebar = () => {
                 isExpanded ? "block" : "hidden"
               } ml-2 relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100`}
             >
-              Add Product
+              Drafts
             </p>
           </div>
         </div>
@@ -123,7 +123,7 @@ const ChatSidebar = () => {
           <div
             className={`flex ${
               isExpanded ? "justify-start" : "justify-center"
-            } bg-[#EEC16D] rounded-md p-2`}
+            } bg-[#059669] rounded-md p-2`}
           >
             <span className="">
              
@@ -133,79 +133,15 @@ const ChatSidebar = () => {
                 isExpanded ? "block" : "hidden"
               } ml-2 relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100`}
             >
-              Coupons
+              Trash
             </p>
           </div>
         </div>
       </Link>
 
-      <Link to={""}>
-        <div className="links text-[0.8rem]">
-          <div
-            className={`flex ${
-              isExpanded ? "justify-start" : "justify-center"
-            } bg-[#EEC16D] rounded-md p-2`}
-          >
-            <span className="">
-             
-            </span>
-            <p
-              className={`${
-                isExpanded ? "block" : "hidden"
-              } ml-2 relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100`}
-            >
-              Reviews
-            </p>
-          </div>
-        </div>
-      </Link>
-
-      <Link to={""}>
-        <div className="links text-[0.8rem]">
-          <div
-            className={`flex ${
-              isExpanded ? "justify-start" : "justify-center"
-            } bg-[#EEC16D] rounded-md p-2`}
-          >
-            <span className="">
-              
-            </span>
-            <p
-              className={`${
-                isExpanded ? "block" : "hidden"
-              } ml-2 relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100`}
-            >
-              About
-            </p>
-          </div>
-        </div>
-      </Link>
-
-      <Link to={""}>
-        <div className="links text-[0.8rem]">
-          <div
-            className={`flex ${
-              isExpanded ? "justify-start" : "justify-center"
-            } bg-[#EEC16D] rounded-md p-2`}
-          >
-            <span className="">
-             
-            </span>
-            <p
-              className={`${
-                isExpanded ? "block" : "hidden"
-              } ml-2 relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100`}
-            >
-              Settings
-            </p>
-          </div>
-        </div>
-      </Link>
-
-      <hr className="mt-5 mb-5 h-2" />
 
 
-      <p className={`${isExpanded ? "block" : "hidden"}`}>Log Out</p>
+
     </div>
   );
 };

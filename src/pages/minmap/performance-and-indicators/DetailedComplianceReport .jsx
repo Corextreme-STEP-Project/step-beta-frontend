@@ -1,4 +1,35 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { apiGetSingleCompliance } from "../../../services/minmap/compliance";
+
+
+
+
+
 const DetailedComplianceReport = () => {
+
+  const {projectId} = useParams()
+
+  const [compliance, setCompliance] = useState({})
+
+
+  const fetchCompliance = async () => {
+    try {
+      const response = await apiGetSingleCompliance(projectId)
+      console.log(response.data)
+      setCompliance(response.data)
+    } catch (error) {
+      console.log("error", error)
+    }
+  }
+
+
+  useEffect(() => {
+    fetchCompliance()
+  }, [])
+
+
+
   return (
     <div className="p-6">
       {/* Header Section */}
@@ -7,14 +38,14 @@ const DetailedComplianceReport = () => {
           <h1 className="text-2xl font-semibold text-gray-800">
             Project Compliance Report
           </h1>
-          <p className="text-gray-600">Project ID: 0768</p>
+          <p className="text-gray-600">{compliance.id}</p>
         </div>
         <div className="mt-4 md:mt-0">
           <span className="text-sm font-medium text-gray-500">
             Compliance Status:
           </span>
           <span className="ml-2 px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-800">
-            Compliant
+            {compliance.complianceStatus}
           </span>
         </div>
       </div>
@@ -102,7 +133,7 @@ const DetailedComplianceReport = () => {
                     {entry.status}
                   </span>
                 </td>
-                <td className="py-3 px-4">{entry.notes}</td>
+                <td className="py-3 px-4">{compliance.notes}</td>
               </tr>
             ))}
           </tbody>
